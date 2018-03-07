@@ -1,0 +1,1 @@
+右クリックで追加したScriptableObjectをインスペクターでPopUpから選ぶことをしたかった
