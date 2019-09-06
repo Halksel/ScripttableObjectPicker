@@ -1,21 +1,51 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Utilities;
 
 namespace Sandbox
 {
-    public class InputProxy : MonoBehaviour
+    public class InputProxy : MonoBehaviour, MyInput.IBasisActions
     {
-        // Start is called before the first frame update
-        void Start()
+        private void Awake()
         {
-
+            _input = new MyInput();
+            _input.Basis.SetCallbacks(this);
+        }
+        private void OnEnable()
+        {
+            _input.Enable(); 
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnDisable()
         {
-
+            _input.Disable();
         }
+
+        public void Update()
+        {
+        }
+
+        public void OnArrows(InputAction.CallbackContext context)
+        {
+            Debug.Log(context.ReadValue<Vector2>());
+        }
+
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            Debug.Log(context.ReadValue<Vector2>());
+        }
+
+        public void OnEnter(InputAction.CallbackContext context)
+        {
+            Debug.Log(context.ToString());
+        }
+
+        public void OnCursor(InputAction.CallbackContext context)
+        {
+            Debug.Log(context.ReadValue<Vector2>());
+        }
+
+        [SerializeField]
+        private MyInput _input;
     }
 }
