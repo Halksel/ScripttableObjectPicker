@@ -7,56 +7,98 @@ namespace Sandbox
 {
     public class InputManager : SingletonMonoBehaviour<InputManager>
     {
-        struct Input
+        public enum InputType
         {
-            public Input(int currentPriority, InputProxy inputProxy) : this()
+            Basis,
+            UI,
+        }
+
+        public override bool Setup()
+        {
+            _input = new MyInput();
+            return true;
+        }
+
+        public InputType GetCurrentState()
+        {
+            return _currentState;
+        }
+
+        public void SetCurrentState(InputType inputType)
+        {
+            _currentState = inputType;
+        }
+
+        public Vector2 Move
+        {
+            get
             {
-                this.currentPriority = currentPriority;
-                this.inputProxy = inputProxy;
+                Vector2 move = Vector2.zero;
+                switch (_currentState)
+                {
+                    case InputType.Basis:
+                        {
+                            move = _input.Basis.Move.ReadValue<Vector2>();
+                        }
+                        break;
+
+                    case InputType.UI:
+                        {
+                            Debug.Log("No Implematation!");
+                        }
+                        break;
+                }
+                return move;
             }
-
-            public int _priority;
-            public InputProxy _input;
-            private int currentPriority;
-            private InputProxy inputProxy;
-
-
-            public void Enable() => _input.enabled = true;
-            public void Disable() => _input.enabled = false;
         }
-        override public bool Setup()
+
+        public Vector2 Cursor
         {
-            _currentPriority = 0;
-            CreateCurrentPriorityInput();
-            return false;
+            get
+            {
+                Vector2 value = default(Vector2);
+                switch (_currentState)
+                {
+                    case InputType.Basis:
+                        {
+                            value = _input.Basis.Cursor.ReadValue<Vector2>();
+                        }
+                        break;
+
+                    case InputType.UI:
+                        {
+                            Debug.Log("No Implematation!");
+                        }
+                        break;
+                }
+                return value;
+            }
         }
 
-        // Update is called once per frame
-        void Update()
+        public bool Enter
         {
+            get
+            {
+                bool value = default(bool);
+                switch (_currentState)
+                {
+                    case InputType.Basis:
+                        {
+                            value = _input.Basis.Enter.ReadValue<bool>();
+                        }
+                        break;
+
+                    case InputType.UI:
+                        {
+                            Debug.Log("No Implematation!");
+                        }
+                        break;
+                }
+                return value;
+            }
         }
 
-        public InputProxy CreateCurrentPriorityInput()
-        {
-            Input input = new Input( _currentPriority, new InputProxy() );
-            input.Enable();
-            return input._input;
-        }
-
-        public InputProxy CreateTopPriorityInput()
-        {
-            _currentPriority++;
-            Input input = new Input( _currentPriority, new InputProxy() );
-            input.Enable();
-            return input._input;
-        }
-
-        public void DestroyInput(InputProxy input)
-        {
-            _input = _input.Where(_ => input != _._input).ToList();
-        }
-
-        private List<Input> _input = new List<Input>();
-        private int _currentPriority;
+        private InputType _currentState = InputType.Basis;
+        private MyInput _input;
     }
 }

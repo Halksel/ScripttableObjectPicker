@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Input</Title>
+      <Shortcut>Input</Shortcut>
+      <Description>Code snippet for Input</Description>
+      <Author>Hira Kentaro</Author>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal Editable="false"></Literal>
+        <Literal>
+          <ID>Type</ID>
+          <Default>Type</Default>
+        </Literal>
+        <Literal>
+          <ID>Name</ID>
+          <Default>Name</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="csharp"><![CDATA[        public $Type$ $Name$
+        {
+            get
+            {
+              $Type$ value = default($Type$);
+              switch (_currentState)
+              {
+                  case InputType.Basis:
+                      {
+                          value = _input.Basis.$Name$.ReadValue<$Type$>();
+                      }
+                      break;
+
+                  case InputType.UI:
+                      {
+                          Debug.Log("No Implematation!");
+                      }
+                      break;
+              }
+              return value;
+            }
+        }$end$]]></Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>
