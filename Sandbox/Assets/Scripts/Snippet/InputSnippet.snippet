@@ -10,37 +10,21 @@
     <Snippet>
       <Declarations>
         <Literal Editable="false"></Literal>
-        <Literal>
-          <ID>Type</ID>
-          <Default>Type</Default>
-        </Literal>
-        <Literal>
-          <ID>Name</ID>
-          <Default>Name</Default>
-        </Literal>
       </Declarations>
-      <Code Language="csharp"><![CDATA[        public $Type$ $Name$
-        {
-            get
-            {
-              $Type$ value = default($Type$);
-              switch (_currentState)
-              {
-                  case InputType.Basis:
-                      {
-                          value = _input.Basis.$Name$.ReadValue<$Type$>();
-                      }
-                      break;
+      <Code Language="csharp"><![CDATA[ switch (_currentState)
+          {
+              case InputType.Basis:
+                  {
+                      Debug.Log("No Implematation!");
+                  }
+                  break;
 
-                  case InputType.UI:
-                      {
-                          Debug.Log("No Implematation!");
-                      }
-                      break;
-              }
-              return value;
-            }
-        }$end$]]></Code>
+              case InputType.UI:
+                  {
+                      Debug.Log("No Implematation!");
+                  }
+                  break;
+          } $end$]]></Code>
     </Snippet>
   </CodeSnippet>
 </CodeSnippets>

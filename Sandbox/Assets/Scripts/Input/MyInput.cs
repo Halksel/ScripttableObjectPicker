@@ -19,19 +19,11 @@ public class MyInput : IInputActionCollection
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""29e4fce8-55f8-44ad-b447-2fa9a323d070"",
-                    ""expectedControlType"": ""Double"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""Enter"",
-                    ""type"": ""Button"",
-                    ""id"": ""8bf113b2-9bad-406b-9f3d-265ff37b2152"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Cursor"",
@@ -112,7 +104,7 @@ public class MyInput : IInputActionCollection
                 {
                     ""name"": ""up"",
                     ""id"": ""994eb772-757c-4e62-8c76-d290410b083f"",
-                    ""path"": ""<DualShockGamepad>/rightStick/up"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""GamePad"",
@@ -152,39 +144,6 @@ public class MyInput : IInputActionCollection
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a28bfad8-dcc7-465d-abea-b84652db9462"",
-                    ""path"": ""<Keyboard>/enter"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Enter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""819a556d-9955-40ff-98d3-4538f10ba529"",
-                    ""path"": ""<DualShockGamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""Enter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""93e80602-aaa7-44f1-addd-cd156b1de604"",
-                    ""path"": ""<Keyboard>/#(Z)"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Enter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""Arrow"",
@@ -303,9 +262,88 @@ public class MyInput : IInputActionCollection
             ""id"": ""3295bb4a-964c-4137-9479-42d6579fcd8c"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Cancel"",
                     ""type"": ""Button"",
                     ""id"": ""5e51931c-d53d-41d3-a069-b302d3668666"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""310ce04a-af68-40dd-ae8a-bc8c5e944652"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""02d6f2f4-66d5-4e1d-9918-6285404b4368"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a835a2fd-fba4-4a9f-a2b2-862a6987ba0f"",
+                    ""path"": ""<Keyboard>/#(X)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""19144b48-3e44-40ee-a172-ae0d2901e779"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be2b492c-c86d-4a21-a9b6-7201a3d254bc"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f6fc803a-4a37-4145-b8d0-a30c702a2235"",
+                    ""path"": ""<Keyboard>/#(Z)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Always"",
+            ""id"": ""de2a9c8e-b661-4f08-9a86-981dfac0cc41"",
+            ""actions"": [
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""efe96ad5-1d5c-4c2a-9c87-05bbd1f89f81"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -314,12 +352,23 @@ public class MyInput : IInputActionCollection
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""02d6f2f4-66d5-4e1d-9918-6285404b4368"",
-                    ""path"": """",
+                    ""id"": ""a87a130a-ff56-494d-9b32-10d7df24f3eb"",
+                    ""path"": ""<DualShockGamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da792115-eda6-4938-ae37-36dd8212a67b"",
+                    ""path"": ""<Keyboard>/#(C)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -354,11 +403,14 @@ public class MyInput : IInputActionCollection
         // Basis
         m_Basis = asset.GetActionMap("Basis");
         m_Basis_Move = m_Basis.GetAction("Move");
-        m_Basis_Enter = m_Basis.GetAction("Enter");
         m_Basis_Cursor = m_Basis.GetAction("Cursor");
         // UI
         m_UI = asset.GetActionMap("UI");
-        m_UI_Newaction = m_UI.GetAction("New action");
+        m_UI_Cancel = m_UI.GetAction("Cancel");
+        m_UI_Enter = m_UI.GetAction("Enter");
+        // Always
+        m_Always = asset.GetActionMap("Always");
+        m_Always_Menu = m_Always.GetAction("Menu");
     }
 
     ~MyInput()
@@ -409,14 +461,12 @@ public class MyInput : IInputActionCollection
     private readonly InputActionMap m_Basis;
     private IBasisActions m_BasisActionsCallbackInterface;
     private readonly InputAction m_Basis_Move;
-    private readonly InputAction m_Basis_Enter;
     private readonly InputAction m_Basis_Cursor;
     public struct BasisActions
     {
         private MyInput m_Wrapper;
         public BasisActions(MyInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Basis_Move;
-        public InputAction @Enter => m_Wrapper.m_Basis_Enter;
         public InputAction @Cursor => m_Wrapper.m_Basis_Cursor;
         public InputActionMap Get() { return m_Wrapper.m_Basis; }
         public void Enable() { Get().Enable(); }
@@ -430,9 +480,6 @@ public class MyInput : IInputActionCollection
                 Move.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
                 Move.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
                 Move.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
-                Enter.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnEnter;
-                Enter.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnEnter;
-                Enter.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnEnter;
                 Cursor.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
                 Cursor.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
                 Cursor.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
@@ -443,9 +490,6 @@ public class MyInput : IInputActionCollection
                 Move.started += instance.OnMove;
                 Move.performed += instance.OnMove;
                 Move.canceled += instance.OnMove;
-                Enter.started += instance.OnEnter;
-                Enter.performed += instance.OnEnter;
-                Enter.canceled += instance.OnEnter;
                 Cursor.started += instance.OnCursor;
                 Cursor.performed += instance.OnCursor;
                 Cursor.canceled += instance.OnCursor;
@@ -457,12 +501,14 @@ public class MyInput : IInputActionCollection
     // UI
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
-    private readonly InputAction m_UI_Newaction;
+    private readonly InputAction m_UI_Cancel;
+    private readonly InputAction m_UI_Enter;
     public struct UIActions
     {
         private MyInput m_Wrapper;
         public UIActions(MyInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_UI_Newaction;
+        public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
+        public InputAction @Enter => m_Wrapper.m_UI_Enter;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -472,20 +518,59 @@ public class MyInput : IInputActionCollection
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                Newaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                Newaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
-                Newaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNewaction;
+                Cancel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                Cancel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                Cancel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                Enter.started -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
+                Enter.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
+                Enter.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Newaction.started += instance.OnNewaction;
-                Newaction.performed += instance.OnNewaction;
-                Newaction.canceled += instance.OnNewaction;
+                Cancel.started += instance.OnCancel;
+                Cancel.performed += instance.OnCancel;
+                Cancel.canceled += instance.OnCancel;
+                Enter.started += instance.OnEnter;
+                Enter.performed += instance.OnEnter;
+                Enter.canceled += instance.OnEnter;
             }
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Always
+    private readonly InputActionMap m_Always;
+    private IAlwaysActions m_AlwaysActionsCallbackInterface;
+    private readonly InputAction m_Always_Menu;
+    public struct AlwaysActions
+    {
+        private MyInput m_Wrapper;
+        public AlwaysActions(MyInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Menu => m_Wrapper.m_Always_Menu;
+        public InputActionMap Get() { return m_Wrapper.m_Always; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AlwaysActions set) { return set.Get(); }
+        public void SetCallbacks(IAlwaysActions instance)
+        {
+            if (m_Wrapper.m_AlwaysActionsCallbackInterface != null)
+            {
+                Menu.started -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
+                Menu.performed -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
+                Menu.canceled -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
+            }
+            m_Wrapper.m_AlwaysActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Menu.started += instance.OnMenu;
+                Menu.performed += instance.OnMenu;
+                Menu.canceled += instance.OnMenu;
+            }
+        }
+    }
+    public AlwaysActions @Always => new AlwaysActions(this);
     private int m_GamePadSchemeIndex = -1;
     public InputControlScheme GamePadScheme
     {
@@ -507,11 +592,15 @@ public class MyInput : IInputActionCollection
     public interface IBasisActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnEnter(InputAction.CallbackContext context);
         void OnCursor(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
+    }
+    public interface IAlwaysActions
+    {
+        void OnMenu(InputAction.CallbackContext context);
     }
 }
