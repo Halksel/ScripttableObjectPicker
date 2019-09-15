@@ -347,6 +347,14 @@ public class MyInput : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SaveInput"",
+                    ""type"": ""Value"",
+                    ""id"": ""424ab82f-7d62-4ecc-9e96-7522fe61a505"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -369,6 +377,28 @@ public class MyInput : IInputActionCollection
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6dec2cff-5bae-44e8-83d2-41f675ce3db5"",
+                    ""path"": ""<DualShockGamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""SaveInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e781f2d-847d-4c62-8336-c43c9f036d60"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SaveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -411,6 +441,7 @@ public class MyInput : IInputActionCollection
         // Always
         m_Always = asset.GetActionMap("Always");
         m_Always_Menu = m_Always.GetAction("Menu");
+        m_Always_SaveInput = m_Always.GetAction("SaveInput");
     }
 
     ~MyInput()
@@ -543,11 +574,13 @@ public class MyInput : IInputActionCollection
     private readonly InputActionMap m_Always;
     private IAlwaysActions m_AlwaysActionsCallbackInterface;
     private readonly InputAction m_Always_Menu;
+    private readonly InputAction m_Always_SaveInput;
     public struct AlwaysActions
     {
         private MyInput m_Wrapper;
         public AlwaysActions(MyInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Menu => m_Wrapper.m_Always_Menu;
+        public InputAction @SaveInput => m_Wrapper.m_Always_SaveInput;
         public InputActionMap Get() { return m_Wrapper.m_Always; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -560,6 +593,9 @@ public class MyInput : IInputActionCollection
                 Menu.started -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
                 Menu.performed -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
                 Menu.canceled -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
+                SaveInput.started -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnSaveInput;
+                SaveInput.performed -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnSaveInput;
+                SaveInput.canceled -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnSaveInput;
             }
             m_Wrapper.m_AlwaysActionsCallbackInterface = instance;
             if (instance != null)
@@ -567,6 +603,9 @@ public class MyInput : IInputActionCollection
                 Menu.started += instance.OnMenu;
                 Menu.performed += instance.OnMenu;
                 Menu.canceled += instance.OnMenu;
+                SaveInput.started += instance.OnSaveInput;
+                SaveInput.performed += instance.OnSaveInput;
+                SaveInput.canceled += instance.OnSaveInput;
             }
         }
     }
@@ -602,5 +641,6 @@ public class MyInput : IInputActionCollection
     public interface IAlwaysActions
     {
         void OnMenu(InputAction.CallbackContext context);
+        void OnSaveInput(InputAction.CallbackContext context);
     }
 }

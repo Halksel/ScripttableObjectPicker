@@ -335,6 +335,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SaveInput",
+                    "type": "Value",
+                    "id": "424ab82f-7d62-4ecc-9e96-7522fe61a505",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -357,6 +365,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6dec2cff-5bae-44e8-83d2-41f675ce3db5",
+                    "path": "<DualShockGamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "SaveInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e781f2d-847d-4c62-8336-c43c9f036d60",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SaveInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

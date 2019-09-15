@@ -15,20 +15,27 @@ namespace Sandbox {
 		
 		private void Update () 
 		{
-
             var delta = InputManager.Instance.Move;
             transform.position += new Vector3(delta.x, delta.y);
             if (InputManager.Instance.Menu)
             {
                 if (_isUI)
                 {
-                    InputManager.Instance.SetCurrentState(InputManager.InputType.UI);
+                    InputManager.Instance.SetCurrentState(InputManager.InputMap.UI);
                 }
                 else
                 {
-                    InputManager.Instance.SetCurrentState(InputManager.InputType.Basis);
+                    InputManager.Instance.SetCurrentState(InputManager.InputMap.Basis);
                 }
                 _isUI = !_isUI;
+                Debug.Log("Menu");
+                Debug.Log(Time.deltaTime);
+            }
+            else if (InputManager.Instance.SaveInput)
+            {
+                InputRecorder.Instance.GenerateInputRecords();
+                Debug.Log("Save");
+                Debug.Log(Time.deltaTime);
             }
 		}
 

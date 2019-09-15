@@ -6,13 +6,15 @@ using UnityEngine.InputSystem;
 
 namespace Sandbox
 {
+    using Record = InputRecorder.ContextRecord;
     public class InputManager : SingletonMonoBehaviour<InputManager>, MyInput.IAlwaysActions, MyInput.IBasisActions, MyInput.IUIActions
     {
-        public enum InputType
+        public enum InputMap
         {
             Basis,
             UI,
         }
+
 
         public override bool Setup()
         {
@@ -24,24 +26,54 @@ namespace Sandbox
             return true;
         }
 
-        public InputType GetCurrentState()
+        public InputMap GetCurrentState()
         {
             return _currentState;
         }
 
-        public void SetCurrentState(InputType inputType)
+        IEnumerator EmurateInput()
+        {
+            while (true)
+            {
+                if (!_isRecord) yield return 0;
+                _time += Time.deltaTime;
+                while (_time > _records.Current.startTime)
+                {
+                    var record = _records.Current;
+                    // 入力レコードによって値をセット
+
+                    var next = _records.MoveNext();
+                    if (!next)
+                    {
+                        _isRecord = false;
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void PlayRecord()
+        {
+            _isRecord = true;
+            _time = 0;
+            _records = InputRecorder.Instance.GetRecords();
+            StartCoroutine(EmurateInput());
+        }
+
+
+        public void SetCurrentState(InputMap inputType)
         {
             _input.Disable();
             _input.Always.Enable();
             switch (inputType)
             {
-                case InputType.Basis:
+                case InputMap.Basis:
                     {
                         _input.Basis.Enable();
                     }
                     break;
 
-                case InputType.UI:
+                case InputMap.UI:
                     {
                         _input.UI.Enable();
                     }
@@ -52,7 +84,13 @@ namespace Sandbox
 
         public void OnMenu(InputAction.CallbackContext context)
         {
-            switch (context.phase)
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Menu, context);
+            menuFunc(record);
+        }
+
+        private void menuFunc(Record record)
+        {
+            switch (record.phase)
             {
                 case InputActionPhase.Started:
                     {
@@ -67,19 +105,53 @@ namespace Sandbox
             }
         }
 
+        public void OnSaveInput(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    {
+                        SaveInput = true;
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    {
+                        SaveInput = false;
+                    }
+                    break;
+            }
+        }
+
         public void OnMove(InputAction.CallbackContext context)
         {
-            Move = context.ReadValue<Vector2>();
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Move, context);
+            moveFunc(record);
+        }
+
+        private void moveFunc(Record record)
+        {
+            Move = (Vector2)record.value;
         }
 
         public void OnCursor(InputAction.CallbackContext context)
         {
-            Cursor = context.ReadValue<Vector2>();
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cursor, context);
+            cursorFunc(record);
+        }
+        private void cursorFunc(Record record)
+        {
+            Cursor = (Vector2)record.value;
         }
 
         public void OnCancel(InputAction.CallbackContext context)
         {
-            switch (context.phase)
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cancel, context);
+            cancelFunc(record);
+        }
+
+        private void cancelFunc(Record record)
+        {
+            switch (record.phase)
             {
                 case InputActionPhase.Started:
                     {
@@ -96,7 +168,13 @@ namespace Sandbox
 
         public void OnEnter(InputAction.CallbackContext context)
         {
-            switch (context.phase)
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Enter, context);
+            enterFunc(record);
+        }
+        
+        private void enterFunc(Record record)
+        {
+            switch (record.phase)
             {
                 case InputActionPhase.Started:
                     {
@@ -112,6 +190,10 @@ namespace Sandbox
         }
 
         public bool Menu
+        {
+            get; private set;
+        }
+        public bool SaveInput
         {
             get; private set;
         }
@@ -136,7 +218,10 @@ namespace Sandbox
         }
 
         [SerializeField]
-        private InputType _currentState = InputType.Basis;
+        private InputMap _currentState = InputMap.Basis;
         private MyInput _input;
+        private bool _isRecord = false;
+        private double _time;
+        private IEnumerator<Record> _records;
     }
 }

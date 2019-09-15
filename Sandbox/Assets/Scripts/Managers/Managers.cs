@@ -16,7 +16,6 @@ namespace Sandbox {
         {
             var input = new GameObject("InputManager");
             input.AddComponent<InputManager>().NullCast()?.Setup() ;
-            UnityEngine.Object.DontDestroyOnLoad(input);
         }
 
         private Managers Instance

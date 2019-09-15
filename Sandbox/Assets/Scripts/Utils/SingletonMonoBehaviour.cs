@@ -25,7 +25,10 @@ namespace Sandbox
 
         protected void Awake()
         {
-            CheckInstance();
+            if (CheckInstance())
+            {
+                    UnityEngine.Object.DontDestroyOnLoad(instance.gameObject);
+            }
         }
 
         protected bool CheckInstance()
