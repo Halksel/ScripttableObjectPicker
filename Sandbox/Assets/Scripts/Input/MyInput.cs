@@ -26,6 +26,14 @@ public class MyInput : IInputActionCollection
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""1288d5fa-3cc1-4248-a1db-65fe2bff3795"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
+                },
+                {
                     ""name"": ""Cursor"",
                     ""type"": ""Button"",
                     ""id"": ""149d54f1-47e2-41d5-a351-b3664912b73d"",
@@ -254,6 +262,28 @@ public class MyInput : IInputActionCollection
                     ""action"": ""Cursor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20c0d0f2-bf8e-4d18-9a9a-a1134c9e5093"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07dce5ae-9f55-4027-8a10-888a3e560c3b"",
+                    ""path"": ""<Keyboard>/#(C)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -337,75 +367,7 @@ public class MyInput : IInputActionCollection
             ]
         },
         {
-            ""name"": ""Always"",
-            ""id"": ""de2a9c8e-b661-4f08-9a86-981dfac0cc41"",
-            ""actions"": [
-                {
-                    ""name"": ""Menu"",
-                    ""type"": ""Button"",
-                    ""id"": ""efe96ad5-1d5c-4c2a-9c87-05bbd1f89f81"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Tap""
-                },
-                {
-                    ""name"": ""SaveInput"",
-                    ""type"": ""Value"",
-                    ""id"": ""424ab82f-7d62-4ecc-9e96-7522fe61a505"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Tap""
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""a87a130a-ff56-494d-9b32-10d7df24f3eb"",
-                    ""path"": ""<DualShockGamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""Menu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""da792115-eda6-4938-ae37-36dd8212a67b"",
-                    ""path"": ""<Keyboard>/#(C)"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""Menu"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6dec2cff-5bae-44e8-83d2-41f675ce3db5"",
-                    ""path"": ""<DualShockGamepad>/rightStickPress"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""GamePad"",
-                    ""action"": ""SaveInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5e781f2d-847d-4c62-8336-c43c9f036d60"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""SaveInput"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Test"",
+            ""name"": ""Debug"",
             ""id"": ""dea60c61-12ea-4150-af03-2776a1550bc8"",
             ""actions"": [
                 {
@@ -431,6 +393,14 @@ public class MyInput : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SaveInput"",
+                    ""type"": ""Value"",
+                    ""id"": ""3ad5d372-b6b9-4224-a839-797b81897788"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -466,6 +436,28 @@ public class MyInput : IInputActionCollection
                     ""action"": ""Test2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7c096a3-e176-48d4-a1cc-deabf8db0312"",
+                    ""path"": ""<DualShockGamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""SaveInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7be5dba8-1895-4d94-9ff5-8e272dc07199"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""SaveInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -498,20 +490,18 @@ public class MyInput : IInputActionCollection
         // Basis
         m_Basis = asset.GetActionMap("Basis");
         m_Basis_Move = m_Basis.GetAction("Move");
+        m_Basis_Menu = m_Basis.GetAction("Menu");
         m_Basis_Cursor = m_Basis.GetAction("Cursor");
         // UI
         m_UI = asset.GetActionMap("UI");
         m_UI_Cancel = m_UI.GetAction("Cancel");
         m_UI_Enter = m_UI.GetAction("Enter");
-        // Always
-        m_Always = asset.GetActionMap("Always");
-        m_Always_Menu = m_Always.GetAction("Menu");
-        m_Always_SaveInput = m_Always.GetAction("SaveInput");
-        // Test
-        m_Test = asset.GetActionMap("Test");
-        m_Test_Test1 = m_Test.GetAction("Test1");
-        m_Test_Test2 = m_Test.GetAction("Test2");
-        m_Test_Test3 = m_Test.GetAction("Test3");
+        // Debug
+        m_Debug = asset.GetActionMap("Debug");
+        m_Debug_Test1 = m_Debug.GetAction("Test1");
+        m_Debug_Test2 = m_Debug.GetAction("Test2");
+        m_Debug_Test3 = m_Debug.GetAction("Test3");
+        m_Debug_SaveInput = m_Debug.GetAction("SaveInput");
     }
 
     ~MyInput()
@@ -562,12 +552,14 @@ public class MyInput : IInputActionCollection
     private readonly InputActionMap m_Basis;
     private IBasisActions m_BasisActionsCallbackInterface;
     private readonly InputAction m_Basis_Move;
+    private readonly InputAction m_Basis_Menu;
     private readonly InputAction m_Basis_Cursor;
     public struct BasisActions
     {
         private MyInput m_Wrapper;
         public BasisActions(MyInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Basis_Move;
+        public InputAction @Menu => m_Wrapper.m_Basis_Menu;
         public InputAction @Cursor => m_Wrapper.m_Basis_Cursor;
         public InputActionMap Get() { return m_Wrapper.m_Basis; }
         public void Enable() { Get().Enable(); }
@@ -581,6 +573,9 @@ public class MyInput : IInputActionCollection
                 Move.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
                 Move.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
                 Move.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
+                Menu.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
+                Menu.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
+                Menu.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
                 Cursor.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
                 Cursor.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
                 Cursor.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
@@ -591,6 +586,9 @@ public class MyInput : IInputActionCollection
                 Move.started += instance.OnMove;
                 Move.performed += instance.OnMove;
                 Move.canceled += instance.OnMove;
+                Menu.started += instance.OnMenu;
+                Menu.performed += instance.OnMenu;
+                Menu.canceled += instance.OnMenu;
                 Cursor.started += instance.OnCursor;
                 Cursor.performed += instance.OnCursor;
                 Cursor.canceled += instance.OnCursor;
@@ -640,80 +638,44 @@ public class MyInput : IInputActionCollection
     }
     public UIActions @UI => new UIActions(this);
 
-    // Always
-    private readonly InputActionMap m_Always;
-    private IAlwaysActions m_AlwaysActionsCallbackInterface;
-    private readonly InputAction m_Always_Menu;
-    private readonly InputAction m_Always_SaveInput;
-    public struct AlwaysActions
+    // Debug
+    private readonly InputActionMap m_Debug;
+    private IDebugActions m_DebugActionsCallbackInterface;
+    private readonly InputAction m_Debug_Test1;
+    private readonly InputAction m_Debug_Test2;
+    private readonly InputAction m_Debug_Test3;
+    private readonly InputAction m_Debug_SaveInput;
+    public struct DebugActions
     {
         private MyInput m_Wrapper;
-        public AlwaysActions(MyInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Menu => m_Wrapper.m_Always_Menu;
-        public InputAction @SaveInput => m_Wrapper.m_Always_SaveInput;
-        public InputActionMap Get() { return m_Wrapper.m_Always; }
+        public DebugActions(MyInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Test1 => m_Wrapper.m_Debug_Test1;
+        public InputAction @Test2 => m_Wrapper.m_Debug_Test2;
+        public InputAction @Test3 => m_Wrapper.m_Debug_Test3;
+        public InputAction @SaveInput => m_Wrapper.m_Debug_SaveInput;
+        public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(AlwaysActions set) { return set.Get(); }
-        public void SetCallbacks(IAlwaysActions instance)
+        public static implicit operator InputActionMap(DebugActions set) { return set.Get(); }
+        public void SetCallbacks(IDebugActions instance)
         {
-            if (m_Wrapper.m_AlwaysActionsCallbackInterface != null)
+            if (m_Wrapper.m_DebugActionsCallbackInterface != null)
             {
-                Menu.started -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
-                Menu.performed -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
-                Menu.canceled -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnMenu;
-                SaveInput.started -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnSaveInput;
-                SaveInput.performed -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnSaveInput;
-                SaveInput.canceled -= m_Wrapper.m_AlwaysActionsCallbackInterface.OnSaveInput;
+                Test1.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
+                Test1.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
+                Test1.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
+                Test2.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
+                Test2.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
+                Test2.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
+                Test3.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
+                Test3.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
+                Test3.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
+                SaveInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
+                SaveInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
+                SaveInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
             }
-            m_Wrapper.m_AlwaysActionsCallbackInterface = instance;
-            if (instance != null)
-            {
-                Menu.started += instance.OnMenu;
-                Menu.performed += instance.OnMenu;
-                Menu.canceled += instance.OnMenu;
-                SaveInput.started += instance.OnSaveInput;
-                SaveInput.performed += instance.OnSaveInput;
-                SaveInput.canceled += instance.OnSaveInput;
-            }
-        }
-    }
-    public AlwaysActions @Always => new AlwaysActions(this);
-
-    // Test
-    private readonly InputActionMap m_Test;
-    private ITestActions m_TestActionsCallbackInterface;
-    private readonly InputAction m_Test_Test1;
-    private readonly InputAction m_Test_Test2;
-    private readonly InputAction m_Test_Test3;
-    public struct TestActions
-    {
-        private MyInput m_Wrapper;
-        public TestActions(MyInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Test1 => m_Wrapper.m_Test_Test1;
-        public InputAction @Test2 => m_Wrapper.m_Test_Test2;
-        public InputAction @Test3 => m_Wrapper.m_Test_Test3;
-        public InputActionMap Get() { return m_Wrapper.m_Test; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(TestActions set) { return set.Get(); }
-        public void SetCallbacks(ITestActions instance)
-        {
-            if (m_Wrapper.m_TestActionsCallbackInterface != null)
-            {
-                Test1.started -= m_Wrapper.m_TestActionsCallbackInterface.OnTest1;
-                Test1.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnTest1;
-                Test1.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnTest1;
-                Test2.started -= m_Wrapper.m_TestActionsCallbackInterface.OnTest2;
-                Test2.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnTest2;
-                Test2.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnTest2;
-                Test3.started -= m_Wrapper.m_TestActionsCallbackInterface.OnTest3;
-                Test3.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnTest3;
-                Test3.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnTest3;
-            }
-            m_Wrapper.m_TestActionsCallbackInterface = instance;
+            m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
             {
                 Test1.started += instance.OnTest1;
@@ -725,10 +687,13 @@ public class MyInput : IInputActionCollection
                 Test3.started += instance.OnTest3;
                 Test3.performed += instance.OnTest3;
                 Test3.canceled += instance.OnTest3;
+                SaveInput.started += instance.OnSaveInput;
+                SaveInput.performed += instance.OnSaveInput;
+                SaveInput.canceled += instance.OnSaveInput;
             }
         }
     }
-    public TestActions @Test => new TestActions(this);
+    public DebugActions @Debug => new DebugActions(this);
     private int m_GamePadSchemeIndex = -1;
     public InputControlScheme GamePadScheme
     {
@@ -750,6 +715,7 @@ public class MyInput : IInputActionCollection
     public interface IBasisActions
     {
         void OnMove(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
         void OnCursor(InputAction.CallbackContext context);
     }
     public interface IUIActions
@@ -757,15 +723,11 @@ public class MyInput : IInputActionCollection
         void OnCancel(InputAction.CallbackContext context);
         void OnEnter(InputAction.CallbackContext context);
     }
-    public interface IAlwaysActions
-    {
-        void OnMenu(InputAction.CallbackContext context);
-        void OnSaveInput(InputAction.CallbackContext context);
-    }
-    public interface ITestActions
+    public interface IDebugActions
     {
         void OnTest1(InputAction.CallbackContext context);
         void OnTest2(InputAction.CallbackContext context);
         void OnTest3(InputAction.CallbackContext context);
+        void OnSaveInput(InputAction.CallbackContext context);
     }
 }

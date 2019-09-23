@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 
 namespace Sandbox {
     using Record = InputRecorder.ContextRecord;
-    public class Player : MonoBehaviour, MyInput.IBasisActions, MyInput.IAlwaysActions
+    public class Player : MonoBehaviour, MyInput.IBasisActions, MyInput.IUIActions
     {
         private void Awake()
         {
-            InputManager.Input.Basis.SetCallbacks(this);
-            InputManager.Input.Always.SetCallbacks(this);
+            _basisInput = InputManager.Instance.CreateCurrentPriorityProxy(InputManager.InputMap.Basis);
+            _basisInput.Basis.SetCallbacks(this);
         }
         private void Start () 
 		{
@@ -25,11 +25,13 @@ namespace Sandbox {
 		}
 
         private bool _isUI;
+        private MyInput _basisInput;
+        private MyInput _uiInput;
         public Vector2 _move;
         public Vector2 _cursor;
 
 
-        // interface
+        // basis interface
         public void OnMove(InputAction.CallbackContext context)
         {
             var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Move, context);
@@ -48,27 +50,47 @@ namespace Sandbox {
             {
                 case InputActionPhase.Started:
                     {
-                        _isUI = !_isUI;
-                        if (_isUI)
+                        if (_uiInput == null)
                         {
-                            InputManager.Instance.SetCurrentState(InputManager.InputMap.UI);
-                        }
-                        else
-                        {
-                            InputManager.Instance.SetCurrentState(InputManager.InputMap.Basis);
+                            _uiInput = InputManager.Instance.CreateTopPriorityProxy(InputManager.InputMap.UI);
+                            _uiInput.UI.SetCallbacks(this);
+                            _isUI = true;
                         }
                     }
                     break;
             }
         }
-
-        public void OnSaveInput(InputAction.CallbackContext context)
+        // ui interface
+        public void OnCancel(InputAction.CallbackContext context)
         {
-            switch (context.phase)
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cancel, context);
+            switch (record.phase)
             {
                 case InputActionPhase.Started:
                     {
-                        InputRecorder.Instance.GenerateInputRecords();
+                        InputManager.Instance.DeleteInputProxy(_uiInput);
+                        _uiInput = null;
+                        _isUI = false;
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    {
+                    }
+                    break;
+            }
+        }
+
+        public void OnEnter(InputAction.CallbackContext context)
+        {
+            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Enter, context);
+            switch (record.phase)
+            {
+                case InputActionPhase.Started:
+                    {
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    {
                     }
                     break;
             }

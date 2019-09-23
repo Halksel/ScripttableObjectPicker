@@ -14,6 +14,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "1288d5fa-3cc1-4248-a1db-65fe2bff3795",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap"
+                },
+                {
                     "name": "Cursor",
                     "type": "Button",
                     "id": "149d54f1-47e2-41d5-a351-b3664912b73d",
@@ -242,6 +250,28 @@
                     "action": "Cursor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "20c0d0f2-bf8e-4d18-9a9a-a1134c9e5093",
+                    "path": "<DualShockGamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "07dce5ae-9f55-4027-8a10-888a3e560c3b",
+                    "path": "<Keyboard>/#(C)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -325,75 +355,7 @@
             ]
         },
         {
-            "name": "Always",
-            "id": "de2a9c8e-b661-4f08-9a86-981dfac0cc41",
-            "actions": [
-                {
-                    "name": "Menu",
-                    "type": "Button",
-                    "id": "efe96ad5-1d5c-4c2a-9c87-05bbd1f89f81",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Tap"
-                },
-                {
-                    "name": "SaveInput",
-                    "type": "Value",
-                    "id": "424ab82f-7d62-4ecc-9e96-7522fe61a505",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "Tap"
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "a87a130a-ff56-494d-9b32-10d7df24f3eb",
-                    "path": "<DualShockGamepad>/start",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "da792115-eda6-4938-ae37-36dd8212a67b",
-                    "path": "<Keyboard>/#(C)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "Menu",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "6dec2cff-5bae-44e8-83d2-41f675ce3db5",
-                    "path": "<DualShockGamepad>/rightStickPress",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "GamePad",
-                    "action": "SaveInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5e781f2d-847d-4c62-8336-c43c9f036d60",
-                    "path": "<Keyboard>/f",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "SaveInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Test",
+            "name": "Debug",
             "id": "dea60c61-12ea-4150-af03-2776a1550bc8",
             "actions": [
                 {
@@ -419,6 +381,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SaveInput",
+                    "type": "Value",
+                    "id": "3ad5d372-b6b9-4224-a839-797b81897788",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -452,6 +422,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Test2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7c096a3-e176-48d4-a1cc-deabf8db0312",
+                    "path": "<DualShockGamepad>/rightStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "SaveInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7be5dba8-1895-4d94-9ff5-8e272dc07199",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "SaveInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

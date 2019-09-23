@@ -7,26 +7,103 @@ using UnityEngine.InputSystem;
 namespace Sandbox
 {
     using Record = InputRecorder.ContextRecord;
-    public class InputManager : SingletonMonoBehaviour<InputManager>, MyInput.ITestActions
+    public class InputManager : SingletonMonoBehaviour<InputManager>, MyInput.IDebugActions
     {
         public enum InputMap
         {
+            Debug,
             Basis,
             UI,
+        }
+
+        struct InputProxy
+        {
+            public InputProxy(MyInput input, InputMap inputMap, int priority)
+            {
+                this.input = input;
+                this.inputMap = inputMap;
+                this.priority = priority;
+                Enable();
+            }
+            public void Enable()
+            {
+                switch (inputMap) {
+                    case InputMap.Debug:
+                        {
+                            input.Debug.Enable();
+                        }
+                        break;
+                    case InputMap.Basis:
+                        {
+                            input.Basis.Enable();
+                        }
+                        break;
+                    case InputMap.UI:
+                        {
+                            input.UI.Enable();
+                        }
+                        break;
+                }
+            }
+            public void Disable()
+            {
+                input.Disable();
+            }
+            public MyInput input;
+            public InputMap inputMap;
+            public int priority;
         }
 
 
         public override bool Setup()
         {
-            _input = new MyInput();
-            _input.Test.SetCallbacks(this);
-            SetCurrentState(_currentState);
+            var input = new MyInput();
+            input.Debug.Enable();
+            input.Debug.SetCallbacks(this);
+            _inputProxies.Add(new InputProxy(input, InputMap.Debug, -1));
             return true;
         }
 
-        public InputMap GetCurrentState()
+        public MyInput CreateCurrentPriorityProxy(InputMap inputMap)
         {
-            return _currentState;
+            var input = new MyInput();
+            _inputProxies.Add(new InputProxy(input, inputMap, _currentInputPriority));
+            switchInputPriority();
+            return input;
+
+        }
+
+        public MyInput CreateTopPriorityProxy(InputMap inputMap)
+        {
+            ++_currentInputPriority;
+            return CreateCurrentPriorityProxy(inputMap);
+        }
+
+        public void DeleteInputProxy(MyInput input)
+        {
+            var proxy = _inputProxies.Where(p => p.input == input).Single();
+            proxy.Disable();
+            _inputProxies.Remove(proxy);
+            _currentInputPriority = _inputProxies.OrderBy(p => p.priority).Last().priority;
+            switchInputPriority();
+        }
+
+        private void switchInputPriority()
+        {
+            foreach(var proxy in _inputProxies ){
+                if(proxy.inputMap == InputMap.Debug)
+                {
+                    proxy.Enable();
+                }
+                else if(proxy.priority == _currentInputPriority)
+                {
+                    proxy.Enable();
+                }
+                else
+                {
+                    proxy.Disable();
+                }
+            }
         }
 
         IEnumerator EmurateInput()
@@ -59,67 +136,7 @@ namespace Sandbox
         }
 
 
-        public void SetCurrentState(InputMap inputType)
-        {
-            _input.Disable();
-            _input.Always.Enable();
-            _input.Test.Enable();
-            switch (inputType)
-            {
-                case InputMap.Basis:
-                    {
-                        _input.Basis.Enable();
-                    }
-                    break;
-
-                case InputMap.UI:
-                    {
-                        _input.UI.Enable();
-                    }
-                    break;
-            }
-            _currentState = inputType;
-        }
-
-
         // for UI 
-        public void OnCancel(InputAction.CallbackContext context)
-        {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cancel, context);
-            switch (record.phase)
-            {
-                case InputActionPhase.Started:
-                    {
-                        Cancel = true;
-                    }
-                    break;
-                case InputActionPhase.Canceled:
-                    {
-                        Cancel = false;
-                    }
-                    break;
-            }
-        }
-
-        public void OnEnter(InputAction.CallbackContext context)
-        {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Enter, context);
-            switch (record.phase)
-            {
-                case InputActionPhase.Started:
-                    {
-                        Enter = true;
-                    }
-                    break;
-                case InputActionPhase.Canceled:
-                    {
-                        Enter = false;
-                    }
-                    break;
-            }
-        }
-        
-
         public void OnTest1(InputAction.CallbackContext context)
         {
             switch (context.phase)
@@ -224,26 +241,21 @@ namespace Sandbox
             }
             Debug.Log($"{context.phase} : {context.ReadValueAsObject()}");
         }
-
-
-        public bool Enter
+        public void OnSaveInput(InputAction.CallbackContext context)
         {
-            get; private set;
-        }
-        public bool Cancel
-        {
-            get; private set;
-        }
-
-        public static MyInput Input
-        {
-            get { return _input; }
-            private set { _input = value; }
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    {
+                        InputRecorder.Instance.GenerateInputRecords();
+                    }
+                    break;
+            }
         }
 
         [SerializeField]
-        private InputMap _currentState = InputMap.Basis;
-        private static MyInput _input;
+        private int _currentInputPriority;
+        private List<InputProxy> _inputProxies = new List<InputProxy>();
         private bool _isRecord = false;
         private double _time;
         private IEnumerator<Record> _records;
