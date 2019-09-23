@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 
 namespace Sandbox {
     using Record = InputRecorder.ContextRecord;
-    public class Player : MonoBehaviour, MyInput.IBasisActions, MyInput.IUIActions
+    public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
         private void Awake()
         {
-            _basisInput = InputManager.Instance.CreateCurrentPriorityProxy(InputManager.InputMap.Basis);
+            _basisInput = InputManager.Instance.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
             _basisInput.Basis.SetCallbacks(this);
         }
         private void Start () 
@@ -25,8 +25,8 @@ namespace Sandbox {
 		}
 
         private bool _isUI;
-        private MyInput _basisInput;
-        private MyInput _uiInput;
+        private BasisInput _basisInput;
+        private UIInput _uiInput;
         public Vector2 _move;
         public Vector2 _cursor;
 
@@ -52,7 +52,7 @@ namespace Sandbox {
                     {
                         if (_uiInput == null)
                         {
-                            _uiInput = InputManager.Instance.CreateTopPriorityProxy(InputManager.InputMap.UI);
+                            _uiInput = InputManager.Instance.CreateTopPriorityProxy(InputManager.InputType.UI) as UIInput;
                             _uiInput.UI.SetCallbacks(this);
                             _isUI = true;
                         }

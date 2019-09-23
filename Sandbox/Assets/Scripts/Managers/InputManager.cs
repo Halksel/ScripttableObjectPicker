@@ -7,9 +7,9 @@ using UnityEngine.InputSystem;
 namespace Sandbox
 {
     using Record = InputRecorder.ContextRecord;
-    public class InputManager : SingletonMonoBehaviour<InputManager>, MyInput.IDebugActions
+    public class InputManager : SingletonMonoBehaviour<InputManager>, DebugInput.IDebugActions
     {
-        public enum InputMap
+        public enum InputType
         {
             Debug,
             Basis,
@@ -18,71 +18,59 @@ namespace Sandbox
 
         struct InputProxy
         {
-            public InputProxy(MyInput input, InputMap inputMap, int priority)
+            public InputProxy(IInputActionCollection input, int priority)
             {
                 this.input = input;
-                this.inputMap = inputMap;
                 this.priority = priority;
-                Enable();
+                this.input.Enable();
             }
-            public void Enable()
-            {
-                switch (inputMap) {
-                    case InputMap.Debug:
-                        {
-                            input.Debug.Enable();
-                        }
-                        break;
-                    case InputMap.Basis:
-                        {
-                            input.Basis.Enable();
-                        }
-                        break;
-                    case InputMap.UI:
-                        {
-                            input.UI.Enable();
-                        }
-                        break;
-                }
-            }
-            public void Disable()
-            {
-                input.Disable();
-            }
-            public MyInput input;
-            public InputMap inputMap;
+            public IInputActionCollection input;
             public int priority;
         }
 
+        private IInputActionCollection constructInput(InputType inputType)
+        {
+            switch (inputType)
+            {
+                case InputType.Debug:
+                    return new DebugInput();
+                case InputType.Basis:
+                    return new BasisInput();
+                case InputType.UI:
+                    return new UIInput();
+                default:
+                    return null;
+            }
+        }
 
         public override bool Setup()
         {
-            var input = new MyInput();
-            input.Debug.Enable();
+            var input = new DebugInput();
+            input.Enable();
             input.Debug.SetCallbacks(this);
-            _inputProxies.Add(new InputProxy(input, InputMap.Debug, -1));
+            _inputProxies.Add(new InputProxy(input, -1));
             return true;
         }
 
-        public MyInput CreateCurrentPriorityProxy(InputMap inputMap)
+        public IInputActionCollection CreateCurrentPriorityProxy(InputType inputType)
         {
-            var input = new MyInput();
-            _inputProxies.Add(new InputProxy(input, inputMap, _currentInputPriority));
+            var input = constructInput(inputType);
+            _inputProxies.Add(new InputProxy(input, _currentInputPriority));
             switchInputPriority();
             return input;
 
         }
 
-        public MyInput CreateTopPriorityProxy(InputMap inputMap)
+        public IInputActionCollection CreateTopPriorityProxy(InputType inputType)
         {
             ++_currentInputPriority;
-            return CreateCurrentPriorityProxy(inputMap);
+            return CreateCurrentPriorityProxy(inputType);
         }
 
-        public void DeleteInputProxy(MyInput input)
+        public void DeleteInputProxy(IInputActionCollection input)
         {
             var proxy = _inputProxies.Where(p => p.input == input).Single();
-            proxy.Disable();
+            proxy.input.Disable();
             _inputProxies.Remove(proxy);
             _currentInputPriority = _inputProxies.OrderBy(p => p.priority).Last().priority;
             switchInputPriority();
@@ -91,17 +79,13 @@ namespace Sandbox
         private void switchInputPriority()
         {
             foreach(var proxy in _inputProxies ){
-                if(proxy.inputMap == InputMap.Debug)
+                if(proxy.priority == -1 || proxy.priority == _currentInputPriority)
                 {
-                    proxy.Enable();
-                }
-                else if(proxy.priority == _currentInputPriority)
-                {
-                    proxy.Enable();
+                    proxy.input.Enable();
                 }
                 else
                 {
-                    proxy.Disable();
+                    proxy.input.Disable();
                 }
             }
         }
@@ -136,7 +120,6 @@ namespace Sandbox
         }
 
 
-        // for UI 
         public void OnTest1(InputAction.CallbackContext context)
         {
             switch (context.phase)
