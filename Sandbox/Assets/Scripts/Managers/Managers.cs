@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Sandbox {
     public class Managers
@@ -16,6 +17,7 @@ namespace Sandbox {
         {
             var input = new GameObject("InputManager");
             input.AddComponent<InputManager>().NullCast()?.Setup() ;
+            SceneManager.LoadScene("_scn_debug");
         }
 
         private Managers Instance

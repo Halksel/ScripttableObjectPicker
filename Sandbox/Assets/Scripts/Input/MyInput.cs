@@ -346,7 +346,7 @@ public class MyInput : IInputActionCollection
                     ""id"": ""efe96ad5-1d5c-4c2a-9c87-05bbd1f89f81"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Tap""
                 },
                 {
                     ""name"": ""SaveInput"",
@@ -354,7 +354,7 @@ public class MyInput : IInputActionCollection
                     ""id"": ""424ab82f-7d62-4ecc-9e96-7522fe61a505"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -403,6 +403,71 @@ public class MyInput : IInputActionCollection
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Test"",
+            ""id"": ""dea60c61-12ea-4150-af03-2776a1550bc8"",
+            ""actions"": [
+                {
+                    ""name"": ""Test1"",
+                    ""type"": ""Value"",
+                    ""id"": ""4332d97e-c066-4330-b0be-9126f97e16dd"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Test2"",
+                    ""type"": ""Button"",
+                    ""id"": ""e03e0948-fe82-4db7-8ce9-0e75c557bd3e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Test3"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""ebf1733f-a056-4875-aefe-4c99b3f9f483"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""e470131f-b4cb-4b8a-9d50-f2c3c21cfebd"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Test3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""961ae943-e26e-437e-a907-d54f63203ee0"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Test1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4806b979-11ba-4d23-bf10-025aa82e9822"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Test2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -442,6 +507,11 @@ public class MyInput : IInputActionCollection
         m_Always = asset.GetActionMap("Always");
         m_Always_Menu = m_Always.GetAction("Menu");
         m_Always_SaveInput = m_Always.GetAction("SaveInput");
+        // Test
+        m_Test = asset.GetActionMap("Test");
+        m_Test_Test1 = m_Test.GetAction("Test1");
+        m_Test_Test2 = m_Test.GetAction("Test2");
+        m_Test_Test3 = m_Test.GetAction("Test3");
     }
 
     ~MyInput()
@@ -610,6 +680,55 @@ public class MyInput : IInputActionCollection
         }
     }
     public AlwaysActions @Always => new AlwaysActions(this);
+
+    // Test
+    private readonly InputActionMap m_Test;
+    private ITestActions m_TestActionsCallbackInterface;
+    private readonly InputAction m_Test_Test1;
+    private readonly InputAction m_Test_Test2;
+    private readonly InputAction m_Test_Test3;
+    public struct TestActions
+    {
+        private MyInput m_Wrapper;
+        public TestActions(MyInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Test1 => m_Wrapper.m_Test_Test1;
+        public InputAction @Test2 => m_Wrapper.m_Test_Test2;
+        public InputAction @Test3 => m_Wrapper.m_Test_Test3;
+        public InputActionMap Get() { return m_Wrapper.m_Test; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TestActions set) { return set.Get(); }
+        public void SetCallbacks(ITestActions instance)
+        {
+            if (m_Wrapper.m_TestActionsCallbackInterface != null)
+            {
+                Test1.started -= m_Wrapper.m_TestActionsCallbackInterface.OnTest1;
+                Test1.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnTest1;
+                Test1.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnTest1;
+                Test2.started -= m_Wrapper.m_TestActionsCallbackInterface.OnTest2;
+                Test2.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnTest2;
+                Test2.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnTest2;
+                Test3.started -= m_Wrapper.m_TestActionsCallbackInterface.OnTest3;
+                Test3.performed -= m_Wrapper.m_TestActionsCallbackInterface.OnTest3;
+                Test3.canceled -= m_Wrapper.m_TestActionsCallbackInterface.OnTest3;
+            }
+            m_Wrapper.m_TestActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                Test1.started += instance.OnTest1;
+                Test1.performed += instance.OnTest1;
+                Test1.canceled += instance.OnTest1;
+                Test2.started += instance.OnTest2;
+                Test2.performed += instance.OnTest2;
+                Test2.canceled += instance.OnTest2;
+                Test3.started += instance.OnTest3;
+                Test3.performed += instance.OnTest3;
+                Test3.canceled += instance.OnTest3;
+            }
+        }
+    }
+    public TestActions @Test => new TestActions(this);
     private int m_GamePadSchemeIndex = -1;
     public InputControlScheme GamePadScheme
     {
@@ -642,5 +761,11 @@ public class MyInput : IInputActionCollection
     {
         void OnMenu(InputAction.CallbackContext context);
         void OnSaveInput(InputAction.CallbackContext context);
+    }
+    public interface ITestActions
+    {
+        void OnTest1(InputAction.CallbackContext context);
+        void OnTest2(InputAction.CallbackContext context);
+        void OnTest3(InputAction.CallbackContext context);
     }
 }

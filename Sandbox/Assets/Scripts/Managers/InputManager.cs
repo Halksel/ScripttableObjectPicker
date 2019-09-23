@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 namespace Sandbox
 {
     using Record = InputRecorder.ContextRecord;
-    public class InputManager : SingletonMonoBehaviour<InputManager>, MyInput.IAlwaysActions, MyInput.IBasisActions, MyInput.IUIActions
+    public class InputManager : SingletonMonoBehaviour<InputManager>, MyInput.ITestActions
     {
         public enum InputMap
         {
@@ -19,9 +19,7 @@ namespace Sandbox
         public override bool Setup()
         {
             _input = new MyInput();
-            _input.Always.SetCallbacks(this);
-            _input.Basis.SetCallbacks(this);
-            _input.UI.SetCallbacks(this);
+            _input.Test.SetCallbacks(this);
             SetCurrentState(_currentState);
             return true;
         }
@@ -65,6 +63,7 @@ namespace Sandbox
         {
             _input.Disable();
             _input.Always.Enable();
+            _input.Test.Enable();
             switch (inputType)
             {
                 case InputMap.Basis:
@@ -82,75 +81,11 @@ namespace Sandbox
             _currentState = inputType;
         }
 
-        public void OnMenu(InputAction.CallbackContext context)
-        {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Menu, context);
-            menuFunc(record);
-        }
 
-        private void menuFunc(Record record)
-        {
-            switch (record.phase)
-            {
-                case InputActionPhase.Started:
-                    {
-                        Menu = true;
-                    }
-                    break;
-                case InputActionPhase.Canceled:
-                    {
-                        Menu = false;
-                    }
-                    break;
-            }
-        }
-
-        public void OnSaveInput(InputAction.CallbackContext context)
-        {
-            switch (context.phase)
-            {
-                case InputActionPhase.Started:
-                    {
-                        SaveInput = true;
-                    }
-                    break;
-                case InputActionPhase.Canceled:
-                    {
-                        SaveInput = false;
-                    }
-                    break;
-            }
-        }
-
-        public void OnMove(InputAction.CallbackContext context)
-        {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Move, context);
-            moveFunc(record);
-        }
-
-        private void moveFunc(Record record)
-        {
-            Move = (Vector2)record.value;
-        }
-
-        public void OnCursor(InputAction.CallbackContext context)
-        {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cursor, context);
-            cursorFunc(record);
-        }
-        private void cursorFunc(Record record)
-        {
-            Cursor = (Vector2)record.value;
-        }
-
+        // for UI 
         public void OnCancel(InputAction.CallbackContext context)
         {
             var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cancel, context);
-            cancelFunc(record);
-        }
-
-        private void cancelFunc(Record record)
-        {
             switch (record.phase)
             {
                 case InputActionPhase.Started:
@@ -169,11 +104,6 @@ namespace Sandbox
         public void OnEnter(InputAction.CallbackContext context)
         {
             var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Enter, context);
-            enterFunc(record);
-        }
-        
-        private void enterFunc(Record record)
-        {
             switch (record.phase)
             {
                 case InputActionPhase.Started:
@@ -188,25 +118,113 @@ namespace Sandbox
                     break;
             }
         }
+        
 
-        public bool Menu
+        public void OnTest1(InputAction.CallbackContext context)
         {
-            get; private set;
-        }
-        public bool SaveInput
-        {
-            get; private set;
+            switch (context.phase)
+            {
+                case InputActionPhase.Disabled:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Waiting:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Started:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Performed:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    {
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            Debug.Log($"{context.phase} : {context.ReadValueAsObject()}");
         }
 
-        public Vector2 Move
+        public void OnTest2(InputAction.CallbackContext context)
         {
-            get; private set;
+            switch (context.phase)
+            {
+                case InputActionPhase.Disabled:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Waiting:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Started:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Performed:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    {
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            Debug.Log($"{context.phase} : {context.ReadValueAsObject()}");
         }
 
-        public Vector2 Cursor
+        public void OnTest3(InputAction.CallbackContext context)
         {
-            get; private set;
+            switch (context.phase)
+            {
+                case InputActionPhase.Disabled:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Waiting:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Started:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Performed:
+                    {
+
+                    }
+                    break;
+                case InputActionPhase.Canceled:
+                    {
+
+                    }
+                    break;
+                default:
+                    break;
+            }
+            Debug.Log($"{context.phase} : {context.ReadValueAsObject()}");
         }
+
 
         public bool Enter
         {
@@ -217,9 +235,15 @@ namespace Sandbox
             get; private set;
         }
 
+        public static MyInput Input
+        {
+            get { return _input; }
+            private set { _input = value; }
+        }
+
         [SerializeField]
         private InputMap _currentState = InputMap.Basis;
-        private MyInput _input;
+        private static MyInput _input;
         private bool _isRecord = false;
         private double _time;
         private IEnumerator<Record> _records;

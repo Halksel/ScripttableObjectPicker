@@ -334,7 +334,7 @@
                     "id": "efe96ad5-1d5c-4c2a-9c87-05bbd1f89f81",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Tap"
                 },
                 {
                     "name": "SaveInput",
@@ -342,7 +342,7 @@
                     "id": "424ab82f-7d62-4ecc-9e96-7522fe61a505",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -387,6 +387,71 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "SaveInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Test",
+            "id": "dea60c61-12ea-4150-af03-2776a1550bc8",
+            "actions": [
+                {
+                    "name": "Test1",
+                    "type": "Value",
+                    "id": "4332d97e-c066-4330-b0be-9126f97e16dd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Test2",
+                    "type": "Button",
+                    "id": "e03e0948-fe82-4db7-8ce9-0e75c557bd3e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Test3",
+                    "type": "PassThrough",
+                    "id": "ebf1733f-a056-4875-aefe-4c99b3f9f483",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e470131f-b4cb-4b8a-9d50-f2c3c21cfebd",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Test3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "961ae943-e26e-437e-a907-d54f63203ee0",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Test1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4806b979-11ba-4d23-bf10-025aa82e9822",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Test2",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
