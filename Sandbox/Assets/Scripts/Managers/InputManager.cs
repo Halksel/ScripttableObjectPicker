@@ -231,6 +231,8 @@ namespace Sandbox
                 case InputActionPhase.Started:
                     {
                         InputRecorder.Instance.GenerateInputRecords();
+                        var t = new InputTest();
+                        t.Setup();
                     }
                     break;
             }
