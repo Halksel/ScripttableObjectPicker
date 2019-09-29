@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 namespace Sandbox
 {
-    using Record = InputRecorder.ContextRecord;
+    using Record = InputRecorder.InputRecord;
     public class InputManager : SingletonMonoBehaviour<InputManager>, DebugInput.IDebugActions
     {
         public enum InputType
@@ -55,7 +55,14 @@ namespace Sandbox
         public IInputActionCollection CreateCurrentPriorityProxy(InputType inputType)
         {
             var input = constructInput(inputType);
-            _inputProxies.Add(new InputProxy(input, _currentInputPriority));
+            if(inputType == InputType.Debug)
+            {
+                _inputProxies.Add(new InputProxy(input, -1));
+            }
+            else
+            {
+                _inputProxies.Add(new InputProxy(input, _currentInputPriority));
+            }
             switchInputPriority();
             return input;
 
@@ -96,7 +103,7 @@ namespace Sandbox
             {
                 if (!_isRecord) yield return 0;
                 _time += Time.deltaTime;
-                while (_time > _records.Current.startTime)
+                while (_time > _records.Current.time)
                 {
                     var record = _records.Current;
                     // 入力レコードによって値をセット
@@ -152,7 +159,6 @@ namespace Sandbox
                 default:
                     break;
             }
-            Debug.Log($"{context.phase} : {context.ReadValueAsObject()}");
         }
 
         public void OnTest2(InputAction.CallbackContext context)
@@ -231,8 +237,6 @@ namespace Sandbox
                 case InputActionPhase.Started:
                     {
                         InputRecorder.Instance.GenerateInputRecords();
-                        var t = new InputTest();
-                        t.Setup();
                     }
                     break;
             }

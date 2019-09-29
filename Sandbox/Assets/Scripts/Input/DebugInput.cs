@@ -19,9 +19,9 @@ public class DebugInput : IInputActionCollection
             ""actions"": [
                 {
                     ""name"": ""Test1"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""4332d97e-c066-4330-b0be-9126f97e16dd"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 },

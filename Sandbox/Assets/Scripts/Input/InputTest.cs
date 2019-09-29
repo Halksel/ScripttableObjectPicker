@@ -5,20 +5,40 @@ using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.InputSystem.Utilities;
 using System;
+using UnityEngine.InputSystem;
 
 namespace Sandbox {
-    unsafe public class InputTest
+    unsafe public class InputTest : MonoBehaviour, DebugInput.IDebugActions
     {
-		unsafe public void Setup () 
+        public void Start()
+        {
+            _input = InputManager.Instance.CreateCurrentPriorityProxy(InputManager.InputType.Debug) as DebugInput;
+            _input.Enable();
+            _input.Debug.SetCallbacks(this);
+        }
+
+        private DebugInput _input;
+
+        public void OnSaveInput(InputAction.CallbackContext context)
+        {
+        }
+
+        public void OnTest1(InputAction.CallbackContext context)
+        {
+        }
+
+        public void OnTest2(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnTest3(InputAction.CallbackContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        unsafe public void Setup () 
 		{
-            var value = 1.0;
-            var type = value.GetType();
-            InputStateBlock inputBlock = createInputState(type);
-            InputStateBlock outputBlock = createInputState(type);
-            inputBlock.WriteDouble(&inputBlock, value);
-            inputBlock.byteOffset = 0;
-            inputBlock.format = InputStateBlock.GetPrimitiveFormatFromType(type);
-            Debug.Log(outputBlock.ReadDouble(&inputBlock));
 		}
 	    
         private InputStateBlock createInputState(Type type)

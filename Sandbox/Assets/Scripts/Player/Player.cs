@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Sandbox {
-    using Record = InputRecorder.ContextRecord;
+    using Record = InputRecorder.InputRecord;
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
         private void Awake()
@@ -33,19 +33,16 @@ namespace Sandbox {
         // basis interface
         public void OnMove(InputAction.CallbackContext context)
         {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Move, context);
-            _move = (Vector2)record.value;
+            _move = context.ReadValue<Vector2>();
         }
 
         public void OnCursor(InputAction.CallbackContext context)
         {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cursor, context);
-            _cursor = (Vector2)record.value;
+            _cursor = context.ReadValue<Vector2>();
         }
         public void OnMenu(InputAction.CallbackContext context)
         {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Menu, context);
-            switch (record.phase)
+            switch (context.phase)
             {
                 case InputActionPhase.Started:
                     {
@@ -62,8 +59,7 @@ namespace Sandbox {
         // ui interface
         public void OnCancel(InputAction.CallbackContext context)
         {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Cancel, context);
-            switch (record.phase)
+            switch (context.phase)
             {
                 case InputActionPhase.Started:
                     {
@@ -81,8 +77,7 @@ namespace Sandbox {
 
         public void OnEnter(InputAction.CallbackContext context)
         {
-            var record = InputRecorder.Instance.RegisterContext(InputRecorder.InputActions.Enter, context);
-            switch (record.phase)
+            switch (context.phase)
             {
                 case InputActionPhase.Started:
                     {

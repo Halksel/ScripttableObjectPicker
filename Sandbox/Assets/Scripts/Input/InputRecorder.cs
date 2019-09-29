@@ -3,61 +3,85 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using System;
+using System.Runtime.Serialization;
 
 namespace Sandbox {
     using Context = InputAction.CallbackContext;
     public class InputRecorder : SingletonMonoBehaviour<InputRecorder>
     {
-        public enum InputActions
+        [Serializable]
+        public class InputRecord
         {
-            Menu,
-            Func,
-            Cancel,
-            Enter,
-            Move,
-            Cursor,
-        }
-        public struct ContextRecord
-        {
-            public ContextRecord(InputActions actions, Context c)
+            public InputRecord(InputEventPtr ptr)
             {
-                this.actions = actions;
-                startTime = c.startTime;
-                phase = c.phase;
-                value = c.ReadValueAsObject();
+                fourCC = ptr.type.ToString();
+                time = ptr.time;
+                sizeInBytes = (int)ptr.sizeInBytes;
+                deviceId = ptr.deviceId;
             }
 
-            public InputActions actions;
-            public double startTime;
-            public InputActionPhase phase;
-            public object value;
+            unsafe public InputEventPtr CreateInstance()
+            {
+                var ptr = new InputEvent(new UnityEngine.InputSystem.Utilities.FourCC(fourCC),sizeInBytes, deviceId, time);
+                return new InputEventPtr(&ptr);
+            }
+            public string fourCC;
+            public int deviceId;
+            public double time;
+            public int sizeInBytes;
+        }
+
+        /// <summary>
+        /// List<T> をJsonUtilityはシリアライズできないのでラッパークラス
+        /// 端的にゴミ
+        /// </summary>
+        [Serializable]
+        public class InputRecords
+        {
+            public List<InputRecord> records = new List<InputRecord>();
+            public void Sort()
+            {
+                records = records.OrderBy(a => a.time).ToList();
+            }
         }
         
         public override bool Setup()
         {
+            InputSystem.onEvent += InputSystem_onEvent;
+            _isRecord = true;
             return true;
         }
 
-        public IEnumerator<ContextRecord> GetRecords()
+        private void OnDestroy()
         {
-            return _records.GetEnumerator();
+            InputSystem.onEvent -= InputSystem_onEvent;
         }
 
-        public ContextRecord RegisterContext(InputActions actions, Context context)
+        unsafe private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
         {
-            var record = new ContextRecord(actions, context); 
-            _records.Add(record);
-            return record;    
+            if (!_isRecord) return;
+            if (ptr.deviceId == 1)
+            {
+                var record = new InputRecord(ptr);
+                _records.records.Add(record);
+            }
+        }
+
+        public IEnumerator<InputRecord> GetRecords()
+        {
+            return _records.records.GetEnumerator();
         }
 
         public void GenerateInputRecords()
         {
-            var sortedRecords = _records.OrderBy(a => a.startTime).ToList();
-            var json = JsonUtility.ToJson(sortedRecords);
+            _records.Sort();
+            var json = JsonUtility.ToJson(_records);
             Debug.Log(json);
         }
 
-
-        private List<ContextRecord> _records = new List<ContextRecord>();
+        private bool _isRecord;
+        private InputRecords _records = new InputRecords();
     }
 }
