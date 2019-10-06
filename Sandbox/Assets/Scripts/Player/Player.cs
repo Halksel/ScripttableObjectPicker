@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 
 namespace Sandbox {
     using Record = InputRecorder.InputRecord;
@@ -16,12 +17,12 @@ namespace Sandbox {
         private void Start () 
 		{
 		}
-		
-		private void Update () 
-		{
+
+        private void Update()
+        {
             var delta = _move;
             transform.position += new Vector3(delta.x, delta.y);
-		}
+        }
 
         private bool _isUI;
         private BasisInput _basisInput;

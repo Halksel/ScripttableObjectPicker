@@ -14,23 +14,61 @@ namespace Sandbox {
         [Serializable]
         public class InputRecord
         {
-            public InputRecord(InputEventPtr ptr)
+            public unsafe InputRecord(InputEventPtr ptr, InputDevice device)
             {
-                fourCC = ptr.type.ToString();
-                time = ptr.time;
-                sizeInBytes = (int)ptr.sizeInBytes;
-                deviceId = ptr.deviceId;
+                try
+                {
+                    index = device.allControls.Skip(1).TakeWhile(ctl => !ctl.IsActuated()).Count() + 1;
+                    fourCC = ptr.type.ToString();
+                    type = device.allControls[index].valueType;
+                    id = ptr.id;
+                    var statePtr = device.GetStatePtrFromStateEvent(ptr);
+                    bytes = device.ReadValueFromStateAsObject(statePtr) as byte[];
+                    time = ptr.time;
+                    sizeInBytes = (int)ptr.sizeInBytes;
+                    format = device.stateBlock.format.ToString();
+                    deviceId = ptr.deviceId;
+                    valid = ptr.IsA<DeltaStateEvent>() || ptr.IsA<StateEvent>();
+                }
+                catch
+                {
+                    valid = false;
+                }
+                validation();
             }
 
-            unsafe public InputEventPtr CreateInstance()
+            unsafe public InputEventPtr CreatePtr()
             {
-                var ptr = new InputEvent(new UnityEngine.InputSystem.Utilities.FourCC(fourCC),sizeInBytes, deviceId, time);
-                return new InputEventPtr(&ptr);
+                var inputEvent = new InputEvent(new UnityEngine.InputSystem.Utilities.FourCC(fourCC),sizeInBytes, deviceId, time);
+                var ptr = new InputEventPtr(&inputEvent);
+                return ptr;
+            }
+
+            private void validation()
+            {
+                if(fourCC == null)
+                {
+                    valid = false;
+                }
+                else if(deviceId == 0)
+                {
+                    valid = false;
+                }
+                else
+                {
+                    valid = true;
+                }
             }
             public string fourCC;
+            public string format;
+            public int id;
+            public Type type;
+            public byte[] bytes;
             public int deviceId;
             public double time;
             public int sizeInBytes;
+            public int index;
+            public bool valid;
         }
 
         /// <summary>
@@ -64,14 +102,16 @@ namespace Sandbox {
             if (!_isRecord) return;
             if (ptr.deviceId == 1)
             {
-                var record = new InputRecord(ptr);
+                var record = new InputRecord(ptr, device);
                 _records.records.Add(record);
+                Debug.Log(record);
             }
         }
 
-        public IEnumerator<InputRecord> GetRecords()
+        public List<InputRecord> GetValidRecords()
         {
-            return _records.records.GetEnumerator();
+            _records.records = _records.records.Where(r => r.valid).ToList();
+            return _records.records;
         }
 
         public void GenerateInputRecords()

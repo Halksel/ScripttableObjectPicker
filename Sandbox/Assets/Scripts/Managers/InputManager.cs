@@ -3,6 +3,10 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System;
 
 namespace Sandbox
 {
@@ -99,30 +103,76 @@ namespace Sandbox
 
         IEnumerator EmurateInput()
         {
-            while (true)
+            int idx = 0;
+            _records = InputRecorder.Instance.GetValidRecords();
+            while(true)
             {
-                if (!_isRecord) yield return 0;
                 _time += Time.deltaTime;
-                while (_time > _records.Current.time)
+                while (idx < _records.Count() && _time > _records[idx].time)
                 {
-                    var record = _records.Current;
-                    // 入力レコードによって値をセット
-
-                    var next = _records.MoveNext();
-                    if (!next)
+                    if (!_records[idx].valid)
                     {
-                        _isRecord = false;
-                        break;
+                        ++idx;
+                        continue;
                     }
+                    var record = _records[idx];
+                    // 入力レコードによって値をセット
+                    //InputSystem.QueueEvent();
+                    var device = InputSystem.GetDeviceById(record.deviceId) as Keyboard;
+                    using (StateEvent.From(device, out var eventPtr))
+                    {
+                        MemoryStream ms = new MemoryStream(record.bytes);
+                        ms.Position = 0;
+                        BinaryFormatter bf = new BinaryFormatter();
+                        object value = null;
+                        try
+                        {
+                            if (record.type == typeof(bool))
+                            {
+                                value = (bool)bf.Deserialize(ms);
+                            }
+                            else if (record.type == typeof(float))
+                            {
+                                //value = (float)bf.Deserialize(ms);
+                                value = 1.0f;
+                            }
+                            if(value == null)
+                            {
+                                throw new Exception("不正な型です");
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            Debug.Log(record.type);
+                            ++idx;
+                            break;
+                        }
+                        device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
+                        InputSystem.QueueEvent(eventPtr);
+                    }
+                    ++idx;
+                }
+                InputSystem.Update();
+                
+                if (idx >= _records.Count())
+                {
+                    _isRecord = false;
+                    Debug.Log("End of Emulate");
+                    StopCoroutine(EmurateInput());
+                    break;
+                }
+                else
+                {
+                    yield return null;
                 }
             }
         }
 
         public void PlayRecord()
         {
-            _isRecord = true;
+            if (_isRecord) return;
             _time = 0;
-            _records = InputRecorder.Instance.GetRecords();
+            _isRecord = true;
             StartCoroutine(EmurateInput());
         }
 
@@ -143,7 +193,7 @@ namespace Sandbox
                     break;
                 case InputActionPhase.Started:
                     {
-
+                            PlayRecord();
                     }
                     break;
                 case InputActionPhase.Performed:
@@ -247,6 +297,6 @@ namespace Sandbox
         private List<InputProxy> _inputProxies = new List<InputProxy>();
         private bool _isRecord = false;
         private double _time;
-        private IEnumerator<Record> _records;
+        private List<Record> _records;
     }
 }
