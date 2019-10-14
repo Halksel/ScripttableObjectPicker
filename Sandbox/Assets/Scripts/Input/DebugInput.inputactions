@@ -36,6 +36,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Tap"
+                },
+                {
+                    "name": "LoadInput",
+                    "type": "Button",
+                    "id": "ac6778fd-fcab-4b5a-b588-26040d89d75c",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Tap"
                 }
             ],
             "bindings": [
@@ -91,6 +99,28 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "SaveInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b484c456-1979-4570-b890-e45ab20503d3",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "LoadInput",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "20fef86c-ad8b-47bb-a938-73a3c1573d82",
+                    "path": "<DualShockGamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "LoadInput",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

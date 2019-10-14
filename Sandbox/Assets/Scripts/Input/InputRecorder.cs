@@ -1,15 +1,19 @@
 ﻿using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using System;
-using System.Runtime.Serialization;
-using UnityEngine.InputSystem.Controls;
+using System.IO;
+using System.Text;
+using UnityEditor;
 
 namespace Sandbox {
     using Context = InputAction.CallbackContext;
+    /// <summary>
+    /// 入力記録
+    /// 同時入力への対応が終わってない
+    /// </summary>
     public class InputRecorder : SingletonMonoBehaviour<InputRecorder>
     {
         [Serializable]
@@ -17,7 +21,6 @@ namespace Sandbox {
         {
             public unsafe InputRecord(InputEventPtr ptr, InputDevice device)
             {
-                fourCC = ptr.type.ToString();
                 id = ptr.id;
                 time = ptr.time;
                 deviceId = ptr.deviceId;
@@ -25,8 +28,7 @@ namespace Sandbox {
                 if (device.allControls[0].IsActuated())
                 {
                     index = device.allControls.Skip(1).TakeWhile(ctl => !ctl.IsActuated()).Count() + 1;
-                    type = device.allControls[index].valueType;
-                    if (fourCC == "STAT")
+                    if (ptr.type.ToString() == "STAT")
                     {
                         value = 0f;
                     }
@@ -34,22 +36,21 @@ namespace Sandbox {
                     {
                         value = device.allControls[index].ReadValueAsObject();
                     }
+                    data = BitConverter.GetBytes((float)value);
                     Debug.Log(time);
-                    //valid = ptr.IsA<DeltaStateEvent>() || ptr.IsA<StateEvent>();
                 }
                 else
                 {
                     valid = false;
                 }
             }
-            public string fourCC;
             public int id;
-            public Type type;
             public int deviceId;
             public double time;
             public int index;
             public bool valid;
             public object value;
+            public byte[] data;
         }
 
         /// <summary>
@@ -63,6 +64,10 @@ namespace Sandbox {
             public void Sort()
             {
                 records = records.OrderBy(a => a.time).ToList();
+            }
+            public void Validation()
+            {
+                records = records.Where(r => r.valid).ToList();
             }
         }
         
@@ -81,30 +86,55 @@ namespace Sandbox {
         unsafe private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
         {
             if (!IsRecord) return;
-            //if (!IsRecord && ptr.type == new UnityEngine.InputSystem.Utilities.FourCC("STAT")) return;
-            if (ptr.deviceId == 1)
-            {
-                var record = new InputRecord(ptr, device);
-                _records.records.Add(record);
-                Debug.Log(record);
-            }
+            if (ptr.deviceId != 1) return;
+            var record = new InputRecord(ptr, device);
+            _records.records.Add(record);
+            Debug.Log(record);
         }
 
         public List<InputRecord> GetValidRecords()
         {
-            _records.records = _records.records.Where(r => r.valid).ToList();
+            _records.Validation();
             return _records.records;
         }
 
-        public void GenerateInputRecords()
+        public void SaveInputRecord(string path = "")
         {
+            _records.Validation();
             _records.Sort();
-            var json = JsonUtility.ToJson(_records);
-            Debug.Log(json);
+            if (path == "") path = _saveDirectory;
+            var json = JsonUtility.ToJson(_records,true);
+            var encoding = new UTF8Encoding(true, false);
+            var pathName = Application.dataPath + $"/{path}/test.json";
+            File.WriteAllText(pathName, json, encoding);
+
+            AssetDatabase.ImportAsset(pathName);
+            var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(pathName);
+            ProjectWindowUtil.ShowCreatedAsset(asset);
+
+            AssetDatabase.Refresh();
+        }
+
+        public void LoadInputRecord(string path = "")
+        {
+            if (path == "") path = _saveDirectory;
+            var encoding = new UTF8Encoding(true, false);
+            var pathName = Application.dataPath + $"/{path}/test.json";
+            var json = File.ReadAllText(pathName, encoding);
+            _records = JsonUtility.FromJson<InputRecords>(json);
+            _records.records.ForEach(record =>
+            {
+                record.value = BitConverter.ToSingle( record.data, 0);
+            });
         }
 
         private InputRecords _records = new InputRecords();
 
-        public bool IsRecord { get; set; }
+        [SerializeField]
+        private bool _isRecord;
+        [SerializeField]
+        private string _saveDirectory = "InputRecords";
+
+        public bool IsRecord { get => _isRecord; set => _isRecord = value; }
     }
 }

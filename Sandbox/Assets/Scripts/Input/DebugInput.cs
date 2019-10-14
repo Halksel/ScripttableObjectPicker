@@ -48,6 +48,14 @@ public class DebugInput : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Tap""
+                },
+                {
+                    ""name"": ""LoadInput"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac6778fd-fcab-4b5a-b588-26040d89d75c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Tap""
                 }
             ],
             ""bindings"": [
@@ -105,6 +113,28 @@ public class DebugInput : IInputActionCollection
                     ""action"": ""SaveInput"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b484c456-1979-4570-b890-e45ab20503d3"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""LoadInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""20fef86c-ad8b-47bb-a938-73a3c1573d82"",
+                    ""path"": ""<DualShockGamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""LoadInput"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -140,6 +170,7 @@ public class DebugInput : IInputActionCollection
         m_Debug_Test2 = m_Debug.GetAction("Test2");
         m_Debug_Test3 = m_Debug.GetAction("Test3");
         m_Debug_SaveInput = m_Debug.GetAction("SaveInput");
+        m_Debug_LoadInput = m_Debug.GetAction("LoadInput");
     }
 
     ~DebugInput()
@@ -193,6 +224,7 @@ public class DebugInput : IInputActionCollection
     private readonly InputAction m_Debug_Test2;
     private readonly InputAction m_Debug_Test3;
     private readonly InputAction m_Debug_SaveInput;
+    private readonly InputAction m_Debug_LoadInput;
     public struct DebugActions
     {
         private DebugInput m_Wrapper;
@@ -201,6 +233,7 @@ public class DebugInput : IInputActionCollection
         public InputAction @Test2 => m_Wrapper.m_Debug_Test2;
         public InputAction @Test3 => m_Wrapper.m_Debug_Test3;
         public InputAction @SaveInput => m_Wrapper.m_Debug_SaveInput;
+        public InputAction @LoadInput => m_Wrapper.m_Debug_LoadInput;
         public InputActionMap Get() { return m_Wrapper.m_Debug; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -222,6 +255,9 @@ public class DebugInput : IInputActionCollection
                 SaveInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
                 SaveInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
                 SaveInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
+                LoadInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
+                LoadInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
+                LoadInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
@@ -238,6 +274,9 @@ public class DebugInput : IInputActionCollection
                 SaveInput.started += instance.OnSaveInput;
                 SaveInput.performed += instance.OnSaveInput;
                 SaveInput.canceled += instance.OnSaveInput;
+                LoadInput.started += instance.OnLoadInput;
+                LoadInput.performed += instance.OnLoadInput;
+                LoadInput.canceled += instance.OnLoadInput;
             }
         }
     }
@@ -266,5 +305,6 @@ public class DebugInput : IInputActionCollection
         void OnTest2(InputAction.CallbackContext context);
         void OnTest3(InputAction.CallbackContext context);
         void OnSaveInput(InputAction.CallbackContext context);
+        void OnLoadInput(InputAction.CallbackContext context);
     }
 }

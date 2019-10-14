@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 using System;
 using UnityEngine.SceneManagement;
 
 namespace Sandbox
 {
     using Record = InputRecorder.InputRecord;
+    /// <summary>
+    /// 入力管理
+    /// レコード読み込みで入力再現も可能
+    /// </summary>
     public class InputManager : SingletonMonoBehaviour<InputManager>, DebugInput.IDebugActions
     {
         public enum InputType
@@ -126,14 +128,7 @@ namespace Sandbox
                         object value = null;
                         try
                         {
-                            if (record.type == typeof(bool))
-                            {
-                                value = record.value;
-                            }
-                            else if (record.type == typeof(float))
-                            {
-                                value = record.value;
-                            }
+                            value = record.value;
                             if (value == null)
                             {
                                 throw new ArgumentException("");
@@ -143,7 +138,7 @@ namespace Sandbox
                         }
                         catch (Exception e)
                         {
-                            Debug.Log($"{record.type} : {e}");
+                            Debug.Log($"{e}");
                             ++idx;
                             break;
                         }
@@ -172,6 +167,7 @@ namespace Sandbox
         public void PlayRecord()
         {
             if (_isRecord) return;
+            InputRecorder.Instance.IsRecord = false;
             _time = 0;
             _isRecord = true;
             StartCoroutine(EmurateInput());
@@ -194,7 +190,6 @@ namespace Sandbox
                     break;
                 case InputActionPhase.Started:
                     {
-                        InputRecorder.Instance.IsRecord = false;
                         PlayRecord();
                     }
                     break;
@@ -288,7 +283,20 @@ namespace Sandbox
             {
                 case InputActionPhase.Started:
                     {
-                        InputRecorder.Instance.GenerateInputRecords();
+                        InputRecorder.Instance.SaveInputRecord();
+                    }
+                    break;
+            }
+        }
+
+        public void OnLoadInput(InputAction.CallbackContext context)
+        {
+            switch (context.phase)
+            {
+                case InputActionPhase.Started:
+                    {
+                        InputRecorder.Instance.LoadInputRecord();
+                        PlayRecord();
                     }
                     break;
             }
@@ -296,6 +304,7 @@ namespace Sandbox
 
         [SerializeField]
         private int _currentInputPriority;
+
         private List<InputProxy> _inputProxies = new List<InputProxy>();
         private bool _isRecord = false;
         private double _time;

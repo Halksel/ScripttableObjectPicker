@@ -15,6 +15,7 @@ namespace Sandbox {
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Setup()
         {
+            SceneManager.LoadScene("_scn_main");
             var input = new GameObject("InputManager");
             input.AddComponent<InputManager>().NullCast()?.Setup() ;
             var inputRecorder = new GameObject("InputRecorder");
