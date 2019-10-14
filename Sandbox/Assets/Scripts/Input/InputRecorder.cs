@@ -20,57 +20,33 @@ namespace Sandbox {
                 fourCC = ptr.type.ToString();
                 id = ptr.id;
                 time = ptr.time;
-                sizeInBytes = (int)ptr.sizeInBytes;
-                format = device.stateBlock.format.ToString();
                 deviceId = ptr.deviceId;
                 valid = ptr.valid;
                 if (device.allControls[0].IsActuated())
                 {
                     index = device.allControls.Skip(1).TakeWhile(ctl => !ctl.IsActuated()).Count() + 1;
                     type = device.allControls[index].valueType;
-                    value = device.allControls[index].ReadValueAsObject();
+                    if (fourCC == "STAT")
+                    {
+                        value = 0f;
+                    }
+                    else
+                    {
+                        value = device.allControls[index].ReadValueAsObject();
+                    }
                     Debug.Log(time);
                     //valid = ptr.IsA<DeltaStateEvent>() || ptr.IsA<StateEvent>();
                 }
                 else
                 {
-                    index = 0;
-                    type = device.allControls[index].valueType;
-                    value = 0f;
                     valid = false;
-                }
-                //validation();
-            }
-
-            unsafe public InputEventPtr CreatePtr()
-            {
-                var inputEvent = new InputEvent(new UnityEngine.InputSystem.Utilities.FourCC(fourCC),sizeInBytes, deviceId, time);
-                var ptr = new InputEventPtr(&inputEvent);
-                return ptr;
-            }
-
-            private void validation()
-            {
-                if(fourCC == null)
-                {
-                    valid = false;
-                }
-                else if(deviceId == 0)
-                {
-                    valid = false;
-                }
-                else
-                {
-                    valid = true;
                 }
             }
             public string fourCC;
-            public string format;
             public int id;
             public Type type;
             public int deviceId;
             public double time;
-            public int sizeInBytes;
             public int index;
             public bool valid;
             public object value;
@@ -105,6 +81,7 @@ namespace Sandbox {
         unsafe private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
         {
             if (!IsRecord) return;
+            //if (!IsRecord && ptr.type == new UnityEngine.InputSystem.Utilities.FourCC("STAT")) return;
             if (ptr.deviceId == 1)
             {
                 var record = new InputRecord(ptr, device);

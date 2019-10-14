@@ -7,6 +7,7 @@ using UnityEngine.InputSystem.LowLevel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
+using UnityEngine.SceneManagement;
 
 namespace Sandbox
 {
@@ -105,6 +106,7 @@ namespace Sandbox
         {
             int idx = 0;
             _records = InputRecorder.Instance.GetValidRecords();
+            SceneManager.LoadScene("_scn_debug");
             while(true)
             {
                 _time += Time.deltaTime;
@@ -118,8 +120,7 @@ namespace Sandbox
                     Debug.Log(_records[idx].time);
                     var record = _records[idx];
                     // 入力レコードによって値をセット
-                    //InputSystem.QueueEvent();
-                    var device = InputSystem.GetDeviceById(record.deviceId) as Keyboard;
+                    var device = InputSystem.GetDeviceById(record.deviceId);
                     using (StateEvent.From(device, out var eventPtr))
                     {
                         object value = null;
@@ -133,13 +134,9 @@ namespace Sandbox
                             {
                                 value = record.value;
                             }
-                            if(value == null)
+                            if (value == null)
                             {
                                 throw new ArgumentException("");
-                            }
-                            if((float)value != 0f)
-                            {
-                                _beforeInputIndex = record.index;
                             }
 
                             _time = record.time;
@@ -150,15 +147,7 @@ namespace Sandbox
                             ++idx;
                             break;
                         }
-                        value = (float)value;
-                        if (record.index == 0 && _beforeInputIndex != 0)
-                        {
-                            device.allControls[_beforeInputIndex].WriteValueFromObjectIntoEvent(eventPtr, value);
-                        }
-                        else
-                        {
-                            device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
-                        }
+                        device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
                         InputSystem.QueueEvent(eventPtr);
                     }
                     ++idx;
@@ -169,6 +158,7 @@ namespace Sandbox
                 {
                     _isRecord = false;
                     Debug.Log("End of Emulate");
+                    InputRecorder.Instance.IsRecord = true;
                     StopCoroutine(EmurateInput());
                     break;
                 }
@@ -205,7 +195,7 @@ namespace Sandbox
                 case InputActionPhase.Started:
                     {
                         InputRecorder.Instance.IsRecord = false;
-                            PlayRecord();
+                        PlayRecord();
                     }
                     break;
                 case InputActionPhase.Performed:
@@ -310,6 +300,5 @@ namespace Sandbox
         private bool _isRecord = false;
         private double _time;
         private List<Record> _records;
-        private int _beforeInputIndex;
     }
 }
