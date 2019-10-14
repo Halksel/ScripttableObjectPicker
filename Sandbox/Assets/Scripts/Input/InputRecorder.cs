@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using System;
 using System.Runtime.Serialization;
+using UnityEngine.InputSystem.Controls;
 
 namespace Sandbox {
     using Context = InputAction.CallbackContext;
@@ -16,25 +17,29 @@ namespace Sandbox {
         {
             public unsafe InputRecord(InputEventPtr ptr, InputDevice device)
             {
-                try
+                fourCC = ptr.type.ToString();
+                id = ptr.id;
+                time = ptr.time;
+                sizeInBytes = (int)ptr.sizeInBytes;
+                format = device.stateBlock.format.ToString();
+                deviceId = ptr.deviceId;
+                valid = ptr.valid;
+                if (device.allControls[0].IsActuated())
                 {
                     index = device.allControls.Skip(1).TakeWhile(ctl => !ctl.IsActuated()).Count() + 1;
-                    fourCC = ptr.type.ToString();
                     type = device.allControls[index].valueType;
-                    id = ptr.id;
-                    var statePtr = device.GetStatePtrFromStateEvent(ptr);
-                    bytes = device.ReadValueFromStateAsObject(statePtr) as byte[];
-                    time = ptr.time;
-                    sizeInBytes = (int)ptr.sizeInBytes;
-                    format = device.stateBlock.format.ToString();
-                    deviceId = ptr.deviceId;
-                    valid = ptr.IsA<DeltaStateEvent>() || ptr.IsA<StateEvent>();
+                    value = device.allControls[index].ReadValueAsObject();
+                    Debug.Log(time);
+                    //valid = ptr.IsA<DeltaStateEvent>() || ptr.IsA<StateEvent>();
                 }
-                catch
+                else
                 {
+                    index = 0;
+                    type = device.allControls[index].valueType;
+                    value = 0f;
                     valid = false;
                 }
-                validation();
+                //validation();
             }
 
             unsafe public InputEventPtr CreatePtr()
@@ -63,12 +68,12 @@ namespace Sandbox {
             public string format;
             public int id;
             public Type type;
-            public byte[] bytes;
             public int deviceId;
             public double time;
             public int sizeInBytes;
             public int index;
             public bool valid;
+            public object value;
         }
 
         /// <summary>
@@ -88,7 +93,7 @@ namespace Sandbox {
         public override bool Setup()
         {
             InputSystem.onEvent += InputSystem_onEvent;
-            _isRecord = true;
+            IsRecord = true;
             return true;
         }
 
@@ -99,7 +104,7 @@ namespace Sandbox {
 
         unsafe private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
         {
-            if (!_isRecord) return;
+            if (!IsRecord) return;
             if (ptr.deviceId == 1)
             {
                 var record = new InputRecord(ptr, device);
@@ -121,7 +126,8 @@ namespace Sandbox {
             Debug.Log(json);
         }
 
-        private bool _isRecord;
         private InputRecords _records = new InputRecords();
+
+        public bool IsRecord { get; set; }
     }
 }

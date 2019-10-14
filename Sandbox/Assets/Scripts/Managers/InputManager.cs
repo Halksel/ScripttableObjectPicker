@@ -115,39 +115,50 @@ namespace Sandbox
                         ++idx;
                         continue;
                     }
+                    Debug.Log(_records[idx].time);
                     var record = _records[idx];
                     // 入力レコードによって値をセット
                     //InputSystem.QueueEvent();
                     var device = InputSystem.GetDeviceById(record.deviceId) as Keyboard;
                     using (StateEvent.From(device, out var eventPtr))
                     {
-                        MemoryStream ms = new MemoryStream(record.bytes);
-                        ms.Position = 0;
-                        BinaryFormatter bf = new BinaryFormatter();
                         object value = null;
                         try
                         {
                             if (record.type == typeof(bool))
                             {
-                                value = (bool)bf.Deserialize(ms);
+                                value = record.value;
                             }
                             else if (record.type == typeof(float))
                             {
-                                //value = (float)bf.Deserialize(ms);
-                                value = 1.0f;
+                                value = record.value;
                             }
                             if(value == null)
                             {
-                                throw new Exception("不正な型です");
+                                throw new ArgumentException("");
                             }
+                            if((float)value != 0f)
+                            {
+                                _beforeInputIndex = record.index;
+                            }
+
+                            _time = record.time;
                         }
                         catch (Exception e)
                         {
-                            Debug.Log(record.type);
+                            Debug.Log($"{record.type} : {e}");
                             ++idx;
                             break;
                         }
-                        device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
+                        value = (float)value;
+                        if (record.index == 0 && _beforeInputIndex != 0)
+                        {
+                            device.allControls[_beforeInputIndex].WriteValueFromObjectIntoEvent(eventPtr, value);
+                        }
+                        else
+                        {
+                            device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
+                        }
                         InputSystem.QueueEvent(eventPtr);
                     }
                     ++idx;
@@ -193,6 +204,7 @@ namespace Sandbox
                     break;
                 case InputActionPhase.Started:
                     {
+                        InputRecorder.Instance.IsRecord = false;
                             PlayRecord();
                     }
                     break;
@@ -298,5 +310,6 @@ namespace Sandbox
         private bool _isRecord = false;
         private double _time;
         private List<Record> _records;
+        private int _beforeInputIndex;
     }
 }
