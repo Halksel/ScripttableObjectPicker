@@ -75,7 +75,7 @@ namespace Sandbox {
         {
             InputSystem.onEvent += InputSystem_onEvent;
             _saveDirectory=Application.dataPath + $"/InputRecords/test.json" ;
-            IsRecord = true;
+            IsRecord = false;
             return true;
         }
 
@@ -125,6 +125,12 @@ namespace Sandbox {
             {
                 record.value = BitConverter.ToSingle( record.data, 0);
             });
+        }
+
+        public void StartInputRecord()
+        {
+            _records.records.Clear();
+            IsRecord = true;
         }
 
         private InputRecords _records = new InputRecords();
