@@ -74,6 +74,7 @@ namespace Sandbox {
         public override bool Setup()
         {
             InputSystem.onEvent += InputSystem_onEvent;
+            _saveDirectory=Application.dataPath + $"/InputRecords/test.json" ;
             IsRecord = true;
             return true;
         }
@@ -105,11 +106,10 @@ namespace Sandbox {
             if (path == "") path = _saveDirectory;
             var json = JsonUtility.ToJson(_records,true);
             var encoding = new UTF8Encoding(true, false);
-            var pathName = Application.dataPath + $"/{path}/test.json";
-            File.WriteAllText(pathName, json, encoding);
+            File.WriteAllText(path, json, encoding);
 
-            AssetDatabase.ImportAsset(pathName);
-            var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(pathName);
+            AssetDatabase.ImportAsset(path);
+            var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
             ProjectWindowUtil.ShowCreatedAsset(asset);
 
             AssetDatabase.Refresh();
@@ -119,8 +119,7 @@ namespace Sandbox {
         {
             if (path == "") path = _saveDirectory;
             var encoding = new UTF8Encoding(true, false);
-            var pathName = Application.dataPath + $"/{path}/test.json";
-            var json = File.ReadAllText(pathName, encoding);
+            var json = File.ReadAllText(path, encoding);
             _records = JsonUtility.FromJson<InputRecords>(json);
             _records.records.ForEach(record =>
             {
@@ -133,7 +132,7 @@ namespace Sandbox {
         [SerializeField]
         private bool _isRecord;
         [SerializeField]
-        private string _saveDirectory = "InputRecords";
+        private string _saveDirectory;
 
         public bool IsRecord { get => _isRecord; set => _isRecord = value; }
     }

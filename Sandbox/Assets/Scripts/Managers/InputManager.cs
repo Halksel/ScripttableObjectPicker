@@ -283,7 +283,7 @@ namespace Sandbox
             {
                 case InputActionPhase.Started:
                     {
-                        InputRecorder.Instance.SaveInputRecord();
+                        //InputRecorder.Instance.SaveInputRecord();
                     }
                     break;
             }
@@ -295,8 +295,8 @@ namespace Sandbox
             {
                 case InputActionPhase.Started:
                     {
-                        InputRecorder.Instance.LoadInputRecord();
-                        PlayRecord();
+                        //InputRecorder.Instance.LoadInputRecord();
+                        //PlayRecord();
                     }
                     break;
             }

@@ -28,8 +28,26 @@ namespace Sandbox {{
 }}
 ";
 
+    public static readonly string EDITOR_TEMPLATE = $@"using UnityEngine;
+using UnityEditor;
+
+public class #SCRIPTNAME# : EditorWindow
+{{
+    static void Open(){{
+        var window = GetWindow<#SCRIPTNAME#>();
+        #NOTRIM#
+    }}
+
+
+    private void OnGUI()
+    {{
+        #NOTRIM#
+    }}
+}}
+";
+
     [MenuItem("Assets/Create/C# Script Ext/MonoBehaviour", priority = 21)]
-    private static void GenerateSampleScript()
+    private static void GenerateMonoScriptTempleate()
     {
         Debug.Log(Selection.activeObject.name);
 
@@ -38,6 +56,18 @@ namespace Sandbox {{
         var endNameEditAction = ScriptableObject.CreateInstance<ScriptGenerator>();
 
         ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, endNameEditAction, "NewBehaviourScript.cs", csIcon, CODE_TEMPLATE);
+    }
+
+    [MenuItem("Assets/Create/C# Script Ext/Editor", priority = 21)]
+    private static void GenerateEditorScriptTempleate()
+    {
+        Debug.Log(Selection.activeObject.name);
+
+        var csIcon = EditorGUIUtility.IconContent("cs Script Icon").image as Texture2D;
+
+        var endNameEditAction = ScriptableObject.CreateInstance<ScriptGenerator>();
+
+        ProjectWindowUtil.StartNameEditingIfProjectWindowExists(0, endNameEditAction, "NewEditorScript.cs", csIcon, EDITOR_TEMPLATE);
     }
 
     public override void Action(int instanceId, string pathName, string resourceFile)
