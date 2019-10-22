@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_scn_debug.unity
     guid: 78e30fcf2168b004591eecb74b4208e6
+  - enabled: 1
+    path: Assets/Scenes/scn_zenject_hello.unity
+    guid: 0f8fc389ca76465428c6832dee10c150
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1122bf72979e1974384c458d5785ded1,
       type: 2}

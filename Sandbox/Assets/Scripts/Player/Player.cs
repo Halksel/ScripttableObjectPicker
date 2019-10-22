@@ -3,15 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
+using Zenject;
 
 namespace Sandbox {
     using Record = InputRecorder.InputRecord;
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
+        [Inject]
+        private InputManager inputManager;
         private void Awake()
         {
-            _basisInput = InputManager.Instance.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
+            _basisInput = inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
             _basisInput.Basis.SetCallbacks(this);
         }
         private void Start () 
@@ -49,7 +51,7 @@ namespace Sandbox {
                     {
                         if (_uiInput == null)
                         {
-                            _uiInput = InputManager.Instance.CreateTopPriorityProxy(InputManager.InputType.UI) as UIInput;
+                            _uiInput = inputManager.CreateTopPriorityProxy(InputManager.InputType.UI) as UIInput;
                             _uiInput.UI.SetCallbacks(this);
                             _isUI = true;
                         }
@@ -64,7 +66,7 @@ namespace Sandbox {
             {
                 case InputActionPhase.Started:
                     {
-                        InputManager.Instance.DeleteInputProxy(_uiInput);
+                        inputManager.DeleteInputProxy(_uiInput);
                         _uiInput = null;
                         _isUI = false;
                     }

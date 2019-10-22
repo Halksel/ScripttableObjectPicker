@@ -14,7 +14,7 @@ namespace Sandbox
     /// 入力管理
     /// レコード読み込みで入力再現も可能
     /// </summary>
-    public class InputManager : SingletonMonoBehaviour<InputManager>, DebugInput.IDebugActions
+    public class InputManager : MonoBehaviour, DebugInput.IDebugActions
     {
         public enum InputType
         {
@@ -50,7 +50,7 @@ namespace Sandbox
             }
         }
 
-        public override bool Setup()
+        public bool Setup()
         {
             var input = new DebugInput();
             input.Enable();
@@ -303,11 +303,11 @@ namespace Sandbox
         }
 
         [SerializeField]
-        private int _currentInputPriority;
+        private static int _currentInputPriority;
 
-        private List<InputProxy> _inputProxies = new List<InputProxy>();
-        private bool _isRecord = false;
-        private double _time;
-        private List<Record> _records;
+        private static List<InputProxy> _inputProxies = new List<InputProxy>();
+        private static bool _isRecord = false;
+        private static double _time;
+        private static List<Record> _records;
     }
 }

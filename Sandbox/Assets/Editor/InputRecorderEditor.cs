@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using Zenject;
 
 namespace Sandbox
 {
     public class InputRecorderEditor : EditorWindow
     {
+        [Inject]
+        private InputManager inputManager;
+
         static InputRecorderEditor window;
         [MenuItem("Custom/InputRecoder")]
         static void Open()
@@ -17,7 +21,7 @@ namespace Sandbox
             var e = Event.current; 
             if (EditorApplication.isPlaying)
             {
-                EditorGUILayout.LabelField(InputRecorder.Instance.IsRecord.ToString());
+                EditorGUILayout.ToggleLeft("記録中", InputRecorder.Instance.IsRecord);
                 if (GUILayout.Button("記録開始"))
                 {
                     StartInputRecord();
@@ -37,7 +41,7 @@ namespace Sandbox
             }
         }
 
-        private static void SaveInputRecord()
+        private void SaveInputRecord()
         {
             // 推奨するディレクトリがあればpathに入れておく
             var path = EditorUtility.SaveFilePanelInProject("Save Some Asset", "Default", "json", "hello", "Assets/InputRecords");
@@ -49,7 +53,7 @@ namespace Sandbox
             }
         }
 
-        private static void LoadInputRecord()
+        private void LoadInputRecord()
         {
             var t = Time.timeScale;
             var path = EditorUtility.OpenFilePanel("Load Some Asset", "Default", "json");
@@ -59,12 +63,12 @@ namespace Sandbox
                 InputRecorder.Instance.IsRecord = false;
                 InputRecorder.Instance.LoadInputRecord(path);
                 window.FocusGameView(); 
-                InputManager.Instance.PlayRecord();
+                inputManager.PlayRecord();
             }
             Time.timeScale = t;
         }
 
-        private static void StartInputRecord()
+        private void StartInputRecord()
         {
             InputRecorder.Instance.StartInputRecord();
             window.FocusGameView(); 
