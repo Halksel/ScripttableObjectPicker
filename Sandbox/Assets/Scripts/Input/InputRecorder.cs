@@ -19,7 +19,7 @@ namespace Sandbox {
         [Serializable]
         public class InputRecord
         {
-            public unsafe InputRecord(InputEventPtr ptr, InputDevice device)
+            public InputRecord(InputEventPtr ptr, InputDevice device)
             {
                 id = ptr.id;
                 time = ptr.time;
@@ -84,7 +84,7 @@ namespace Sandbox {
             InputSystem.onEvent -= InputSystem_onEvent;
         }
 
-        unsafe private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
+        private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
         {
             if (!IsRecord) return;
             if (ptr.deviceId != 1) return;
