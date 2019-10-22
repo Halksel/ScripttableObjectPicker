@@ -1,7 +1,8 @@
 {
     "name": "SandBox",
     "references": [
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Zenject"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
