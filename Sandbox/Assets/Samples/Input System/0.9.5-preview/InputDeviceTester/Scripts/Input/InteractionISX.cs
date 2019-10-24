@@ -1,8 +1,8 @@
+using System.Reflection;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
-using System.Reflection;
+using UnityEngine.UI;
 
 public class InteractionISX : MonoBehaviour
 {

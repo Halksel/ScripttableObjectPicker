@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 using TouchPhase = UnityEngine.InputSystem.TouchPhase;
 
 public class TouchISX : MonoBehaviour

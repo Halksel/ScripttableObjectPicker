@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public class KeyboardMouseISX : MonoBehaviour
 {

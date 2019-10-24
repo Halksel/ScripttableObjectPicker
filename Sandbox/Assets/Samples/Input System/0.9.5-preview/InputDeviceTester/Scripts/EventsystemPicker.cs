@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using UnityEngine.UI;
 
 public class EventsystemPicker : MonoBehaviour
 {
@@ -19,7 +17,8 @@ public class EventsystemPicker : MonoBehaviour
         m_toggles = GetComponent<ToggleGroup>().ActiveToggles();
         foreach (Toggle toggle in m_toggles)
         {
-            toggle.onValueChanged.AddListener(delegate {
+            toggle.onValueChanged.AddListener(delegate
+            {
                 OnToggleChanged();
             });
             if (toggle.gameObject.name == "New")

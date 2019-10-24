@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Linq;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
-using System;
 using UnityEngine.SceneManagement;
 
 namespace Sandbox
@@ -62,7 +62,7 @@ namespace Sandbox
         public IInputActionCollection CreateCurrentPriorityProxy(InputType inputType)
         {
             var input = constructInput(inputType);
-            if(inputType == InputType.Debug)
+            if (inputType == InputType.Debug)
             {
                 _inputProxies.Add(new InputProxy(input, -1));
             }
@@ -92,8 +92,9 @@ namespace Sandbox
 
         private void switchInputPriority()
         {
-            foreach(var proxy in _inputProxies ){
-                if(proxy.priority == -1 || proxy.priority == _currentInputPriority)
+            foreach (var proxy in _inputProxies)
+            {
+                if (proxy.priority == -1 || proxy.priority == _currentInputPriority)
                 {
                     proxy.input.Enable();
                 }
@@ -109,7 +110,7 @@ namespace Sandbox
             int idx = 0;
             _records = InputRecorder.Instance.GetValidRecords();
             SceneManager.LoadScene("_scn_debug");
-            while(true)
+            while (true)
             {
                 _time += Time.deltaTime;
                 while (idx < _records.Count() && _time > _records[idx].time)
@@ -148,7 +149,7 @@ namespace Sandbox
                     ++idx;
                 }
                 InputSystem.Update();
-                
+
                 if (idx >= _records.Count())
                 {
                     _isRecord = false;

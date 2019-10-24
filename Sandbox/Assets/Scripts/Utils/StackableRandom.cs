@@ -1,9 +1,10 @@
-﻿using System.Linq;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-namespace Sandbox {
+namespace Sandbox
+{
     /// <summary>
     /// 受け取ったリストをランダムに並び替える
     /// 順番は毎回変わる
@@ -16,7 +17,7 @@ namespace Sandbox {
         /// Valueで一つずつ値を読み出し、読み切ると再度並び替えられる
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public class RandomEnumarator<T> : IEnumerator<T> 
+        public class RandomEnumarator<T> : IEnumerator<T>
         {
             public RandomEnumarator(IList<T> collection)
             {

@@ -25,9 +25,9 @@ public class ControllerDiagramISX : GamepadISX
 
     private void OnEnable()
     {
-        if (m_buttonAction != null)     m_buttonAction.Enable();
-        if (m_dPadAction != null)       m_dPadAction.Enable();
-        if (m_stickMoveAction != null)  m_stickMoveAction.Enable();
+        if (m_buttonAction != null) m_buttonAction.Enable();
+        if (m_dPadAction != null) m_dPadAction.Enable();
+        if (m_stickMoveAction != null) m_stickMoveAction.Enable();
     }
 
     private void OnDisable()
@@ -57,9 +57,9 @@ public class ControllerDiagramISX : GamepadISX
         // First time use
         if (input == null)
         {
-            if (isStick)     input = m_buttonContainer.Find("Gamepad Stick");
+            if (isStick) input = m_buttonContainer.Find("Gamepad Stick");
             else if (isDpad) input = m_buttonContainer.Find("Gamepad Dpad");
-            else             input = m_buttonContainer.Find("Gamepad Button");
+            else input = m_buttonContainer.Find("Gamepad Button");
 
             // if unassigned Gameobject ran out. highly unlikely, but in case
             if (input == null)
@@ -73,8 +73,8 @@ public class ControllerDiagramISX : GamepadISX
                 FirstTimeUse(input);
             }
         }
-        if (isStick)        input = input.Find("Stick");
-        else if (isDpad)    input = input.Find(inputName);
+        if (isStick) input = input.Find("Stick");
+        else if (isDpad) input = input.Find(inputName);
         return input;
     }
 

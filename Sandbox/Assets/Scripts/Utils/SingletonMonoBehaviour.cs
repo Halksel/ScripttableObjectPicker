@@ -27,7 +27,7 @@ namespace Sandbox
         {
             if (CheckInstance())
             {
-                    UnityEngine.Object.DontDestroyOnLoad(instance.gameObject);
+                UnityEngine.Object.DontDestroyOnLoad(instance.gameObject);
             }
         }
 

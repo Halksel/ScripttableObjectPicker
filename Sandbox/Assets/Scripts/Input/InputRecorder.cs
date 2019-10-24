@@ -1,15 +1,15 @@
-﻿using System.Linq;
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
-using System;
-using System.IO;
-using System.Text;
-using UnityEditor;
 
-namespace Sandbox {
-    using Context = InputAction.CallbackContext;
+namespace Sandbox
+{
     /// <summary>
     /// 入力記録
     /// 同時入力への対応が終わってない
@@ -70,11 +70,11 @@ namespace Sandbox {
                 records = records.Where(r => r.valid).ToList();
             }
         }
-        
+
         public override bool Setup()
         {
             InputSystem.onEvent += InputSystem_onEvent;
-            _saveDirectory=Application.dataPath + $"/InputRecords/test.json" ;
+            _saveDirectory = Application.dataPath + $"/InputRecords/test.json";
             IsRecord = false;
             return true;
         }
@@ -104,7 +104,7 @@ namespace Sandbox {
             _records.Validation();
             _records.Sort();
             if (path == "") path = _saveDirectory;
-            var json = JsonUtility.ToJson(_records,true);
+            var json = JsonUtility.ToJson(_records, true);
             var encoding = new UTF8Encoding(true, false);
             File.WriteAllText(path, json, encoding);
 
@@ -123,7 +123,7 @@ namespace Sandbox {
             _records = JsonUtility.FromJson<InputRecords>(json);
             _records.records.ForEach(record =>
             {
-                record.value = BitConverter.ToSingle( record.data, 0);
+                record.value = BitConverter.ToSingle(record.data, 0);
             });
         }
 

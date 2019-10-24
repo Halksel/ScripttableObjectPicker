@@ -100,7 +100,7 @@ public class DualShockOldInput : GamepadOldInput
         UpdateAllAnalogSticks();
         UpdateAllAnalogButtons();
 
- #if !(UNITY_EDITOR_LINUX || UNITY_STANDALONE_LINUX || UNITY_STANDALONE_LINUX_API)
+#if !(UNITY_EDITOR_LINUX || UNITY_STANDALONE_LINUX || UNITY_STANDALONE_LINUX_API)
         foreach (DualShockTrigger trigger in m_dualShockTriggers)
         {
             float inputValue = Input.GetAxis(trigger.Axis_Name);
@@ -109,7 +109,7 @@ public class DualShockOldInput : GamepadOldInput
             else
                 StopHighlightButton(trigger.Name);
         }
- #endif
+#endif
     }
 
     // When a stick is pressed, change the color instead of using Particles.
@@ -153,7 +153,7 @@ public class DualShockTrigger : AnalogButton
 {
     private bool is_first = true;
 
-    public DualShockTrigger(Transform trigger, string axisName) : base(trigger, axisName) {}
+    public DualShockTrigger(Transform trigger, string axisName) : base(trigger, axisName) { }
 
     public override bool IsPressed(float inputValue)
     {

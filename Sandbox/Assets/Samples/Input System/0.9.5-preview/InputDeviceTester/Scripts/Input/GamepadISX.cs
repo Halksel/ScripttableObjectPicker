@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 //---------------------------------------------------------------------------
 // Parent Class for All Gamepad/Controller Input from New Input System.
@@ -57,9 +57,9 @@ public class GamepadISX : MonoBehaviour
         {
             if (control.aliases.Count > 0)
             {
-                if (isXbox)    buttonName = control.aliases[0];
+                if (isXbox) buttonName = control.aliases[0];
                 else if (isPS) buttonName = control.aliases[1];
-                else           buttonName = control.name.Replace("button", "");
+                else buttonName = control.name.Replace("button", "");
             }
             button = GetInputTransform(FirstLetterToUpper(buttonName), dpadName: dpadName);
         }
@@ -79,9 +79,9 @@ public class GamepadISX : MonoBehaviour
     protected virtual Transform GetInputTransform(string inputName, bool isStick = false, string dpadName = null)
     {
         Transform input;
-        if (isStick)               input = m_buttonContainer.Find(inputName + "/Stick - Input System");
+        if (isStick) input = m_buttonContainer.Find(inputName + "/Stick - Input System");
         else if (dpadName != null) input = m_buttonContainer.Find(dpadName + "/" + inputName);
-        else                       input = m_buttonContainer.Find(inputName);
+        else input = m_buttonContainer.Find(inputName);
 
         // The transform does not exist for the input button
         if (input == null)

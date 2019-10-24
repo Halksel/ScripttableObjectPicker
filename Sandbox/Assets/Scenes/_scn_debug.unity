@@ -151,7 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers: []
-  _installerPrefabs: []
+  _installerPrefabs:
+  - {fileID: 880785998615776574, guid: 22413143399e9a943b6b4fa61009949e, type: 3}
   _autoRun: 1
   _parentNewObjectsUnderSceneContext: 0
   _contractNames: []
@@ -271,7 +272,6 @@ GameObject:
   m_Component:
   - component: {fileID: 886986058}
   - component: {fileID: 886986060}
-  - component: {fileID: 886986059}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -293,14 +293,6 @@ Transform:
   m_Father: {fileID: 963194228}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &886986059
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886986057}
-  m_Enabled: 1
 --- !u!20 &886986060
 Camera:
   m_ObjectHideFlags: 0
@@ -442,7 +434,7 @@ GameObject:
   - component: {fileID: 1600837885}
   - component: {fileID: 1600837884}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c864fcf6f2e797499bcecd1a53f4652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _texture: {fileID: 2800000, guid: 043e0be5c27ff7541aae47cb7c607235, type: 3}
   _move: {x: 0, y: 0}
   _cursor: {x: 0, y: 0}
 --- !u!65 &1600837885

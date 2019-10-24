@@ -10,12 +10,14 @@ public class ProcessorVector3ISX : ProcessorISX
     void Start()
     {
         m_inputAction.Rename(gameObject.name);
-        m_inputAction.performed += ctx => {
+        m_inputAction.performed += ctx =>
+        {
             InputControl<Vector3> control = ctx.control as InputControl<Vector3>;
             m_original = control.ReadValue();
             m_result = ctx.ReadValue<Vector3>();
         };
-        m_inputAction.canceled += ctx => {
+        m_inputAction.canceled += ctx =>
+        {
             m_original = m_result = new Vector3(0, 0, 0);
         };
     }

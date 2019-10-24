@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using Zenject.Internal;
-using ModestTree;
 using Assert = ModestTree.Assert;
 #if UNITY_EDITOR
 using System.Linq;

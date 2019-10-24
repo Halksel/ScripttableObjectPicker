@@ -1,16 +1,16 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Sandbox {
+namespace Sandbox
+{
     /// <summary>
     /// ゲームオブジェクトへの拡張
     /// </summary>
-    public static class GameObjectExtentions 
+    public static class GameObjectExtentions
     {
         public static T AddOrGetComponent<T>(this GameObject obj) where T : UnityEngine.Component
         {
             T res = obj.GetComponent<T>();
-            if(res == null)
+            if (res == null)
             {
                 res = obj.AddComponent<T>();
             }

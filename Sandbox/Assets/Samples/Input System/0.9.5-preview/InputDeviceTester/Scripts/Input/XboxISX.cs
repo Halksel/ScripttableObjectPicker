@@ -1,7 +1,7 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public class XboxISX : GamepadISX
 {
@@ -30,9 +30,9 @@ public class XboxISX : GamepadISX
 
     private void OnEnable()
     {
-        if (m_buttonAction != null)     m_buttonAction.Enable();
-        if (m_dPadAction != null)       m_dPadAction.Enable();
-        if (m_stickMoveAction != null)  m_stickMoveAction.Enable();
+        if (m_buttonAction != null) m_buttonAction.Enable();
+        if (m_dPadAction != null) m_dPadAction.Enable();
+        if (m_stickMoveAction != null) m_stickMoveAction.Enable();
     }
 
     private void OnDisable()

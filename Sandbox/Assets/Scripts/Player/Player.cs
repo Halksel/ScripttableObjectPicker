@@ -1,24 +1,30 @@
-﻿using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
 
-namespace Sandbox {
-    using Record = InputRecorder.InputRecord;
+namespace Sandbox
+{
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
         [Inject]
         private InputManager inputManager;
+
+        [Inject]
+        private HighlightEffect.Factory _highlightFactory;
+        private HighlightEffect _effect;
+
+        [SerializeField]
+        private Texture _texture;
+
         private void Awake()
         {
             _basisInput = inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
             _basisInput.Basis.SetCallbacks(this);
         }
-        private void Start () 
-		{
-		}
+        private void Start()
+        {
+        }
 
         private void Update()
         {
@@ -80,16 +86,25 @@ namespace Sandbox {
 
         public void OnEnter(InputAction.CallbackContext context)
         {
-            switch (context.phase)
+            try
             {
-                case InputActionPhase.Started:
-                    {
-                    }
-                    break;
-                case InputActionPhase.Canceled:
-                    {
-                    }
-                    break;
+                switch (context.phase)
+                {
+                    case InputActionPhase.Started:
+                        {
+                            _effect = _highlightFactory.Create();
+                            _effect.Setup();
+                        }
+                        break;
+                    case InputActionPhase.Canceled:
+                        {
+                        }
+                        break;
+                }
+            }
+            catch(Exception e)
+            {
+                Debug.Log(e);
             }
         }
     }

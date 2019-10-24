@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
+using UnityEngine;
 using Zenject;
 
 namespace Sandbox
@@ -18,7 +18,7 @@ namespace Sandbox
 
         private void OnGUI()
         {
-            var e = Event.current; 
+            var e = Event.current;
             if (EditorApplication.isPlaying)
             {
                 EditorGUILayout.ToggleLeft("記録中", InputRecorder.Instance.IsRecord);
@@ -49,7 +49,7 @@ namespace Sandbox
             if (!string.IsNullOrEmpty(path))
             {
                 // 保存処理
-                InputRecorder.Instance.SaveInputRecord(path); 
+                InputRecorder.Instance.SaveInputRecord(path);
             }
         }
 
@@ -62,7 +62,7 @@ namespace Sandbox
                 Time.timeScale = 0;
                 InputRecorder.Instance.IsRecord = false;
                 InputRecorder.Instance.LoadInputRecord(path);
-                window.FocusGameView(); 
+                window.FocusGameView();
                 inputManager.PlayRecord();
             }
             Time.timeScale = t;
@@ -71,7 +71,7 @@ namespace Sandbox
         private void StartInputRecord()
         {
             InputRecorder.Instance.StartInputRecord();
-            window.FocusGameView(); 
+            window.FocusGameView();
         }
     }
 }

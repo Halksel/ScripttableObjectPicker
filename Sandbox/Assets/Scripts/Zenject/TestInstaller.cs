@@ -1,6 +1,5 @@
-using Zenject;
 using UnityEngine;
-using System.Collections;
+using Zenject;
 
 public class TestInstaller : MonoInstaller
 {

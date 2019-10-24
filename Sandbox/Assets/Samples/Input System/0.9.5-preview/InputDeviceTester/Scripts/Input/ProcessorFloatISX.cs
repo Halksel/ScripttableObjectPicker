@@ -10,12 +10,14 @@ public class ProcessorFloatISX : ProcessorISX
     void Start()
     {
         m_inputAction.Rename(gameObject.name);
-        m_inputAction.performed += ctx => {
+        m_inputAction.performed += ctx =>
+        {
             InputControl<float> control = ctx.control as InputControl<float>;
             m_original = control.ReadValue();
             m_result = ctx.ReadValue<float>();
         };
-        m_inputAction.canceled += ctx => {
+        m_inputAction.canceled += ctx =>
+        {
             m_original = m_result = 0f;
         };
     }

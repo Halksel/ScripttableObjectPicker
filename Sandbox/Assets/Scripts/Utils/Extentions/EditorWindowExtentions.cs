@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
 
-namespace Sandbox {
+namespace Sandbox
+{
     public static class EditorWindowExtentions
     {
         public static void FocusGameView(this EditorWindow window)

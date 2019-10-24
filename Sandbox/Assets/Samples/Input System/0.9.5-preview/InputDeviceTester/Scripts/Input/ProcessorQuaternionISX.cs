@@ -10,12 +10,14 @@ public class ProcessorQuaternionISX : ProcessorISX
     void Start()
     {
         m_inputAction.Rename(gameObject.name);
-        m_inputAction.performed += ctx => {
+        m_inputAction.performed += ctx =>
+        {
             InputControl<Quaternion> control = ctx.control as InputControl<Quaternion>;
             m_original = control.ReadValue();
             m_result = ctx.ReadValue<Quaternion>();
         };
-        m_inputAction.canceled += ctx => {
+        m_inputAction.canceled += ctx =>
+        {
             m_original = m_result = new Quaternion(0, 0, 0, 0);
         };
     }

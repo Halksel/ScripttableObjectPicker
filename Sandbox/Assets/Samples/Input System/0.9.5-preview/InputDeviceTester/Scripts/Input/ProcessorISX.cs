@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public abstract class ProcessorISX : MonoBehaviour
 {

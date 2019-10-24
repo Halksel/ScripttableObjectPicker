@@ -1,7 +1,7 @@
 #if !NOT_UNITY3D
 
-using System.Collections.Generic;
 using ModestTree;
+using System.Collections.Generic;
 
 namespace Zenject
 {

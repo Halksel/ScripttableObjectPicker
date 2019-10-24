@@ -151,7 +151,7 @@ public class XboxTrigger : AnalogButton
 {
     private bool is_first = true;
 
-    public XboxTrigger(Transform trigger, string axisName) : base(trigger, axisName) {}
+    public XboxTrigger(Transform trigger, string axisName) : base(trigger, axisName) { }
 
     public override bool IsPressed(float inputValue)
     {
