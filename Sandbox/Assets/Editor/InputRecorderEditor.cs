@@ -23,7 +23,8 @@ namespace Sandbox
                 if (_inputRecorder == null)
                 {
                     EditorGUILayout.LabelField("InputRecoder is Null");
-                    return;
+                    _inputRecorder = Transform.FindObjectOfType<InputRecorder>();
+                    _inputManager = Transform.FindObjectOfType<InputManager>();
                 }
                 EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
                 if (GUILayout.Button("記録開始"))
@@ -85,5 +86,6 @@ namespace Sandbox
         private InputRecorder _inputRecorder;
 
         static InputRecorderEditor window;
+
     }
 }

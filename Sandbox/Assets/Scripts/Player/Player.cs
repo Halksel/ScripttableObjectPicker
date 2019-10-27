@@ -7,6 +7,11 @@ namespace Sandbox
 {
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
+        void Start()
+        {
+            _basisInput = _inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
+            _basisInput.Basis.SetCallbacks(this);
+        }
 
         private void Update()
         {
@@ -94,26 +99,7 @@ namespace Sandbox
         private Texture _texture;
 
         private bool _isUI;
-        private BasisInput _basisInput
-        {
-            get
-            {
-                if (_basisInput == null)
-                {
-                    _basisInput = _inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
-                    _basisInput.Basis.SetCallbacks(this);
-                    return _basisInput;
-                }
-                else
-                {
-                    return _basisInput;
-                }
-            }
-            set
-            {
-                _basisInput = value;
-            }
-        }
+        private BasisInput _basisInput;
         private UIInput _uiInput;
         public Vector2 _move;
         public Vector2 _cursor;
