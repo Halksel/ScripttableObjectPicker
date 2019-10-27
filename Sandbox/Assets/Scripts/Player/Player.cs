@@ -7,14 +7,6 @@ namespace Sandbox
 {
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
-        private void Awake()
-        {
-        }
-        private void Start()
-        {
-            _basisInput = inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
-            _basisInput.Basis.SetCallbacks(this);
-        }
 
         private void Update()
         {
@@ -40,7 +32,7 @@ namespace Sandbox
                     {
                         if (_uiInput == null)
                         {
-                            _uiInput = inputManager.CreateTopPriorityProxy(InputManager.InputType.UI) as UIInput;
+                            _uiInput = _inputManager.CreateTopPriorityProxy(InputManager.InputType.UI) as UIInput;
                             _uiInput.UI.SetCallbacks(this);
                             _isUI = true;
                         }
@@ -55,7 +47,7 @@ namespace Sandbox
             {
                 case InputActionPhase.Started:
                     {
-                        inputManager.DeleteInputProxy(_uiInput);
+                        _inputManager.DeleteInputProxy(_uiInput);
                         _uiInput = null;
                         _isUI = false;
                     }
@@ -92,7 +84,7 @@ namespace Sandbox
         }
 
         [Inject]
-        private InputManager inputManager;
+        private InputManager _inputManager;
 
         [Inject]
         private HighlightEffect.Factory _highlightFactory;
@@ -102,10 +94,28 @@ namespace Sandbox
         private Texture _texture;
 
         private bool _isUI;
-        private BasisInput _basisInput;
+        private BasisInput _basisInput
+        {
+            get
+            {
+                if (_basisInput == null)
+                {
+                    _basisInput = _inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
+                    _basisInput.Basis.SetCallbacks(this);
+                    return _basisInput;
+                }
+                else
+                {
+                    return _basisInput;
+                }
+            }
+            set
+            {
+                _basisInput = value;
+            }
+        }
         private UIInput _uiInput;
         public Vector2 _move;
         public Vector2 _cursor;
-
     }
 }

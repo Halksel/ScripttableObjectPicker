@@ -17,6 +17,7 @@ namespace Sandbox
     /// </summary>
     public class InputManager : MonoBehaviour, DebugInput.IDebugActions
     {
+
         public enum InputType
         {
             Debug,

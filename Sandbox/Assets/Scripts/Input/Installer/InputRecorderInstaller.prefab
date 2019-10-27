@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 805555122234696785}
   - component: {fileID: 8834578887372947138}
-  - component: {fileID: 2778381907663063603}
   m_Layer: 0
   m_Name: InputRecorderInstaller
   m_TagString: Untagged
@@ -44,18 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2dd418daaf5e145479bbd06e6471f290, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputRecorderPrefab: {fileID: 2778381907663063603}
---- !u!114 &2778381907663063603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692733719094576799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 681046860b17f454d9b45ee408af5220, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _isRecord: 0
-  _saveDirectory: 
+  _inputRecorderPrefab: {fileID: 6136669273679343902, guid: 9aead97d614dbd143bff8c9ff682ba2c,
+    type: 3}

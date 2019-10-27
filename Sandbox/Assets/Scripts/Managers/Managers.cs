@@ -14,7 +14,7 @@ namespace Sandbox
         private static void Setup()
         {
             //SceneManager.LoadScene("_scn_main");
-            SceneManager.LoadScene("_scn_debug");
+            //SceneManager.LoadScene("_scn_debug");
         }
 
         private Managers Instance

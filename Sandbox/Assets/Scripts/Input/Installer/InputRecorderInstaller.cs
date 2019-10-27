@@ -6,7 +6,7 @@ namespace Sandbox
     public class InputRecorderInstaller : MonoInstaller
     {
         [SerializeField]
-        private InputRecorder _inputRecorderPrefab;
+        private GameObject _inputRecorderPrefab;
         public override void InstallBindings()
         {
             Container.Bind<InputRecorder>().FromComponentInNewPrefab(_inputRecorderPrefab).AsSingle();
