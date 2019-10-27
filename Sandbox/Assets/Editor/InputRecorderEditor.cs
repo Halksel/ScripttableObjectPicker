@@ -4,12 +4,11 @@ using Zenject;
 
 namespace Sandbox
 {
+    /// <summary>
+    /// InputRecorderを使いやすくするための拡張
+    /// </summary>
     public class InputRecorderEditor : EditorWindow
     {
-        [Inject]
-        private InputManager inputManager;
-
-        static InputRecorderEditor window;
         [MenuItem("Custom/InputRecoder")]
         static void Open()
         {
@@ -21,7 +20,12 @@ namespace Sandbox
             var e = Event.current;
             if (EditorApplication.isPlaying)
             {
-                EditorGUILayout.ToggleLeft("記録中", InputRecorder.Instance.IsRecord);
+                if (_inputRecorder == null)
+                {
+                    EditorGUILayout.LabelField("InputRecoder is Null");
+                    return;
+                }
+                EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
                 if (GUILayout.Button("記録開始"))
                 {
                     StartInputRecord();
@@ -49,7 +53,7 @@ namespace Sandbox
             if (!string.IsNullOrEmpty(path))
             {
                 // 保存処理
-                InputRecorder.Instance.SaveInputRecord(path);
+                _inputRecorder.SaveInputRecord(path);
             }
         }
 
@@ -60,18 +64,26 @@ namespace Sandbox
             if (!string.IsNullOrEmpty(path))
             {
                 Time.timeScale = 0;
-                InputRecorder.Instance.IsRecord = false;
-                InputRecorder.Instance.LoadInputRecord(path);
+                _inputRecorder.IsRecord = false;
+                _inputRecorder.LoadInputRecord(path);
                 window.FocusGameView();
-                inputManager.PlayRecord();
+                _inputManager.PlayRecord();
             }
             Time.timeScale = t;
         }
 
         private void StartInputRecord()
         {
-            InputRecorder.Instance.StartInputRecord();
+            _inputRecorder.StartInputRecord();
             window.FocusGameView();
         }
+
+        [Inject]
+        private InputManager _inputManager;
+
+        [Inject]
+        private InputRecorder _inputRecorder;
+
+        static InputRecorderEditor window;
     }
 }

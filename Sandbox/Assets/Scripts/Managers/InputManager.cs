@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace Sandbox
 {
@@ -108,7 +109,7 @@ namespace Sandbox
         IEnumerator EmurateInput()
         {
             int idx = 0;
-            _records = InputRecorder.Instance.GetValidRecords();
+            _records = inputRecorder.GetValidRecords();
             SceneManager.LoadScene("_scn_debug");
             while (true)
             {
@@ -154,7 +155,7 @@ namespace Sandbox
                 {
                     _isRecord = false;
                     Debug.Log("End of Emulate");
-                    InputRecorder.Instance.IsRecord = true;
+                    inputRecorder.IsRecord = true;
                     StopCoroutine(EmurateInput());
                     break;
                 }
@@ -168,7 +169,7 @@ namespace Sandbox
         public void PlayRecord()
         {
             if (_isRecord) return;
-            InputRecorder.Instance.IsRecord = false;
+            inputRecorder.IsRecord = false;
             _time = 0;
             _isRecord = true;
             StartCoroutine(EmurateInput());
@@ -302,6 +303,9 @@ namespace Sandbox
                     break;
             }
         }
+
+        [Inject]
+        private InputRecorder inputRecorder;
 
         [SerializeField]
         private static int _currentInputPriority;

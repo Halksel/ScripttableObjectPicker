@@ -14,7 +14,7 @@ namespace Sandbox
     /// 入力記録
     /// 同時入力への対応が終わってない
     /// </summary>
-    public class InputRecorder : SingletonMonoBehaviour<InputRecorder>
+    public class InputRecorder : MonoBehaviour
     {
         [Serializable]
         public class InputRecord
@@ -71,7 +71,7 @@ namespace Sandbox
             }
         }
 
-        public override bool Setup()
+        public bool Setup()
         {
             InputSystem.onEvent += InputSystem_onEvent;
             _saveDirectory = Application.dataPath + $"/InputRecords/test.json";

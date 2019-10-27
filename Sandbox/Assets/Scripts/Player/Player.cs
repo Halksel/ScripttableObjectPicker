@@ -7,23 +7,13 @@ namespace Sandbox
 {
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
-        [Inject]
-        private InputManager inputManager;
-
-        [Inject]
-        private HighlightEffect.Factory _highlightFactory;
-        private HighlightEffect _effect;
-
-        [SerializeField]
-        private Texture _texture;
-
         private void Awake()
         {
-            _basisInput = inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
-            _basisInput.Basis.SetCallbacks(this);
         }
         private void Start()
         {
+            _basisInput = inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
+            _basisInput.Basis.SetCallbacks(this);
         }
 
         private void Update()
@@ -31,13 +21,6 @@ namespace Sandbox
             var delta = _move;
             transform.position += new Vector3(delta.x, delta.y);
         }
-
-        private bool _isUI;
-        private BasisInput _basisInput;
-        private UIInput _uiInput;
-        public Vector2 _move;
-        public Vector2 _cursor;
-
 
         // basis interface
         public void OnMove(InputAction.CallbackContext context)
@@ -107,5 +90,22 @@ namespace Sandbox
                 Debug.Log(e);
             }
         }
+
+        [Inject]
+        private InputManager inputManager;
+
+        [Inject]
+        private HighlightEffect.Factory _highlightFactory;
+        private HighlightEffect _effect;
+
+        [SerializeField]
+        private Texture _texture;
+
+        private bool _isUI;
+        private BasisInput _basisInput;
+        private UIInput _uiInput;
+        public Vector2 _move;
+        public Vector2 _cursor;
+
     }
 }
