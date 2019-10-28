@@ -2,7 +2,9 @@
     "name": "SandBox",
     "references": [
         "Unity.InputSystem",
-        "Zenject"
+        "Zenject",
+        "Zenject-IntegrationTests",
+        "Zenject-ReflectionBaking-Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

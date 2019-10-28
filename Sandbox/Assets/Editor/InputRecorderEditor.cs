@@ -23,7 +23,7 @@ namespace Sandbox
                 if (_inputRecorder == null)
                 {
                     EditorGUILayout.LabelField("InputRecoder is Null");
-                    _inputRecorder = Transform.FindObjectOfType<InputRecorder>();
+                    _inputRecorder = new InputRecorder();
                     _inputManager = Transform.FindObjectOfType<InputManager>();
                 }
                 EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
@@ -75,7 +75,7 @@ namespace Sandbox
 
         private void StartInputRecord()
         {
-            _inputRecorder.StartInputRecord();
+            _inputRecorder.StartRecord();
             window.FocusGameView();
         }
 

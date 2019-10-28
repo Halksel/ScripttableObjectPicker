@@ -1,6 +1,25 @@
-﻿{
+{
     "name": "PlayMode",
-    "optionalUnityReferences": [
-        "TestAssemblies"
-    ]
+    "references": [
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner",
+        "SandBox",
+        "Zenject",
+        "Zenject-IntegrationTests",
+        "Zenject-IntegrationTests-Editor",
+        "Zenject-TestFramework"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "Zenject-usage.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": []
 }

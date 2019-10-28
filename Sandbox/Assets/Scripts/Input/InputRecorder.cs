@@ -14,7 +14,7 @@ namespace Sandbox
     /// 入力記録
     /// 同時入力への対応が終わってない
     /// </summary>
-    public class InputRecorder : MonoBehaviour
+    public class InputRecorder
     {
         [Serializable]
         public class InputRecord
@@ -127,7 +127,7 @@ namespace Sandbox
             });
         }
 
-        public void StartInputRecord()
+        public void StartRecord()
         {
             _records.records.Clear();
             IsRecord = true;
@@ -135,9 +135,7 @@ namespace Sandbox
 
         private InputRecords _records = new InputRecords();
 
-        [SerializeField]
         private bool _isRecord;
-        [SerializeField]
         private string _saveDirectory;
 
         public bool IsRecord { get => _isRecord; set => _isRecord = value; }
