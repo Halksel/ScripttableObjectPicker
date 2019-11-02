@@ -108,79 +108,6 @@ namespace Sandbox
             }
         }
 
-        IEnumerator EmurateInput()
-        {
-            int idx = 0;
-            _records = inputRecorder.GetValidRecords();
-            // 現在のScene名を取得する
-            Scene loadScene = SceneManager.GetActiveScene();
-            // Sceneの読み直し
-            SceneManager.LoadScene(loadScene.name);
-            while (true)
-            {
-                _time += Time.deltaTime;
-                while (idx < _records.Count() && _time > _records[idx].time)
-                {
-                    if (!_records[idx].valid)
-                    {
-                        ++idx;
-                        continue;
-                    }
-                    Debug.Log(_records[idx].time);
-                    var record = _records[idx];
-                    // 入力レコードによって値をセット
-                    var device = InputSystem.GetDeviceById(record.deviceId);
-                    using (StateEvent.From(device, out var eventPtr))
-                    {
-                        object value = null;
-                        try
-                        {
-                            value = record.value;
-                            if (value == null)
-                            {
-                                throw new ArgumentException("");
-                            }
-
-                            _time = record.time;
-                        }
-                        catch (Exception e)
-                        {
-                            Debug.Log($"{e}");
-                            ++idx;
-                            break;
-                        }
-                        device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
-                        InputSystem.QueueEvent(eventPtr);
-                    }
-                    ++idx;
-                }
-                InputSystem.Update();
-
-                if (idx >= _records.Count())
-                {
-                    _isRecord = false;
-                    Debug.Log("End of Emulate");
-                    inputRecorder.IsRecord = true;
-                    StopCoroutine(EmurateInput());
-                    break;
-                }
-                else
-                {
-                    yield return null;
-                }
-            }
-        }
-
-        public void PlayRecord()
-        {
-            if (_isRecord) return;
-            inputRecorder.IsRecord = false;
-            _time = 0;
-            _isRecord = true;
-            StartCoroutine(EmurateInput());
-        }
-
-
         public void OnTest1(InputAction.CallbackContext context)
         {
             switch (context.phase)
@@ -197,7 +124,6 @@ namespace Sandbox
                     break;
                 case InputActionPhase.Started:
                     {
-                        PlayRecord();
                     }
                     break;
                 case InputActionPhase.Performed:
@@ -309,15 +235,9 @@ namespace Sandbox
             }
         }
 
-        [Inject]
-        private InputRecorder inputRecorder;
-
         [SerializeField]
         private static int _currentInputPriority;
 
         private static List<InputProxy> _inputProxies = new List<InputProxy>();
-        private static bool _isRecord = false;
-        private static double _time;
-        private static List<Record> _records;
     }
 }

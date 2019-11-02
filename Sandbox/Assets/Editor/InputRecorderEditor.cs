@@ -26,17 +26,7 @@ namespace Sandbox
             var e = Event.current;
             if (EditorApplication.isPlaying)
             {
-                if (_inputRecorder == null || _inputManager == null)
-                {
-                    if(_inputRecorder == null)
-                        EditorGUILayout.LabelField("InputRecoder is Null");
-                    if(_inputManager == null)
-                        EditorGUILayout.LabelField("InputManager is Null");
-
-                    //_inputRecorder = new InputRecorder();
-                    _inputManager = Transform.FindObjectOfType<InputManager>();
-                }
-                else
+                if(!_isNoPaint)
                 {
                     EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
                     if (GUILayout.Button("記録開始"))
@@ -51,6 +41,21 @@ namespace Sandbox
                     {
                         LoadInputRecord();
                     }
+                }
+                if (_inputRecorder == null || _inputManager == null)
+                {
+                    if(_inputRecorder == null)
+                        EditorGUILayout.LabelField("InputRecoder is Null");
+                    if(_inputManager == null)
+                        EditorGUILayout.LabelField("InputManager is Null");
+
+                    //_inputRecorder = new InputRecorder();
+                    _inputManager = Transform.FindObjectOfType<InputManager>();
+                    _isNoPaint = true; 
+                }
+                else
+                {
+                    _isNoPaint = false;
                 }
             }
             else
@@ -79,9 +84,8 @@ namespace Sandbox
             {
                 Time.timeScale = 0;
                 _inputRecorder.IsRecord = false;
-                _inputRecorder.LoadInputRecord(path);
                 window.FocusGameView();
-                _inputManager.PlayRecord();
+                _inputManager.StartCoroutine(_inputRecorder.EmurateInput(path));
             }
             Time.timeScale = t;
         }
@@ -100,5 +104,6 @@ namespace Sandbox
 
         static InputRecorderEditor window;
 
+        private bool _isNoPaint;
     }
 }

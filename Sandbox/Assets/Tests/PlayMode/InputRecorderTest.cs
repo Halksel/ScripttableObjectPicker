@@ -1,6 +1,10 @@
 ﻿using NUnit.Framework;
 using Sandbox;
+using System.Collections;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.TestTools;
 using Zenject;
 
 namespace Tests
@@ -21,6 +25,7 @@ namespace Tests
         [SetUp]
         public void CommonInstall()
         {
+            SceneManager.LoadScene("_scn_debug");
             Container.Bind<InputRecorder>().AsSingle();
             Container.Inject(this);
         }
@@ -38,6 +43,24 @@ namespace Tests
             _inputRecorder.StartRecord();
             Assert.That(_inputRecorder.GetValidRecords().Count == 0, "ValidRecords must be count-zero");
             Assert.That(_inputRecorder.IsRecord, "When InputRecorder starts recording, IsRecord must be true");
+        }
+
+        [TestCaseSource("TestFiles")]
+        [UnityTest]
+        public IEnumerator RunInputRecordTest(string path)
+        {
+            yield return _inputRecorder.EmurateInput(path);
+            Debug.Log($"{path} is Success");
+        }
+
+        public static IEnumerable TestFiles
+        {
+            get
+            {
+                foreach(var path in Directory.GetFiles("Assets/InputRecords/Tests/","*.json")){
+                    yield return new TestCaseData(path).Returns(null);
+                }
+            }
         }
     }
 }
