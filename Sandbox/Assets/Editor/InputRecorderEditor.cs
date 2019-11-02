@@ -7,37 +7,50 @@ namespace Sandbox
     /// <summary>
     /// InputRecorderを使いやすくするための拡張
     /// </summary>
-    public class InputRecorderEditor : EditorWindow
+    public class InputRecorderEditor : ZenjectEditorWindow
     {
+        public override void InstallBindings()
+        {
+                Container.Bind<InputRecorder>().AsSingle();
+                _inputRecorder = Container.Resolve<InputRecorder>();
+        }
+
         [MenuItem("Custom/InputRecoder")]
         static void Open()
         {
             window = GetWindow<InputRecorderEditor>("InputRecoder");
         }
 
-        private void OnGUI()
+        public override void OnGUI()
         {
             var e = Event.current;
             if (EditorApplication.isPlaying)
             {
-                if (_inputRecorder == null)
+                if (_inputRecorder == null || _inputManager == null)
                 {
-                    EditorGUILayout.LabelField("InputRecoder is Null");
-                    _inputRecorder = new InputRecorder();
+                    if(_inputRecorder == null)
+                        EditorGUILayout.LabelField("InputRecoder is Null");
+                    if(_inputManager == null)
+                        EditorGUILayout.LabelField("InputManager is Null");
+
+                    //_inputRecorder = new InputRecorder();
                     _inputManager = Transform.FindObjectOfType<InputManager>();
                 }
-                EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
-                if (GUILayout.Button("記録開始"))
+                else
                 {
-                    StartInputRecord();
-                }
-                if (GUILayout.Button("保存"))
-                {
-                    SaveInputRecord();
-                }
-                if (GUILayout.Button("読込 & 再生"))
-                {
-                    LoadInputRecord();
+                    EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
+                    if (GUILayout.Button("記録開始"))
+                    {
+                        StartInputRecord();
+                    }
+                    if (GUILayout.Button("保存"))
+                    {
+                        SaveInputRecord();
+                    }
+                    if (GUILayout.Button("読込 & 再生"))
+                    {
+                        LoadInputRecord();
+                    }
                 }
             }
             else
@@ -79,7 +92,7 @@ namespace Sandbox
             window.FocusGameView();
         }
 
-        [Inject]
+
         private InputManager _inputManager;
 
         [Inject]

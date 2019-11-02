@@ -10,6 +10,14 @@ namespace Tests
         [Inject]
         private InputRecorder _inputRecorder;
 
+        [OneTimeSetUp]
+        public void OneTimeSetUp()
+        {
+            // テスト時間短縮のために高速化する
+            Application.targetFrameRate = 60;
+            Time.timeScale = 2.0f;
+        }
+
         [SetUp]
         public void CommonInstall()
         {

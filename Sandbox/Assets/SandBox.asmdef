@@ -4,7 +4,8 @@
         "Unity.InputSystem",
         "Zenject",
         "Zenject-IntegrationTests",
-        "Zenject-ReflectionBaking-Editor"
+        "Zenject-ReflectionBaking-Editor",
+        "Zenject-Editor"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
