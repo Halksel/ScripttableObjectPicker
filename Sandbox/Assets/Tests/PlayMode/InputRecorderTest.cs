@@ -41,7 +41,7 @@ namespace Tests
         public void StartRecord()
         {
             _inputRecorder.StartRecord();
-            Assert.That(_inputRecorder.GetValidRecords().Count == 0, "ValidRecords must be count-zero");
+            Assert.That(_inputRecorder.GetRecords().Count == 0, "ValidRecords must be count-zero");
             Assert.That(_inputRecorder.IsRecord, "When InputRecorder starts recording, IsRecord must be true");
         }
 

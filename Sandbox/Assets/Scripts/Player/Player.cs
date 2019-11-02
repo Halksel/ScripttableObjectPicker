@@ -19,6 +19,11 @@ namespace Sandbox
             transform.position += new Vector3(delta.x, delta.y);
         }
 
+        private void OnApplicationQuit()
+        {
+            Debug.Log(transform.position);
+        }
+
         // basis interface
         public void OnMove(InputAction.CallbackContext context)
         {

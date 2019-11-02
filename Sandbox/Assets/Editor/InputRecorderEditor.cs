@@ -11,8 +11,8 @@ namespace Sandbox
     {
         public override void InstallBindings()
         {
-                Container.Bind<InputRecorder>().AsSingle();
-                _inputRecorder = Container.Resolve<InputRecorder>();
+            Container.Bind<InputRecorder>().AsSingle();
+            _inputRecorder = Container.Resolve<InputRecorder>();
         }
 
         [MenuItem("Custom/InputRecoder")]
@@ -26,7 +26,7 @@ namespace Sandbox
             var e = Event.current;
             if (EditorApplication.isPlaying)
             {
-                if(!_isNoPaint)
+                if (!_isNoPaint)
                 {
                     EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
                     if (GUILayout.Button("記録開始"))
@@ -44,14 +44,14 @@ namespace Sandbox
                 }
                 if (_inputRecorder == null || _inputManager == null)
                 {
-                    if(_inputRecorder == null)
+                    if (_inputRecorder == null)
                         EditorGUILayout.LabelField("InputRecoder is Null");
-                    if(_inputManager == null)
+                    if (_inputManager == null)
                         EditorGUILayout.LabelField("InputManager is Null");
 
                     //_inputRecorder = new InputRecorder();
                     _inputManager = Transform.FindObjectOfType<InputManager>();
-                    _isNoPaint = true; 
+                    _isNoPaint = true;
                 }
                 else
                 {

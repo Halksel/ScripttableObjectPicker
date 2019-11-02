@@ -22,35 +22,28 @@ namespace Sandbox
         [Serializable]
         public class InputRecord
         {
-            public InputRecord(InputEventPtr ptr, InputDevice device)
+            public InputRecord(InputEventPtr ptr, InputControl ctl)
             {
                 id = ptr.id;
-                time = _time;
+                time = ptr.time;
+                Debug.Log(time);
                 deviceId = ptr.deviceId;
                 valid = ptr.valid;
-                if (device.allControls[0].IsActuated())
+                name = ctl.name;
+                if (ptr.type.ToString() == "STAT")
                 {
-                    index = device.allControls.Skip(1).TakeWhile(ctl => !ctl.IsActuated()).Count() + 1;
-                    if (ptr.type.ToString() == "STAT")
-                    {
-                        value = 0f;
-                    }
-                    else
-                    {
-                        value = device.allControls[index].ReadValueAsObject();
-                    }
-                    data = BitConverter.GetBytes((float)value);
-                    Debug.Log(time);
+                    value = 0f;
                 }
                 else
                 {
-                    valid = false;
+                    value = ctl.ReadValueAsObject();
                 }
+                data = BitConverter.GetBytes((float)value);
             }
             public int id;
             public int deviceId;
             public double time;
-            public int index;
+            public string name;
             public bool valid;
             public object value;
             public byte[] data;
@@ -67,10 +60,6 @@ namespace Sandbox
             public void Sort()
             {
                 records = records.OrderBy(a => a.time).ToList();
-            }
-            public void Validation()
-            {
-                records = records.Where(r => r.valid).ToList();
             }
         }
 
@@ -89,26 +78,24 @@ namespace Sandbox
         private void InputSystem_onEvent(InputEventPtr ptr, InputDevice device)
         {
             if (!IsRecord) return;
-            if (ptr.deviceId != 1) return;
-            var record = new InputRecord(ptr, device);
-            _records.records.Add(record);
-            Debug.Log(record);
+            if (ptr.deviceId != 1 || !ptr.valid) return;
+            foreach(var ctl in device.allControls.Skip(1))
+            {
+                if (ctl.IsActuated())
+                {
+                    var record = new InputRecord(ptr, ctl);
+                    _records.records.Add(record);
+                }
+            }
         }
 
-        public void Update()
+        public List<InputRecord> GetRecords()
         {
-
-        }
-
-        public List<InputRecord> GetValidRecords()
-        {
-            _records.Validation();
             return _records.records;
         }
 
         public void SaveInputRecord(string path = "")
         {
-            _records.Validation();
             _records.Sort();
             if (path == "") path = _saveDirectory;
             var json = JsonUtility.ToJson(_records, true);
@@ -156,7 +143,7 @@ namespace Sandbox
             IsRecord = false;
             _isPlayRecord = true;
             int idx = 0;
-            var records = GetValidRecords();
+            var records = GetRecords();
             // 現在のScene名を取得する
             Scene loadScene = SceneManager.GetActiveScene();
             // Sceneの読み直し
@@ -195,7 +182,7 @@ namespace Sandbox
                             ++idx;
                             break;
                         }
-                        device.allControls[record.index].WriteValueFromObjectIntoEvent(eventPtr, value);
+                        device.GetChildControl(record.name).WriteValueFromObjectIntoEvent(eventPtr, value);
                         InputSystem.QueueEvent(eventPtr);
                     }
                     ++idx;
@@ -215,6 +202,7 @@ namespace Sandbox
             }
         }
 
+        // Update
         public void Tick()
         {
             _time += Time.deltaTime;
