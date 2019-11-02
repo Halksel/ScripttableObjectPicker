@@ -148,57 +148,55 @@ namespace Sandbox
             Scene loadScene = SceneManager.GetActiveScene();
             // Sceneの読み直し
             SceneManager.LoadScene(loadScene.name);
-            double time = 0;
+            _time = 0;
             while (true)
             {
-                time += Time.deltaTime;
-                while (idx < records.Count() && time > records[idx].time)
+                while (_time >= records[idx].time)
                 {
-                    if (!records[idx].valid)
-                    {
-                        ++idx;
-                        continue;
-                    }
                     Debug.Log(records[idx].time);
-                    var record = records[idx];
+                    _time = records[idx].time;
+                    var id = records[idx].deviceId;
                     // 入力レコードによって値をセット
-                    var device = InputSystem.GetDeviceById(record.deviceId);
+                    var device = InputSystem.GetDeviceById(id);
                     using (StateEvent.From(device, out var eventPtr))
                     {
-                        object value = null;
-                        try
+                        while (idx < records.Count() && records[idx].time == _time && records[idx].deviceId == id)
                         {
-                            value = record.value;
-                            if (value == null)
+                            var record = records[idx];
+                            object value = null;
+                            try
                             {
-                                throw new ArgumentException("");
+                                value = record.value;
+                                if (value == null)
+                                {
+                                    throw new ArgumentException("");
+                                }
+                                ++idx;
                             }
-
-                            time = record.time;
+                            catch (Exception e)
+                            {
+                                Debug.Log($"{e}");
+                                ++idx;
+                                break;
+                            }
+                            device.GetChildControl(record.name).WriteValueFromObjectIntoEvent(eventPtr, value);
+                            InputSystem.QueueEvent(eventPtr);
                         }
-                        catch (Exception e)
-                        {
-                            Debug.Log($"{e}");
-                            ++idx;
-                            break;
-                        }
-                        device.GetChildControl(record.name).WriteValueFromObjectIntoEvent(eventPtr, value);
-                        InputSystem.QueueEvent(eventPtr);
                     }
-                    ++idx;
-                }
-                InputSystem.Update();
+                    InputSystem.Update();
 
-                if (idx >= records.Count())
-                {
-                    Debug.Log("End of Emulate");
-                    _isPlayRecord = false;
-                    yield break;
+                    if (idx >= records.Count())
+                    {
+                        Debug.Log("End of Emulate");
+                        _isPlayRecord = false;
+                        yield break;
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
-                else
-                {
-                    yield return null;
-                }
+                        yield return null;
             }
         }
 

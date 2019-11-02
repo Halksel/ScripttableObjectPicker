@@ -15,7 +15,7 @@ namespace Sandbox
 
         private void Update()
         {
-            var delta = _move;
+            var delta = _move * Time.deltaTime * 2.0f;
             transform.position += new Vector3(delta.x, delta.y);
         }
 
