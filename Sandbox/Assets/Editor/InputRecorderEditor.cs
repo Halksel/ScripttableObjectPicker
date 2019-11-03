@@ -96,7 +96,6 @@ namespace Sandbox
             window.FocusGameView();
         }
 
-
         private InputManager _inputManager;
 
         [Inject]

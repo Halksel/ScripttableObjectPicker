@@ -1,9 +1,9 @@
 ﻿{
     "records": [
         {
-            "id": 317322,
+            "id": 36868,
             "deviceId": 1,
-            "time": 58,
+            "time": 7.181629600117503,
             "name": "d",
             "valid": true,
             "data": [
@@ -14,9 +14,48 @@
             ]
         },
         {
-            "id": 317323,
+            "id": 36869,
             "deviceId": 1,
-            "time": 66,
+            "time": 7.681629600117503,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36870,
+            "deviceId": 1,
+            "time": 7.713629600007607,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36871,
+            "deviceId": 1,
+            "time": 7.744629599966629,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36872,
+            "deviceId": 1,
+            "time": 7.744629599966629,
             "name": "d",
             "valid": true,
             "data": [
@@ -27,9 +66,9 @@
             ]
         },
         {
-            "id": 317325,
+            "id": 36874,
             "deviceId": 1,
-            "time": 67,
+            "time": 7.759629600097014,
             "name": "w",
             "valid": true,
             "data": [
@@ -40,9 +79,9 @@
             ]
         },
         {
-            "id": 317326,
+            "id": 36901,
             "deviceId": 1,
-            "time": 76,
+            "time": 8.181629600117504,
             "name": "w",
             "valid": true,
             "data": [
@@ -53,9 +92,9 @@
             ]
         },
         {
-            "id": 317328,
+            "id": 36902,
             "deviceId": 1,
-            "time": 79,
+            "time": 8.181629600117504,
             "name": "a",
             "valid": true,
             "data": [
@@ -66,9 +105,22 @@
             ]
         },
         {
-            "id": 317329,
+            "id": 36902,
             "deviceId": 1,
-            "time": 91,
+            "time": 8.181629600117504,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36905,
+            "deviceId": 1,
+            "time": 8.19762959994614,
             "name": "a",
             "valid": true,
             "data": [
@@ -79,126 +131,9 @@
             ]
         },
         {
-            "id": 317331,
+            "id": 36905,
             "deviceId": 1,
-            "time": 98,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317332,
-            "deviceId": 1,
-            "time": 105,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317334,
-            "deviceId": 1,
-            "time": 125,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317335,
-            "deviceId": 1,
-            "time": 132,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317337,
-            "deviceId": 1,
-            "time": 136,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317338,
-            "deviceId": 1,
-            "time": 143,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317340,
-            "deviceId": 1,
-            "time": 146,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317341,
-            "deviceId": 1,
-            "time": 152,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317343,
-            "deviceId": 1,
-            "time": 161,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317344,
-            "deviceId": 1,
-            "time": 173,
+            "time": 8.19762959994614,
             "name": "w",
             "valid": true,
             "data": [
@@ -209,61 +144,9 @@
             ]
         },
         {
-            "id": 317346,
+            "id": 36922,
             "deviceId": 1,
-            "time": 178,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317347,
-            "deviceId": 1,
-            "time": 185,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317349,
-            "deviceId": 1,
-            "time": 191,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317350,
-            "deviceId": 1,
-            "time": 200,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317352,
-            "deviceId": 1,
-            "time": 201,
+            "time": 8.69762959994614,
             "name": "a",
             "valid": true,
             "data": [
@@ -274,9 +157,256 @@
             ]
         },
         {
-            "id": 317353,
+            "id": 36923,
             "deviceId": 1,
-            "time": 212,
+            "time": 8.744629599966629,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36924,
+            "deviceId": 1,
+            "time": 8.77562959992565,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36925,
+            "deviceId": 1,
+            "time": 8.806629600117504,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36926,
+            "deviceId": 1,
+            "time": 8.838629600007608,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36927,
+            "deviceId": 1,
+            "time": 8.869629599966629,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36928,
+            "deviceId": 1,
+            "time": 8.90062959992565,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36929,
+            "deviceId": 1,
+            "time": 8.94762959994614,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36930,
+            "deviceId": 1,
+            "time": 8.978629599905162,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36931,
+            "deviceId": 1,
+            "time": 9.009629600097015,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36933,
+            "deviceId": 1,
+            "time": 9.041629599987119,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36936,
+            "deviceId": 1,
+            "time": 9.07262959994614,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36939,
+            "deviceId": 1,
+            "time": 9.119629599966629,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36941,
+            "deviceId": 1,
+            "time": 9.15062959992565,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36944,
+            "deviceId": 1,
+            "time": 9.166629599987119,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36946,
+            "deviceId": 1,
+            "time": 9.19762959994614,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36947,
+            "deviceId": 1,
+            "time": 9.228629599905162,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36950,
+            "deviceId": 1,
+            "time": 9.259629600097015,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36951,
+            "deviceId": 1,
+            "time": 9.291629599987119,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36952,
+            "deviceId": 1,
+            "time": 9.338629600007608,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36953,
+            "deviceId": 1,
+            "time": 9.353629599905162,
             "name": "a",
             "valid": true,
             "data": [
@@ -287,10 +417,10 @@
             ]
         },
         {
-            "id": 317355,
+            "id": 36954,
             "deviceId": 1,
-            "time": 214,
-            "name": "w",
+            "time": 9.353629599905162,
+            "name": "a",
             "valid": true,
             "data": [
                 0,
@@ -300,87 +430,9 @@
             ]
         },
         {
-            "id": 317356,
+            "id": 36954,
             "deviceId": 1,
-            "time": 224,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317357,
-            "deviceId": 1,
-            "time": 224,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317357,
-            "deviceId": 1,
-            "time": 224,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317358,
-            "deviceId": 1,
-            "time": 225,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317358,
-            "deviceId": 1,
-            "time": 225,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317359,
-            "deviceId": 1,
-            "time": 239,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317361,
-            "deviceId": 1,
-            "time": 240,
+            "time": 9.353629599905162,
             "name": "s",
             "valid": true,
             "data": [
@@ -391,9 +443,22 @@
             ]
         },
         {
-            "id": 317362,
+            "id": 36956,
             "deviceId": 1,
-            "time": 252,
+            "time": 9.369629599966629,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 36956,
+            "deviceId": 1,
+            "time": 9.369629599966629,
             "name": "s",
             "valid": true,
             "data": [
@@ -404,204 +469,9 @@
             ]
         },
         {
-            "id": 317364,
+            "id": 36958,
             "deviceId": 1,
-            "time": 254,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317365,
-            "deviceId": 1,
-            "time": 266,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317367,
-            "deviceId": 1,
-            "time": 278,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317368,
-            "deviceId": 1,
-            "time": 286,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317370,
-            "deviceId": 1,
-            "time": 291,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317371,
-            "deviceId": 1,
-            "time": 295,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317373,
-            "deviceId": 1,
-            "time": 304,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317374,
-            "deviceId": 1,
-            "time": 314,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317375,
-            "deviceId": 1,
-            "time": 314,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317375,
-            "deviceId": 1,
-            "time": 314,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317376,
-            "deviceId": 1,
-            "time": 315,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317376,
-            "deviceId": 1,
-            "time": 315,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317377,
-            "deviceId": 1,
-            "time": 323,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317379,
-            "deviceId": 1,
-            "time": 328,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317380,
-            "deviceId": 1,
-            "time": 341,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317382,
-            "deviceId": 1,
-            "time": 342,
+            "time": 9.884629600097015,
             "name": "s",
             "valid": true,
             "data": [
@@ -612,35 +482,9 @@
             ]
         },
         {
-            "id": 317383,
+            "id": 36959,
             "deviceId": 1,
-            "time": 350,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317384,
-            "deviceId": 1,
-            "time": 350,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317384,
-            "deviceId": 1,
-            "time": 350,
+            "time": 9.916629599987119,
             "name": "s",
             "valid": true,
             "data": [
@@ -651,191 +495,9 @@
             ]
         },
         {
-            "id": 317385,
+            "id": 36960,
             "deviceId": 1,
-            "time": 353,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317385,
-            "deviceId": 1,
-            "time": 353,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317386,
-            "deviceId": 1,
-            "time": 358,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317387,
-            "deviceId": 1,
-            "time": 358,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317387,
-            "deviceId": 1,
-            "time": 358,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317388,
-            "deviceId": 1,
-            "time": 360,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317388,
-            "deviceId": 1,
-            "time": 360,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317389,
-            "deviceId": 1,
-            "time": 366,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317390,
-            "deviceId": 1,
-            "time": 366,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317390,
-            "deviceId": 1,
-            "time": 366,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317391,
-            "deviceId": 1,
-            "time": 380,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317391,
-            "deviceId": 1,
-            "time": 380,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317392,
-            "deviceId": 1,
-            "time": 387,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317393,
-            "deviceId": 1,
-            "time": 387,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317393,
-            "deviceId": 1,
-            "time": 387,
+            "time": 9.931629600117504,
             "name": "s",
             "valid": true,
             "data": [
@@ -846,61 +508,9 @@
             ]
         },
         {
-            "id": 317394,
+            "id": 36961,
             "deviceId": 1,
-            "time": 393,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317394,
-            "deviceId": 1,
-            "time": 393,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317395,
-            "deviceId": 1,
-            "time": 394,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317396,
-            "deviceId": 1,
-            "time": 394,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317396,
-            "deviceId": 1,
-            "time": 394,
+            "time": 9.978629599905162,
             "name": "s",
             "valid": true,
             "data": [
@@ -911,9 +521,87 @@
             ]
         },
         {
-            "id": 317397,
+            "id": 36962,
             "deviceId": 1,
-            "time": 401,
+            "time": 10.009629600097015,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36963,
+            "deviceId": 1,
+            "time": 10.041629599987119,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36964,
+            "deviceId": 1,
+            "time": 10.07262959994614,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36965,
+            "deviceId": 1,
+            "time": 10.103629599905162,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36966,
+            "deviceId": 1,
+            "time": 10.134629600097015,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36968,
+            "deviceId": 1,
+            "time": 10.166629599987119,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 36970,
+            "deviceId": 1,
+            "time": 10.166629599987119,
             "name": "d",
             "valid": true,
             "data": [
@@ -924,9 +612,9 @@
             ]
         },
         {
-            "id": 317397,
+            "id": 36970,
             "deviceId": 1,
-            "time": 401,
+            "time": 10.166629599987119,
             "name": "s",
             "valid": true,
             "data": [
@@ -937,22 +625,9 @@
             ]
         },
         {
-            "id": 317398,
+            "id": 36969,
             "deviceId": 1,
-            "time": 411,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317399,
-            "deviceId": 1,
-            "time": 411,
+            "time": 10.181629600117504,
             "name": "d",
             "valid": true,
             "data": [
@@ -963,9 +638,9 @@
             ]
         },
         {
-            "id": 317399,
+            "id": 36969,
             "deviceId": 1,
-            "time": 411,
+            "time": 10.181629600117504,
             "name": "s",
             "valid": true,
             "data": [
@@ -976,178 +651,9 @@
             ]
         },
         {
-            "id": 317400,
+            "id": 36971,
             "deviceId": 1,
-            "time": 415,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317400,
-            "deviceId": 1,
-            "time": 415,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317401,
-            "deviceId": 1,
-            "time": 424,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317402,
-            "deviceId": 1,
-            "time": 424,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317402,
-            "deviceId": 1,
-            "time": 424,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317403,
-            "deviceId": 1,
-            "time": 428,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317403,
-            "deviceId": 1,
-            "time": 428,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317404,
-            "deviceId": 1,
-            "time": 446,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317405,
-            "deviceId": 1,
-            "time": 446,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317405,
-            "deviceId": 1,
-            "time": 446,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 317406,
-            "deviceId": 1,
-            "time": 450,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317406,
-            "deviceId": 1,
-            "time": 450,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317407,
-            "deviceId": 1,
-            "time": 462,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 317408,
-            "deviceId": 1,
-            "time": 462,
+            "time": 10.666629599987119,
             "name": "d",
             "valid": true,
             "data": [
@@ -1158,10 +664,10 @@
             ]
         },
         {
-            "id": 317408,
+            "id": 36972,
             "deviceId": 1,
-            "time": 462,
-            "name": "w",
+            "time": 10.69762959994614,
+            "name": "d",
             "valid": true,
             "data": [
                 0,
@@ -1171,35 +677,334 @@
             ]
         },
         {
-            "id": 317409,
+            "id": 36973,
             "deviceId": 1,
-            "time": 462,
+            "time": 10.744629599966629,
             "name": "d",
             "valid": true,
             "data": [
                 0,
                 0,
-                0,
-                0
+                128,
+                63
             ]
         },
         {
-            "id": 317409,
+            "id": 36974,
             "deviceId": 1,
-            "time": 462,
-            "name": "w",
+            "time": 10.77562959992565,
+            "name": "d",
             "valid": true,
             "data": [
                 0,
                 0,
-                0,
-                0
+                128,
+                63
             ]
         },
         {
-            "id": 317410,
+            "id": 36975,
             "deviceId": 1,
-            "time": 474,
+            "time": 10.806629600117504,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36976,
+            "deviceId": 1,
+            "time": 10.838629600007608,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36977,
+            "deviceId": 1,
+            "time": 10.869629599966629,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36978,
+            "deviceId": 1,
+            "time": 10.916629599987119,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36979,
+            "deviceId": 1,
+            "time": 10.94762959994614,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36980,
+            "deviceId": 1,
+            "time": 10.978629599905162,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36981,
+            "deviceId": 1,
+            "time": 10.994629599966629,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36983,
+            "deviceId": 1,
+            "time": 11.041629599987119,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 36992,
+            "deviceId": 1,
+            "time": 11.056629600117504,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37002,
+            "deviceId": 1,
+            "time": 11.103629599905162,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37011,
+            "deviceId": 1,
+            "time": 11.134629600097015,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37025,
+            "deviceId": 1,
+            "time": 11.166629599987119,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37041,
+            "deviceId": 1,
+            "time": 11.19762959994614,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37059,
+            "deviceId": 1,
+            "time": 11.228629599905162,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37073,
+            "deviceId": 1,
+            "time": 11.259629600097015,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37085,
+            "deviceId": 1,
+            "time": 11.306629600117504,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37097,
+            "deviceId": 1,
+            "time": 11.338629600007608,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37111,
+            "deviceId": 1,
+            "time": 11.369629599966629,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37124,
+            "deviceId": 1,
+            "time": 11.40062959992565,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37137,
+            "deviceId": 1,
+            "time": 11.431629600117504,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37150,
+            "deviceId": 1,
+            "time": 11.478629599905162,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37163,
+            "deviceId": 1,
+            "time": 11.509629600097015,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37171,
+            "deviceId": 1,
+            "time": 11.541629599987119,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 37175,
+            "deviceId": 1,
+            "time": 11.556629600117504,
             "name": "d",
             "valid": true,
             "data": [

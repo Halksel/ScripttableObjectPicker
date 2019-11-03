@@ -1,0 +1,56 @@
+﻿{
+    "records": [
+        {
+            "id": 326489,
+            "deviceId": 1,
+            "time": 110,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 326490,
+            "deviceId": 1,
+            "time": 118,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 326492,
+            "deviceId": 1,
+            "time": 122,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 326513,
+            "deviceId": 1,
+            "time": 130,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ]
+}
