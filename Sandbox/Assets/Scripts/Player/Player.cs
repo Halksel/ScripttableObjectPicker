@@ -7,6 +7,8 @@ namespace Sandbox
 {
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
+        [InputRecorderLastValue("PlayerPosition")]
+        public Vector3 _pos;
         void Start()
         {
             _basisInput = _inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
@@ -15,8 +17,9 @@ namespace Sandbox
 
         private void Update()
         {
-            var delta = _move * Time.deltaTime * 2.0f;
+            var delta = _move;
             transform.position += new Vector3(delta.x, delta.y);
+            _pos = transform.position;
         }
 
         private void OnApplicationQuit()
