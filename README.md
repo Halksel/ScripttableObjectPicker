@@ -11,3 +11,5 @@ Custom/InputRecorder  からウィンドウを立ち上げる
 同時入力にも対応できたっぽいが、記録時の最終状態と再生時の最終状態が一致しない
 
 再生時の状態は変わらない
+
+InputRecorderLastValueAttributeを設定した変数を入力保存時に保存する
