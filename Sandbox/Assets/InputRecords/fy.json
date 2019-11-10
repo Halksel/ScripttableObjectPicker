@@ -1,3 +1,179 @@
 ﻿{
-    "records": []
+    "records": [
+        {
+            "id": 90081,
+            "deviceId": 1,
+            "time": 211,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 90105,
+            "deviceId": 1,
+            "time": 222,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 90108,
+            "deviceId": 1,
+            "time": 222,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 90112,
+            "deviceId": 1,
+            "time": 223,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 90113,
+            "deviceId": 1,
+            "time": 223,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 90113,
+            "deviceId": 1,
+            "time": 223,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 90119,
+            "deviceId": 1,
+            "time": 226,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 90119,
+            "deviceId": 1,
+            "time": 226,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 90135,
+            "deviceId": 1,
+            "time": 236,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 90141,
+            "deviceId": 1,
+            "time": 239,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 90150,
+            "deviceId": 1,
+            "time": 250,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 90157,
+            "deviceId": 1,
+            "time": 254,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 90239,
+            "deviceId": 1,
+            "time": 265,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "_pos",
+            "hashCode": 1122924447
+        }
+    ]
 }

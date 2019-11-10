@@ -11,10 +11,10 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using Zenject;
+using static Sandbox.InputRecorder;
 
 namespace Sandbox
 {
-    using Pairs = List<KeyValuePair<string, int>>;
     /// <summary>
     /// 入力記録
     /// 同時入力への対応が終わってない
@@ -55,6 +55,18 @@ namespace Sandbox
             public byte[] data;
         }
 
+        [Serializable]
+        public class LastValue
+        {
+            public LastValue(string name, int hashCode)
+            {
+                this.name = name;
+                this.hashCode = hashCode;
+            }
+            public string name;
+            public int hashCode;
+        }
+
         /// <summary>
         /// List<T> をJsonUtilityはシリアライズできないのでラッパークラス
         /// 端的にゴミ
@@ -63,7 +75,7 @@ namespace Sandbox
         public class InputRecords 
         {
             public List<InputRecord> records = new List<InputRecord>();
-            public Pairs lastValues = new Pairs();
+            public List<LastValue> lastValues = new List<LastValue>();
 
             public void Sort()
             {
@@ -74,11 +86,21 @@ namespace Sandbox
             {
                 return records;
             }
-            public bool CheckValues(Dictionary<string, int> values)
+            public bool CheckValues(List<LastValue> values)
             {
-                return lastValues.All(kvp => values[kvp.Key] == kvp.Value);
+                bool flag = true;
+                if (values.Count != lastValues.Count) return false;
+                for(int i = 0; i < values.Count; ++i)
+                {
+                    flag &= values[i] == lastValues[i];
+                    if (!flag)
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
-            public void SaveValues(Dictionary<string, int> values)
+            public void SaveValues(List<LastValue> values)
             {
                 lastValues.AddRange(values);
             }
@@ -160,7 +182,6 @@ namespace Sandbox
         public void StartRecord()
         {
             _records.Reset();
-            InputRecorderLastValueAttribute.GetLastValuesReflection(player);
             IsRecord = true;
             _startFrame = 0;
         }
@@ -287,9 +308,9 @@ namespace Sandbox
         public InputRecorderLastValueAttribute(string name) { _name = name; }
         public string Name { get { return _name; } }
 
-        public static Dictionary<string, int> GetLastValuesReflection<T>(T obj)
+        public static List<LastValue> GetLastValuesReflection<T>(T obj)
         {
-            var result = new Dictionary<string, int>();
+            var result = new List<LastValue>();
             foreach (FieldInfo fieldInfo in typeof(T).GetFields())
             {
                 var attributes = Attribute.GetCustomAttributes(
@@ -301,7 +322,8 @@ namespace Sandbox
                     if (attribute != null)
                     {
                         Debug.Log(fieldInfo.GetValue(obj));
-                        result[attribute.Name] = fieldInfo.GetValue(obj as object).GetHashCode();
+                        var value = new LastValue(fieldInfo.Name, fieldInfo.GetValue(obj as object).GetHashCode());
+                        result.Add(value);
                     }
                 }
             }
