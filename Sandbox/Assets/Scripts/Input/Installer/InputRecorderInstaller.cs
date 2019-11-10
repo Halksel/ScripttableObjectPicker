@@ -7,7 +7,7 @@ namespace Sandbox
     {
         public override void InstallBindings()
         {
-            Container.Bind<ITickable>().To<InputRecorder>().AsSingle();
+            Container.Bind<InputRecorder>().AsSingle();
         }
     }
 }

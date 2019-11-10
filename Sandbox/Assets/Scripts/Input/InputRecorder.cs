@@ -19,7 +19,7 @@ namespace Sandbox
     /// 入力記録
     /// 同時入力への対応が終わってない
     /// </summary>
-    public class InputRecorder : IDisposable, ITickable
+    public class InputRecorder : IDisposable
     {
         [Serializable]
         public class InputRecord
@@ -58,13 +58,13 @@ namespace Sandbox
         [Serializable]
         public class LastValue
         {
-            public LastValue(string name, int hashCode)
+            public LastValue(string name, string value)
             {
                 this.name = name;
-                this.hashCode = hashCode;
+                this.value = value;
             }
             public string name;
-            public int hashCode;
+            public string value;
         }
 
         /// <summary>
@@ -255,10 +255,6 @@ namespace Sandbox
             }
         }
 
-        // Update
-        public void Tick()
-        {
-        }
         public void GenerateInputRecord(IEnumerable<string> randomValues, int deviceId, int recordLength ,int startTime ,int timeInterval)
         {
             var names = randomValues.ToList<string>();
@@ -322,7 +318,7 @@ namespace Sandbox
                     if (attribute != null)
                     {
                         Debug.Log(fieldInfo.GetValue(obj));
-                        var value = new LastValue(fieldInfo.Name, fieldInfo.GetValue(obj as object).GetHashCode());
+                        var value = new LastValue(attribute.Name, fieldInfo.GetValue(obj as object).ToString());
                         result.Add(value);
                     }
                 }

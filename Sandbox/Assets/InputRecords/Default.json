@@ -1,10 +1,10 @@
 ﻿{
     "records": [
         {
-            "id": 54971,
+            "id": 190640,
             "deviceId": 1,
-            "time": 261,
-            "name": "a",
+            "time": 70,
+            "name": "d",
             "valid": true,
             "data": [
                 0,
@@ -14,10 +14,10 @@
             ]
         },
         {
-            "id": 54972,
+            "id": 190641,
             "deviceId": 1,
-            "time": 278,
-            "name": "a",
+            "time": 78,
+            "name": "d",
             "valid": true,
             "data": [
                 0,
@@ -27,9 +27,22 @@
             ]
         },
         {
-            "id": 54975,
+            "id": 190642,
             "deviceId": 1,
-            "time": 285,
+            "time": 78,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190642,
+            "deviceId": 1,
+            "time": 78,
             "name": "w",
             "valid": true,
             "data": [
@@ -40,9 +53,22 @@
             ]
         },
         {
-            "id": 54985,
+            "id": 190643,
             "deviceId": 1,
-            "time": 301,
+            "time": 79,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190643,
+            "deviceId": 1,
+            "time": 79,
             "name": "w",
             "valid": true,
             "data": [
@@ -53,100 +79,9 @@
             ]
         },
         {
-            "id": 54987,
+            "id": 190644,
             "deviceId": 1,
-            "time": 307,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 54993,
-            "deviceId": 1,
-            "time": 324,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 54998,
-            "deviceId": 1,
-            "time": 328,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 55017,
-            "deviceId": 1,
-            "time": 348,
-            "name": "s",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 55019,
-            "deviceId": 1,
-            "time": 350,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 55025,
-            "deviceId": 1,
-            "time": 365,
-            "name": "d",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 55027,
-            "deviceId": 1,
-            "time": 372,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 55032,
-            "deviceId": 1,
-            "time": 384,
+            "time": 84,
             "name": "w",
             "valid": true,
             "data": [
@@ -157,9 +92,9 @@
             ]
         },
         {
-            "id": 55034,
+            "id": 190645,
             "deviceId": 1,
-            "time": 388,
+            "time": 84,
             "name": "a",
             "valid": true,
             "data": [
@@ -170,9 +105,22 @@
             ]
         },
         {
-            "id": 55035,
+            "id": 190645,
             "deviceId": 1,
-            "time": 400,
+            "time": 84,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190646,
+            "deviceId": 1,
+            "time": 85,
             "name": "a",
             "valid": true,
             "data": [
@@ -183,9 +131,48 @@
             ]
         },
         {
-            "id": 55037,
+            "id": 190646,
             "deviceId": 1,
-            "time": 405,
+            "time": 85,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190647,
+            "deviceId": 1,
+            "time": 96,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190648,
+            "deviceId": 1,
+            "time": 96,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190648,
+            "deviceId": 1,
+            "time": 96,
             "name": "s",
             "valid": true,
             "data": [
@@ -196,9 +183,22 @@
             ]
         },
         {
-            "id": 55040,
+            "id": 190649,
             "deviceId": 1,
-            "time": 414,
+            "time": 100,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190649,
+            "deviceId": 1,
+            "time": 100,
             "name": "s",
             "valid": true,
             "data": [
@@ -209,9 +209,22 @@
             ]
         },
         {
-            "id": 55041,
+            "id": 190650,
             "deviceId": 1,
-            "time": 414,
+            "time": 101,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190651,
+            "deviceId": 1,
+            "time": 101,
             "name": "d",
             "valid": true,
             "data": [
@@ -222,9 +235,9 @@
             ]
         },
         {
-            "id": 55041,
+            "id": 190651,
             "deviceId": 1,
-            "time": 414,
+            "time": 101,
             "name": "s",
             "valid": true,
             "data": [
@@ -235,9 +248,9 @@
             ]
         },
         {
-            "id": 55042,
+            "id": 190652,
             "deviceId": 1,
-            "time": 416,
+            "time": 104,
             "name": "d",
             "valid": true,
             "data": [
@@ -248,9 +261,9 @@
             ]
         },
         {
-            "id": 55042,
+            "id": 190652,
             "deviceId": 1,
-            "time": 416,
+            "time": 104,
             "name": "s",
             "valid": true,
             "data": [
@@ -261,9 +274,9 @@
             ]
         },
         {
-            "id": 55044,
+            "id": 190653,
             "deviceId": 1,
-            "time": 430,
+            "time": 113,
             "name": "d",
             "valid": true,
             "data": [
@@ -272,6 +285,571 @@
                 0,
                 0
             ]
+        },
+        {
+            "id": 190654,
+            "deviceId": 1,
+            "time": 113,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190654,
+            "deviceId": 1,
+            "time": 113,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190655,
+            "deviceId": 1,
+            "time": 113,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190655,
+            "deviceId": 1,
+            "time": 113,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190656,
+            "deviceId": 1,
+            "time": 113,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190656,
+            "deviceId": 1,
+            "time": 113,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190656,
+            "deviceId": 1,
+            "time": 113,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190657,
+            "deviceId": 1,
+            "time": 116,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190657,
+            "deviceId": 1,
+            "time": 116,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190657,
+            "deviceId": 1,
+            "time": 116,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190658,
+            "deviceId": 1,
+            "time": 116,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190658,
+            "deviceId": 1,
+            "time": 116,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190659,
+            "deviceId": 1,
+            "time": 132,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190660,
+            "deviceId": 1,
+            "time": 132,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190660,
+            "deviceId": 1,
+            "time": 132,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190661,
+            "deviceId": 1,
+            "time": 135,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190661,
+            "deviceId": 1,
+            "time": 135,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190662,
+            "deviceId": 1,
+            "time": 141,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190663,
+            "deviceId": 1,
+            "time": 141,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190663,
+            "deviceId": 1,
+            "time": 141,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190664,
+            "deviceId": 1,
+            "time": 145,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190664,
+            "deviceId": 1,
+            "time": 145,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190665,
+            "deviceId": 1,
+            "time": 161,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190666,
+            "deviceId": 1,
+            "time": 161,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190666,
+            "deviceId": 1,
+            "time": 161,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190667,
+            "deviceId": 1,
+            "time": 164,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190667,
+            "deviceId": 1,
+            "time": 164,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190668,
+            "deviceId": 1,
+            "time": 169,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190669,
+            "deviceId": 1,
+            "time": 169,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190669,
+            "deviceId": 1,
+            "time": 169,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190670,
+            "deviceId": 1,
+            "time": 173,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190670,
+            "deviceId": 1,
+            "time": 173,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190682,
+            "deviceId": 1,
+            "time": 182,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190683,
+            "deviceId": 1,
+            "time": 182,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190683,
+            "deviceId": 1,
+            "time": 182,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190701,
+            "deviceId": 1,
+            "time": 186,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190701,
+            "deviceId": 1,
+            "time": 186,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190717,
+            "deviceId": 1,
+            "time": 189,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190718,
+            "deviceId": 1,
+            "time": 189,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190718,
+            "deviceId": 1,
+            "time": 189,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 190719,
+            "deviceId": 1,
+            "time": 190,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190719,
+            "deviceId": 1,
+            "time": 190,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 190726,
+            "deviceId": 1,
+            "time": 198,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(2.2, -4.1, 0.0)"
         }
     ]
 }

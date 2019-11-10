@@ -1,9 +1,61 @@
 ﻿{
     "records": [
         {
-            "id": 90081,
+            "id": 166477,
             "deviceId": 1,
-            "time": 211,
+            "time": 96,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166478,
+            "deviceId": 1,
+            "time": 112,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166480,
+            "deviceId": 1,
+            "time": 118,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166481,
+            "deviceId": 1,
+            "time": 127,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166483,
+            "deviceId": 1,
+            "time": 134,
             "name": "d",
             "valid": true,
             "data": [
@@ -14,9 +66,9 @@
             ]
         },
         {
-            "id": 90105,
+            "id": 166484,
             "deviceId": 1,
-            "time": 222,
+            "time": 143,
             "name": "d",
             "valid": true,
             "data": [
@@ -27,100 +79,9 @@
             ]
         },
         {
-            "id": 90108,
+            "id": 166486,
             "deviceId": 1,
-            "time": 222,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 90112,
-            "deviceId": 1,
-            "time": 223,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 90113,
-            "deviceId": 1,
-            "time": 223,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 90113,
-            "deviceId": 1,
-            "time": 223,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                128,
-                63
-            ]
-        },
-        {
-            "id": 90119,
-            "deviceId": 1,
-            "time": 226,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 90119,
-            "deviceId": 1,
-            "time": 226,
-            "name": "w",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 90135,
-            "deviceId": 1,
-            "time": 236,
-            "name": "a",
-            "valid": true,
-            "data": [
-                0,
-                0,
-                0,
-                0
-            ]
-        },
-        {
-            "id": 90141,
-            "deviceId": 1,
-            "time": 239,
+            "time": 152,
             "name": "s",
             "valid": true,
             "data": [
@@ -131,9 +92,9 @@
             ]
         },
         {
-            "id": 90150,
+            "id": 166487,
             "deviceId": 1,
-            "time": 250,
+            "time": 161,
             "name": "s",
             "valid": true,
             "data": [
@@ -144,9 +105,9 @@
             ]
         },
         {
-            "id": 90157,
+            "id": 166489,
             "deviceId": 1,
-            "time": 254,
+            "time": 164,
             "name": "d",
             "valid": true,
             "data": [
@@ -157,10 +118,140 @@
             ]
         },
         {
-            "id": 90239,
+            "id": 166490,
             "deviceId": 1,
-            "time": 265,
+            "time": 174,
             "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166492,
+            "deviceId": 1,
+            "time": 177,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166493,
+            "deviceId": 1,
+            "time": 185,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166495,
+            "deviceId": 1,
+            "time": 193,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166496,
+            "deviceId": 1,
+            "time": 197,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166498,
+            "deviceId": 1,
+            "time": 203,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166499,
+            "deviceId": 1,
+            "time": 210,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166501,
+            "deviceId": 1,
+            "time": 221,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166502,
+            "deviceId": 1,
+            "time": 228,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 166504,
+            "deviceId": 1,
+            "time": 237,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 166505,
+            "deviceId": 1,
+            "time": 244,
+            "name": "s",
             "valid": true,
             "data": [
                 0,
@@ -172,8 +263,8 @@
     ],
     "lastValues": [
         {
-            "name": "_pos",
-            "hashCode": 1122924447
+            "name": "PlayerPosition",
+            "hashCode": 1082654720
         }
     ]
 }

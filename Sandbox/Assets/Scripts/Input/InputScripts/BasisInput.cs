@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/BasisInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/InputScripts/BasisInput.inputactions'
 
 using System.Collections;
 using System.Collections.Generic;
@@ -19,9 +19,9 @@ public class BasisInput : IInputActionCollection
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""29e4fce8-55f8-44ad-b447-2fa9a323d070"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 },

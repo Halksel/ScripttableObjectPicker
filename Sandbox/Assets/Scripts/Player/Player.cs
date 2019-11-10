@@ -30,7 +30,24 @@ namespace Sandbox
         // basis interface
         public void OnMove(InputAction.CallbackContext context)
         {
-            _move = context.ReadValue<Vector2>();
+                    _move = context.ReadValue<Vector2>();
+            switch (context.phase)
+            {
+                case InputActionPhase.Disabled:
+                    break;
+                case InputActionPhase.Waiting:
+                    break;
+                case InputActionPhase.Started:
+                    _move = context.ReadValue<Vector2>();
+                    break;
+                case InputActionPhase.Performed:
+                    break;
+                case InputActionPhase.Canceled:
+                    _move = Vector2.zero;
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void OnCursor(InputAction.CallbackContext context)
