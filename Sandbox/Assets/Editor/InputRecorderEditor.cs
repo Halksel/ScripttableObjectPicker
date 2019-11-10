@@ -1,4 +1,6 @@
-﻿using UnityEditor;
+﻿using System;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using Zenject;
 
@@ -40,6 +42,10 @@ namespace Sandbox
                     if (GUILayout.Button("読込 & 再生"))
                     {
                         LoadInputRecord();
+                    }
+                    if (GUILayout.Button("ランダム生成"))
+                    {
+                        RandomGenerateInputRecord();
                     }
                 }
                 if (_inputRecorder == null || _inputManager == null)
@@ -94,6 +100,13 @@ namespace Sandbox
         {
             _inputRecorder.StartRecord();
             window.FocusGameView();
+        }
+
+        private void RandomGenerateInputRecord()
+        {
+            var values = new List<string> {"a", "w", "s", "d" };
+            _inputRecorder.GenerateInputRecord(values, 1, 10, 120, 5);
+            _inputRecorder.SaveInputRecord($"Assets/InputRecords/Random/{DateTime.Now.ToString("yy_MM_dd_HH_mm")}.json");
         }
 
         private InputManager _inputManager;

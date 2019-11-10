@@ -24,6 +24,10 @@ namespace Sandbox
         [Serializable]
         public class InputRecord
         {
+            public InputRecord()
+            {
+
+            }
             public InputRecord(InputEventPtr ptr, InputControl ctl)
             {
                 id = ptr.id;
@@ -32,6 +36,7 @@ namespace Sandbox
                 deviceId = ptr.deviceId;
                 valid = ptr.valid;
                 name = ctl.name;
+                object value;
                 if (ptr.type.ToString() == "STAT")
                 {
                     value = 0f;
@@ -47,7 +52,6 @@ namespace Sandbox
             public int time;
             public string name;
             public bool valid;
-            public object value;
             public byte[] data;
         }
 
@@ -56,13 +60,19 @@ namespace Sandbox
         /// 端的にゴミ
         /// </summary>
         [Serializable]
-        public class InputRecords
+        public class InputRecords 
         {
             public List<InputRecord> records = new List<InputRecord>();
             public Pairs lastValues = new Pairs();
+
             public void Sort()
             {
                 records = records.OrderBy(a => a.time).ToList();
+            }
+
+            public  IReadOnlyList<InputRecord> GetRecords()
+            {
+                return records;
             }
             public bool CheckValues(Dictionary<string, int> values)
             {
@@ -72,9 +82,15 @@ namespace Sandbox
             {
                 lastValues.AddRange(values);
             }
-            public void ResetValues()
+            public void Reset()
             {
+                records.Clear();
                 lastValues.Clear();
+            }
+
+            internal void Add(InputRecord record)
+            {
+                records.Add(record);
             }
         }
 
@@ -99,14 +115,14 @@ namespace Sandbox
                 if (ctl.IsActuated())
                 {
                     var record = new InputRecord(ptr, ctl);
-                    _records.records.Add(record);
+                    _records.Add(record);
                 }
             }
         }
 
-        public List<InputRecord> GetRecords()
+        public IReadOnlyList<InputRecord> GetRecords()
         {
-            return _records.records;
+            return _records.GetRecords();
         }
 
         public void SaveInputRecord(string path = "")
@@ -134,10 +150,6 @@ namespace Sandbox
             try
             {
                 _records = JsonUtility.FromJson<InputRecords>(json);
-                _records.records.ForEach(record =>
-                {
-                    record.value = BitConverter.ToSingle(record.data, 0);
-                });
             }
             catch (Exception e)
             {
@@ -145,10 +157,9 @@ namespace Sandbox
             }
         }
 
-
         public void StartRecord()
         {
-            _records.records.Clear();
+            _records.Reset();
             InputRecorderLastValueAttribute.GetLastValuesReflection(player);
             IsRecord = true;
             _startFrame = 0;
@@ -184,7 +195,8 @@ namespace Sandbox
                             object value = null;
                             try
                             {
-                                value = record.value;
+
+                                value = BitConverter.ToSingle(record.data, 0);
                                 if (value == null)
                                 {
                                     throw new ArgumentException("");
@@ -225,6 +237,23 @@ namespace Sandbox
         // Update
         public void Tick()
         {
+        }
+        public void GenerateInputRecord(IEnumerable<string> randomValues, int deviceId, int recordLength ,int startTime ,int timeInterval)
+        {
+            var names = randomValues.ToList<string>();
+            _records.Reset();
+            int id = 100000;
+            for(int i = 0; i < recordLength; ++i)
+            {
+                var record = new InputRecord();
+                record.deviceId = deviceId;
+                record.id = id + i;
+                record.time = startTime + timeInterval * i;
+                record.valid = true;
+                record.name = names.GetRandom();
+                record.data = BitConverter.GetBytes(Mathf.Round(UnityEngine.Random.value));
+                _records.Add(record);
+            }
         }
 
         private InputRecords _records = new InputRecords();

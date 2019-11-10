@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Sandbox
 {
@@ -22,5 +23,6 @@ namespace Sandbox
                 self.RemoveRange(size, self.Count - size);
             }
         }
+        public static T GetRandom<T>(this List<T> self) => self[Random.Range(0, self.Count)];
     }
 }
