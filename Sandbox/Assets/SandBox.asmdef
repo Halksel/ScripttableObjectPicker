@@ -5,7 +5,8 @@
         "Zenject",
         "Zenject-IntegrationTests",
         "Zenject-ReflectionBaking-Editor",
-        "Zenject-Editor"
+        "Zenject-Editor",
+        "Zenject-TestFramework"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

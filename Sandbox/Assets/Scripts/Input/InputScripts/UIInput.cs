@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/UIInput.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/InputScripts/UIInput.inputactions'
 
 using System.Collections;
 using System.Collections.Generic;
