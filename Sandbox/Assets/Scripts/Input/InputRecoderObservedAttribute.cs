@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 using System.Reflection;
+using UnityEngine.SceneManagement;
 
 namespace Sandbox
 {
@@ -10,12 +11,24 @@ namespace Sandbox
     public class InputRecorderObservedAttribute : Attribute
     {
         static Type typeAttr = typeof(InputRecorderObservedAttribute);
+        static private bool isRegistered = false;
         private string _name;
         private static List<KeyValuePair<Type, object>> types = new List<KeyValuePair<Type, object>>();
         public static void Regist(Type t, object obj)
         {
             types.Add(new KeyValuePair<Type, object>(t, obj));
+            if (!isRegistered)
+            {
+                SceneManager.sceneLoaded += SceneManager_sceneLoaded;
+                isRegistered = true;
+            }
         }
+
+        private static void SceneManager_sceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            types.Clear();
+        }
+
         public static IReadOnlyList<KeyValuePair<Type, object>> Get()
         {
             return types; 
@@ -30,6 +43,7 @@ namespace Sandbox
             {
                 var type = types[i].Key;
                 var obj = types[i].Value;
+                if (obj.ToString() == "null") continue;
                 FieldInfo[] fields = type.GetFields();
                 foreach (FieldInfo fieldInfo in fields)
                 {

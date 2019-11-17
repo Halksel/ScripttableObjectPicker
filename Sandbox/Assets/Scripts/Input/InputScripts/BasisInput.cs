@@ -48,7 +48,7 @@ public class @BasisInput : IInputActionCollection, IDisposable
                     ""name"": ""WASD"",
                     ""id"": ""c6026425-a7ea-491f-87bf-d9e20751deee"",
                     ""path"": ""2DVector"",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",

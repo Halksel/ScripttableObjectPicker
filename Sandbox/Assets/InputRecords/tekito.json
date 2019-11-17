@@ -1,0 +1,393 @@
+﻿{
+    "records": [
+        {
+            "id": 186555,
+            "deviceId": 1,
+            "time": 307,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186555,
+            "deviceId": 1,
+            "time": 307,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186556,
+            "deviceId": 1,
+            "time": 319,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186556,
+            "deviceId": 1,
+            "time": 319,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186558,
+            "deviceId": 1,
+            "time": 326,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186558,
+            "deviceId": 1,
+            "time": 326,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186559,
+            "deviceId": 1,
+            "time": 332,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186559,
+            "deviceId": 1,
+            "time": 332,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186561,
+            "deviceId": 1,
+            "time": 348,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186561,
+            "deviceId": 1,
+            "time": 348,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186562,
+            "deviceId": 1,
+            "time": 348,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186562,
+            "deviceId": 1,
+            "time": 348,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186563,
+            "deviceId": 1,
+            "time": 348,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186563,
+            "deviceId": 1,
+            "time": 348,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186563,
+            "deviceId": 1,
+            "time": 348,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186564,
+            "deviceId": 1,
+            "time": 355,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186564,
+            "deviceId": 1,
+            "time": 355,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186564,
+            "deviceId": 1,
+            "time": 355,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186565,
+            "deviceId": 1,
+            "time": 375,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186565,
+            "deviceId": 1,
+            "time": 375,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186566,
+            "deviceId": 1,
+            "time": 383,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186568,
+            "deviceId": 1,
+            "time": 390,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186569,
+            "deviceId": 1,
+            "time": 416,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186571,
+            "deviceId": 1,
+            "time": 424,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186572,
+            "deviceId": 1,
+            "time": 452,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186585,
+            "deviceId": 1,
+            "time": 479,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186625,
+            "deviceId": 1,
+            "time": 504,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 186630,
+            "deviceId": 1,
+            "time": 509,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 186631,
+            "deviceId": 1,
+            "time": 519,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "firstValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(0.0, 0.0, 0.0)"
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(9.7, 10.3, 0.0)"
+        }
+    ]
+}

@@ -29,7 +29,6 @@ namespace Sandbox
             {
                 id = ptr.id;
                 time = Time.frameCount - _startFrame;
-                Debug.Log(time);
                 deviceId = ptr.deviceId;
                 valid = ptr.valid;
                 name = ctl.name;
@@ -59,6 +58,15 @@ namespace Sandbox
             {
                 this.name = name;
                 this.value = value;
+            }
+
+            public static bool operator==(InputValue a, InputValue b)
+            {
+                return a.name == b.name && a.value == b.value;
+            }
+            public static bool operator!=(InputValue a, InputValue b)
+            {
+                return !(a == b);
             }
             public string name;
             public string value;
@@ -155,7 +163,6 @@ namespace Sandbox
 
         public void SaveInputRecord(string path = "")
         {
-            _records.Sort();
             _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), false);
             if (path == "") path = _saveDirectory;
             var json = JsonUtility.ToJson(_records, true);

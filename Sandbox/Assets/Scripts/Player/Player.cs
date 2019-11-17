@@ -20,8 +20,8 @@ namespace Sandbox
 
         private void Update()
         {
-            var delta = _move;
-            transform.position += new Vector3(delta.x, delta.y);
+            _move =_basisInput.Basis.Move.ReadValue<Vector2>();
+            transform.position += new Vector3(_move.x, _move.y);
             _pos = transform.position;
         }
 
@@ -33,24 +33,6 @@ namespace Sandbox
         // basis interface
         public void OnMove(InputAction.CallbackContext context)
         {
-                    _move = context.ReadValue<Vector2>();
-            switch (context.phase)
-            {
-                case InputActionPhase.Disabled:
-                    break;
-                case InputActionPhase.Waiting:
-                    break;
-                case InputActionPhase.Started:
-                    _move = context.ReadValue<Vector2>();
-                    break;
-                case InputActionPhase.Performed:
-                    break;
-                case InputActionPhase.Canceled:
-                    _move = Vector2.zero;
-                    break;
-                default:
-                    break;
-            }
         }
 
         public void OnCursor(InputAction.CallbackContext context)
