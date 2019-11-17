@@ -3,15 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
-using Zenject;
-using static Sandbox.InputRecorder;
 
 namespace Sandbox
 {
@@ -56,9 +53,9 @@ namespace Sandbox
         }
 
         [Serializable]
-        public class LastValue
+        public class InputValue
         {
-            public LastValue(string name, string value)
+            public InputValue(string name, string value)
             {
                 this.name = name;
                 this.value = value;
@@ -75,7 +72,8 @@ namespace Sandbox
         public class InputRecords 
         {
             public List<InputRecord> records = new List<InputRecord>();
-            public List<LastValue> lastValues = new List<LastValue>();
+            public List<InputValue> firstValues = new List<InputValue>();
+            public List<InputValue> lastValues = new List<InputValue>();
 
             public void Sort()
             {
@@ -86,7 +84,7 @@ namespace Sandbox
             {
                 return records;
             }
-            public bool CheckValues(List<LastValue> values)
+            public bool CheckValues(List<InputValue> values)
             {
                 bool flag = true;
                 if (values.Count != lastValues.Count) return false;
@@ -100,14 +98,22 @@ namespace Sandbox
                 }
                 return true;
             }
-            public void SaveValues(List<LastValue> values)
+            public void SaveValues(List<InputValue> values, bool isFirst)
             {
-                lastValues.AddRange(values);
+                if (isFirst)
+                {
+                    firstValues.AddRange(values);
+                }
+                else
+                {
+                    lastValues.AddRange(values);
+                }
             }
             public void Reset()
             {
                 records.Clear();
                 lastValues.Clear();
+                firstValues.Clear();
             }
 
             internal void Add(InputRecord record)
@@ -150,7 +156,7 @@ namespace Sandbox
         public void SaveInputRecord(string path = "")
         {
             _records.Sort();
-            _records.SaveValues(InputRecorderLastValueAttribute.GetLastValuesReflection(player));
+            _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), false);
             if (path == "") path = _saveDirectory;
             var json = JsonUtility.ToJson(_records, true);
             var encoding = new UTF8Encoding(true, false);
@@ -172,6 +178,7 @@ namespace Sandbox
             try
             {
                 _records = JsonUtility.FromJson<InputRecords>(json);
+                InputRecorderObservedAttribute.SetObservedValuesReflection(_records.firstValues);
             }
             catch (Exception e)
             {
@@ -184,6 +191,7 @@ namespace Sandbox
             _records.Reset();
             IsRecord = true;
             _startFrame = 0;
+            _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), true);
         }
         public IEnumerator EmurateInput(string path)
         {
@@ -242,7 +250,7 @@ namespace Sandbox
                         Debug.Log("End of Emulate");
                         _isPlayRecord = false;
                         InputSystem.settings.updateMode = mode;
-                        bool result = _records.CheckValues(InputRecorderLastValueAttribute.GetLastValuesReflection(player));
+                        bool result = _records.CheckValues(InputRecorderObservedAttribute.GetObserevedValuesReflection());
                         Debug.Log($"CheckValues: {result}");
                         yield break;
                     }
@@ -294,36 +302,6 @@ namespace Sandbox
             {
                 _player = value;
             }
-        }
-    }
-    [AttributeUsage(AttributeTargets.Field, AllowMultiple = false)]
-    public class InputRecorderLastValueAttribute : Attribute
-    {
-        static Type type = typeof(InputRecorderLastValueAttribute);
-        private string _name;
-        public InputRecorderLastValueAttribute(string name) { _name = name; }
-        public string Name { get { return _name; } }
-
-        public static List<LastValue> GetLastValuesReflection<T>(T obj)
-        {
-            var result = new List<LastValue>();
-            foreach (FieldInfo fieldInfo in typeof(T).GetFields())
-            {
-                var attributes = Attribute.GetCustomAttributes(
-                    fieldInfo, type) as InputRecorderLastValueAttribute[];
-
-                foreach (var attribute in attributes)
-                {
-                    //属性が定義されたプロパティだけを参照するため、fixedAttrがnullなら処理の対象外
-                    if (attribute != null)
-                    {
-                        Debug.Log(fieldInfo.GetValue(obj));
-                        var value = new LastValue(attribute.Name, fieldInfo.GetValue(obj as object).ToString());
-                        result.Add(value);
-                    }
-                }
-            }
-            return result;
         }
     }
 }

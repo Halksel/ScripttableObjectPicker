@@ -1,18 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
+using static Sandbox.InputRecorder;
 
 namespace Sandbox
 {
     public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
     {
-        [InputRecorderLastValue("PlayerPosition")]
+        [InputRecorderObserved("PlayerPosition")]
         public Vector3 _pos;
         void Start()
         {
             _basisInput = _inputManager.CreateCurrentPriorityProxy(InputManager.InputType.Basis) as BasisInput;
             _basisInput.Basis.SetCallbacks(this);
+            InputRecorderObservedAttribute.Regist(this.GetType(), this);
         }
 
         private void Update()
@@ -115,6 +118,8 @@ namespace Sandbox
 
         [Inject]
         private InputManager _inputManager;
+        [Inject]
+        private InputRecorder input;
 
         [Inject]
         private HighlightEffect.Factory _highlightFactory;
