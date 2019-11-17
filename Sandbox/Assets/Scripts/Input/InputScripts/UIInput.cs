@@ -1,14 +1,15 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/InputScripts/UIInput.inputactions'
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class UIInput : IInputActionCollection
+public class @UIInput : IInputActionCollection, IDisposable
 {
     private InputActionAsset asset;
-    public UIInput()
+    public @UIInput()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""UIInput"",
@@ -119,12 +120,12 @@ public class UIInput : IInputActionCollection
     ]
 }");
         // UI
-        m_UI = asset.GetActionMap("UI");
-        m_UI_Cancel = m_UI.GetAction("Cancel");
-        m_UI_Enter = m_UI.GetAction("Enter");
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
+        m_UI_Enter = m_UI.FindAction("Enter", throwIfNotFound: true);
     }
 
-    ~UIInput()
+    public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
     }
@@ -175,8 +176,8 @@ public class UIInput : IInputActionCollection
     private readonly InputAction m_UI_Enter;
     public struct UIActions
     {
-        private UIInput m_Wrapper;
-        public UIActions(UIInput wrapper) { m_Wrapper = wrapper; }
+        private @UIInput m_Wrapper;
+        public UIActions(@UIInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
         public InputAction @Enter => m_Wrapper.m_UI_Enter;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
@@ -188,22 +189,22 @@ public class UIInput : IInputActionCollection
         {
             if (m_Wrapper.m_UIActionsCallbackInterface != null)
             {
-                Cancel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
-                Cancel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
-                Cancel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
-                Enter.started -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
-                Enter.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
-                Enter.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
+                @Cancel.started -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnCancel;
+                @Enter.started -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Cancel.started += instance.OnCancel;
-                Cancel.performed += instance.OnCancel;
-                Cancel.canceled += instance.OnCancel;
-                Enter.started += instance.OnEnter;
-                Enter.performed += instance.OnEnter;
-                Enter.canceled += instance.OnEnter;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -213,7 +214,7 @@ public class UIInput : IInputActionCollection
     {
         get
         {
-            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.GetControlSchemeIndex("GamePad");
+            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.FindControlSchemeIndex("GamePad");
             return asset.controlSchemes[m_GamePadSchemeIndex];
         }
     }
@@ -222,7 +223,7 @@ public class UIInput : IInputActionCollection
     {
         get
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.GetControlSchemeIndex("Keyboard");
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }

@@ -1,14 +1,15 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/InputScripts/BasisInput.inputactions'
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class BasisInput : IInputActionCollection
+public class @BasisInput : IInputActionCollection, IDisposable
 {
     private InputActionAsset asset;
-    public BasisInput()
+    public @BasisInput()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""BasisInput"",
@@ -314,13 +315,13 @@ public class BasisInput : IInputActionCollection
     ]
 }");
         // Basis
-        m_Basis = asset.GetActionMap("Basis");
-        m_Basis_Move = m_Basis.GetAction("Move");
-        m_Basis_Menu = m_Basis.GetAction("Menu");
-        m_Basis_Cursor = m_Basis.GetAction("Cursor");
+        m_Basis = asset.FindActionMap("Basis", throwIfNotFound: true);
+        m_Basis_Move = m_Basis.FindAction("Move", throwIfNotFound: true);
+        m_Basis_Menu = m_Basis.FindAction("Menu", throwIfNotFound: true);
+        m_Basis_Cursor = m_Basis.FindAction("Cursor", throwIfNotFound: true);
     }
 
-    ~BasisInput()
+    public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
     }
@@ -372,8 +373,8 @@ public class BasisInput : IInputActionCollection
     private readonly InputAction m_Basis_Cursor;
     public struct BasisActions
     {
-        private BasisInput m_Wrapper;
-        public BasisActions(BasisInput wrapper) { m_Wrapper = wrapper; }
+        private @BasisInput m_Wrapper;
+        public BasisActions(@BasisInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Basis_Move;
         public InputAction @Menu => m_Wrapper.m_Basis_Menu;
         public InputAction @Cursor => m_Wrapper.m_Basis_Cursor;
@@ -386,28 +387,28 @@ public class BasisInput : IInputActionCollection
         {
             if (m_Wrapper.m_BasisActionsCallbackInterface != null)
             {
-                Move.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
-                Move.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
-                Move.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
-                Menu.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
-                Menu.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
-                Menu.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
-                Cursor.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
-                Cursor.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
-                Cursor.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
+                @Move.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMove;
+                @Menu.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnMenu;
+                @Cursor.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
+                @Cursor.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
+                @Cursor.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
             }
             m_Wrapper.m_BasisActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Move.started += instance.OnMove;
-                Move.performed += instance.OnMove;
-                Move.canceled += instance.OnMove;
-                Menu.started += instance.OnMenu;
-                Menu.performed += instance.OnMenu;
-                Menu.canceled += instance.OnMenu;
-                Cursor.started += instance.OnCursor;
-                Cursor.performed += instance.OnCursor;
-                Cursor.canceled += instance.OnCursor;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
+                @Cursor.started += instance.OnCursor;
+                @Cursor.performed += instance.OnCursor;
+                @Cursor.canceled += instance.OnCursor;
             }
         }
     }
@@ -417,7 +418,7 @@ public class BasisInput : IInputActionCollection
     {
         get
         {
-            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.GetControlSchemeIndex("GamePad");
+            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.FindControlSchemeIndex("GamePad");
             return asset.controlSchemes[m_GamePadSchemeIndex];
         }
     }
@@ -426,7 +427,7 @@ public class BasisInput : IInputActionCollection
     {
         get
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.GetControlSchemeIndex("Keyboard");
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }

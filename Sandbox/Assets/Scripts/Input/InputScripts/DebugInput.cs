@@ -1,14 +1,15 @@
 // GENERATED AUTOMATICALLY FROM 'Assets/Scripts/Input/InputScripts/DebugInput.inputactions'
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class DebugInput : IInputActionCollection
+public class @DebugInput : IInputActionCollection, IDisposable
 {
     private InputActionAsset asset;
-    public DebugInput()
+    public @DebugInput()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""DebugInput"",
@@ -165,15 +166,15 @@ public class DebugInput : IInputActionCollection
     ]
 }");
         // Debug
-        m_Debug = asset.GetActionMap("Debug");
-        m_Debug_Test1 = m_Debug.GetAction("Test1");
-        m_Debug_Test2 = m_Debug.GetAction("Test2");
-        m_Debug_Test3 = m_Debug.GetAction("Test3");
-        m_Debug_SaveInput = m_Debug.GetAction("SaveInput");
-        m_Debug_LoadInput = m_Debug.GetAction("LoadInput");
+        m_Debug = asset.FindActionMap("Debug", throwIfNotFound: true);
+        m_Debug_Test1 = m_Debug.FindAction("Test1", throwIfNotFound: true);
+        m_Debug_Test2 = m_Debug.FindAction("Test2", throwIfNotFound: true);
+        m_Debug_Test3 = m_Debug.FindAction("Test3", throwIfNotFound: true);
+        m_Debug_SaveInput = m_Debug.FindAction("SaveInput", throwIfNotFound: true);
+        m_Debug_LoadInput = m_Debug.FindAction("LoadInput", throwIfNotFound: true);
     }
 
-    ~DebugInput()
+    public void Dispose()
     {
         UnityEngine.Object.Destroy(asset);
     }
@@ -227,8 +228,8 @@ public class DebugInput : IInputActionCollection
     private readonly InputAction m_Debug_LoadInput;
     public struct DebugActions
     {
-        private DebugInput m_Wrapper;
-        public DebugActions(DebugInput wrapper) { m_Wrapper = wrapper; }
+        private @DebugInput m_Wrapper;
+        public DebugActions(@DebugInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Test1 => m_Wrapper.m_Debug_Test1;
         public InputAction @Test2 => m_Wrapper.m_Debug_Test2;
         public InputAction @Test3 => m_Wrapper.m_Debug_Test3;
@@ -243,40 +244,40 @@ public class DebugInput : IInputActionCollection
         {
             if (m_Wrapper.m_DebugActionsCallbackInterface != null)
             {
-                Test1.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
-                Test1.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
-                Test1.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
-                Test2.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
-                Test2.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
-                Test2.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
-                Test3.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
-                Test3.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
-                Test3.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
-                SaveInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
-                SaveInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
-                SaveInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
-                LoadInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
-                LoadInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
-                LoadInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
+                @Test1.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
+                @Test1.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
+                @Test1.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest1;
+                @Test2.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
+                @Test2.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
+                @Test2.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest2;
+                @Test3.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
+                @Test3.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
+                @Test3.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnTest3;
+                @SaveInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
+                @SaveInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
+                @SaveInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnSaveInput;
+                @LoadInput.started -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
+                @LoadInput.performed -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
+                @LoadInput.canceled -= m_Wrapper.m_DebugActionsCallbackInterface.OnLoadInput;
             }
             m_Wrapper.m_DebugActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Test1.started += instance.OnTest1;
-                Test1.performed += instance.OnTest1;
-                Test1.canceled += instance.OnTest1;
-                Test2.started += instance.OnTest2;
-                Test2.performed += instance.OnTest2;
-                Test2.canceled += instance.OnTest2;
-                Test3.started += instance.OnTest3;
-                Test3.performed += instance.OnTest3;
-                Test3.canceled += instance.OnTest3;
-                SaveInput.started += instance.OnSaveInput;
-                SaveInput.performed += instance.OnSaveInput;
-                SaveInput.canceled += instance.OnSaveInput;
-                LoadInput.started += instance.OnLoadInput;
-                LoadInput.performed += instance.OnLoadInput;
-                LoadInput.canceled += instance.OnLoadInput;
+                @Test1.started += instance.OnTest1;
+                @Test1.performed += instance.OnTest1;
+                @Test1.canceled += instance.OnTest1;
+                @Test2.started += instance.OnTest2;
+                @Test2.performed += instance.OnTest2;
+                @Test2.canceled += instance.OnTest2;
+                @Test3.started += instance.OnTest3;
+                @Test3.performed += instance.OnTest3;
+                @Test3.canceled += instance.OnTest3;
+                @SaveInput.started += instance.OnSaveInput;
+                @SaveInput.performed += instance.OnSaveInput;
+                @SaveInput.canceled += instance.OnSaveInput;
+                @LoadInput.started += instance.OnLoadInput;
+                @LoadInput.performed += instance.OnLoadInput;
+                @LoadInput.canceled += instance.OnLoadInput;
             }
         }
     }
@@ -286,7 +287,7 @@ public class DebugInput : IInputActionCollection
     {
         get
         {
-            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.GetControlSchemeIndex("GamePad");
+            if (m_GamePadSchemeIndex == -1) m_GamePadSchemeIndex = asset.FindControlSchemeIndex("GamePad");
             return asset.controlSchemes[m_GamePadSchemeIndex];
         }
     }
@@ -295,7 +296,7 @@ public class DebugInput : IInputActionCollection
     {
         get
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.GetControlSchemeIndex("Keyboard");
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }
