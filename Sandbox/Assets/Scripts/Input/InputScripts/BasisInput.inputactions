@@ -16,7 +16,7 @@
                 {
                     "name": "Menu",
                     "type": "Button",
-                    "id": "1288d5fa-3cc1-4248-a1db-65fe2bff3795",
+                    "id": "cfa932b9-fb62-4ba9-8e96-0c672a3e4369",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Tap"
@@ -24,10 +24,26 @@
                 {
                     "name": "Cursor",
                     "type": "Button",
-                    "id": "149d54f1-47e2-41d5-a351-b3664912b73d",
+                    "id": "d9328b3f-2078-47f3-8496-681e73b98ca9",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "Press"
+                },
+                {
+                    "name": "Cancel",
+                    "type": "Button",
+                    "id": "1288d5fa-3cc1-4248-a1db-65fe2bff3795",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Enter",
+                    "type": "Button",
+                    "id": "149d54f1-47e2-41d5-a351-b3664912b73d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
                 }
             ],
             "bindings": [
@@ -270,6 +286,61 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57c38c48-4533-43df-af4c-080856e431ae",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f0424967-f354-43d1-acdf-3574857abb35",
+                    "path": "<DualShockGamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "daee1af4-394b-4ede-9de8-c8c0ebaa09b2",
+                    "path": "<Keyboard>/#(Z)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d8aad86a-4fab-4734-b08c-45f5c0e90e05",
+                    "path": "<DualShockGamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "GamePad",
+                    "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5e48b6d5-a20b-40b3-891f-aeda851f4371",
+                    "path": "<Keyboard>/#(X)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Cancel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

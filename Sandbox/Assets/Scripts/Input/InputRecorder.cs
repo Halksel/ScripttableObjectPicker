@@ -70,6 +70,21 @@ namespace Sandbox
             }
             public string name;
             public string value;
+
+            public override bool Equals(object obj)
+            {
+                return obj is InputValue value &&
+                       name == value.name &&
+                       this.value == value.value;
+            }
+
+            public override int GetHashCode()
+            {
+                var hashCode = 1477024672;
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(name);
+                hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(value);
+                return hashCode;
+            }
         }
 
         /// <summary>

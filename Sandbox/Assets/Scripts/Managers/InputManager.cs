@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.LowLevel;
-using UnityEngine.SceneManagement;
-using Zenject;
 
 namespace Sandbox
 {
-    using Record = InputRecorder.InputRecord;
     /// <summary>
     /// 入力管理
     /// レコード読み込みで入力再現も可能
     /// </summary>
     public class InputManager : MonoBehaviour, DebugInput.IDebugActions
     {
-
-
         public enum InputType
         {
             Debug,
@@ -236,8 +228,8 @@ namespace Sandbox
         }
 
         [SerializeField]
-        private static int _currentInputPriority;
+        private int _currentInputPriority;
 
-        private static List<InputProxy> _inputProxies = new List<InputProxy>();
+        private List<InputProxy> _inputProxies = new List<InputProxy>();
     }
 }

@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
-using static Sandbox.InputRecorder;
 
 namespace Sandbox
 {
-    public class Player : MonoBehaviour, BasisInput.IBasisActions, UIInput.IUIActions
+    public class Player : MonoBehaviour, BasisInput.IBasisActions
     {
         [InputRecorderObserved("PlayerPosition")]
         public Vector3 _pos;
@@ -20,7 +18,7 @@ namespace Sandbox
 
         private void Update()
         {
-            _move =_basisInput.Basis.Move.ReadValue<Vector2>();
+            _move = _basisInput.Basis.Move.ReadValue<Vector2>();
             transform.position += new Vector3(_move.x, _move.y);
             _pos = transform.position;
         }
@@ -41,30 +39,15 @@ namespace Sandbox
         }
         public void OnMenu(InputAction.CallbackContext context)
         {
-            switch (context.phase)
-            {
-                case InputActionPhase.Started:
-                    {
-                        if (_uiInput == null)
-                        {
-                            _uiInput = _inputManager.CreateTopPriorityProxy(InputManager.InputType.UI) as UIInput;
-                            _uiInput.UI.SetCallbacks(this);
-                            _isUI = true;
-                        }
-                    }
-                    break;
-            }
+            if(context.started)
+                _uiManager.PushUIPage(UIType.TopPage,"TopPage");
         }
-        // ui interface
         public void OnCancel(InputAction.CallbackContext context)
         {
             switch (context.phase)
             {
                 case InputActionPhase.Started:
                     {
-                        _inputManager.DeleteInputProxy(_uiInput);
-                        _uiInput = null;
-                        _isUI = false;
                     }
                     break;
                 case InputActionPhase.Canceled:
@@ -101,6 +84,8 @@ namespace Sandbox
         [Inject]
         private InputManager _inputManager;
         [Inject]
+        private UIManager _uiManager;
+        [Inject]
         private InputRecorder input;
 
         [Inject]
@@ -110,9 +95,7 @@ namespace Sandbox
         [SerializeField]
         private Texture _texture;
 
-        private bool _isUI;
         private BasisInput _basisInput;
-        private UIInput _uiInput;
         public Vector2 _move;
         public Vector2 _cursor;
     }

@@ -29,7 +29,7 @@ public class @BasisInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Menu"",
                     ""type"": ""Button"",
-                    ""id"": ""1288d5fa-3cc1-4248-a1db-65fe2bff3795"",
+                    ""id"": ""cfa932b9-fb62-4ba9-8e96-0c672a3e4369"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Tap""
@@ -37,10 +37,26 @@ public class @BasisInput : IInputActionCollection, IDisposable
                 {
                     ""name"": ""Cursor"",
                     ""type"": ""Button"",
-                    ""id"": ""149d54f1-47e2-41d5-a351-b3664912b73d"",
+                    ""id"": ""d9328b3f-2078-47f3-8496-681e73b98ca9"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Cancel"",
+                    ""type"": ""Button"",
+                    ""id"": ""1288d5fa-3cc1-4248-a1db-65fe2bff3795"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Enter"",
+                    ""type"": ""Button"",
+                    ""id"": ""149d54f1-47e2-41d5-a351-b3664912b73d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -285,6 +301,61 @@ public class @BasisInput : IInputActionCollection, IDisposable
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""57c38c48-4533-43df-af4c-080856e431ae"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0424967-f354-43d1-acdf-3574857abb35"",
+                    ""path"": ""<DualShockGamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""daee1af4-394b-4ede-9de8-c8c0ebaa09b2"",
+                    ""path"": ""<Keyboard>/#(Z)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8aad86a-4fab-4734-b08c-45f5c0e90e05"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""GamePad"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e48b6d5-a20b-40b3-891f-aeda851f4371"",
+                    ""path"": ""<Keyboard>/#(X)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Cancel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -319,6 +390,8 @@ public class @BasisInput : IInputActionCollection, IDisposable
         m_Basis_Move = m_Basis.FindAction("Move", throwIfNotFound: true);
         m_Basis_Menu = m_Basis.FindAction("Menu", throwIfNotFound: true);
         m_Basis_Cursor = m_Basis.FindAction("Cursor", throwIfNotFound: true);
+        m_Basis_Cancel = m_Basis.FindAction("Cancel", throwIfNotFound: true);
+        m_Basis_Enter = m_Basis.FindAction("Enter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -371,6 +444,8 @@ public class @BasisInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Basis_Move;
     private readonly InputAction m_Basis_Menu;
     private readonly InputAction m_Basis_Cursor;
+    private readonly InputAction m_Basis_Cancel;
+    private readonly InputAction m_Basis_Enter;
     public struct BasisActions
     {
         private @BasisInput m_Wrapper;
@@ -378,6 +453,8 @@ public class @BasisInput : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Basis_Move;
         public InputAction @Menu => m_Wrapper.m_Basis_Menu;
         public InputAction @Cursor => m_Wrapper.m_Basis_Cursor;
+        public InputAction @Cancel => m_Wrapper.m_Basis_Cancel;
+        public InputAction @Enter => m_Wrapper.m_Basis_Enter;
         public InputActionMap Get() { return m_Wrapper.m_Basis; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -396,6 +473,12 @@ public class @BasisInput : IInputActionCollection, IDisposable
                 @Cursor.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
                 @Cursor.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
                 @Cursor.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnCursor;
+                @Cancel.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnCancel;
+                @Cancel.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnCancel;
+                @Cancel.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnCancel;
+                @Enter.started -= m_Wrapper.m_BasisActionsCallbackInterface.OnEnter;
+                @Enter.performed -= m_Wrapper.m_BasisActionsCallbackInterface.OnEnter;
+                @Enter.canceled -= m_Wrapper.m_BasisActionsCallbackInterface.OnEnter;
             }
             m_Wrapper.m_BasisActionsCallbackInterface = instance;
             if (instance != null)
@@ -409,6 +492,12 @@ public class @BasisInput : IInputActionCollection, IDisposable
                 @Cursor.started += instance.OnCursor;
                 @Cursor.performed += instance.OnCursor;
                 @Cursor.canceled += instance.OnCursor;
+                @Cancel.started += instance.OnCancel;
+                @Cancel.performed += instance.OnCancel;
+                @Cancel.canceled += instance.OnCancel;
+                @Enter.started += instance.OnEnter;
+                @Enter.performed += instance.OnEnter;
+                @Enter.canceled += instance.OnEnter;
             }
         }
     }
@@ -436,5 +525,7 @@ public class @BasisInput : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnMenu(InputAction.CallbackContext context);
         void OnCursor(InputAction.CallbackContext context);
+        void OnCancel(InputAction.CallbackContext context);
+        void OnEnter(InputAction.CallbackContext context);
     }
 }

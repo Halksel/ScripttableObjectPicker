@@ -3,13 +3,13 @@ using Zenject;
 
 namespace Sandbox
 {
-    public class InputManagerInstaller : MonoInstaller
+    public class InputManagerInstaller : MonoInstaller<InputManagerInstaller>
     {
-        [SerializeField]
-        private GameObject _inputManagerPrefab;
         public override void InstallBindings()
         {
-            Container.Bind<InputManager>().FromNewComponentOnNewPrefab(_inputManagerPrefab).AsSingle();
+            var obj = new GameObject("InputManager");
+            obj.transform.SetParent(transform);
+            Container.Bind<InputManager>().FromNewComponentOn(obj).AsSingle();
         }
     }
 }
