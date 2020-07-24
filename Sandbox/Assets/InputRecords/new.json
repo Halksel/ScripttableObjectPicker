@@ -1,0 +1,68 @@
+﻿{
+    "records": [
+        {
+            "id": 558636,
+            "deviceId": 1,
+            "time": 1178,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 558659,
+            "deviceId": 1,
+            "time": 1205,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 558706,
+            "deviceId": 1,
+            "time": 1260,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 558740,
+            "deviceId": 1,
+            "time": 1301,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "firstValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(0.0, 0.0, 0.0)"
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(-14.0, 0.0, 0.0)"
+        }
+    ]
+}

@@ -80,14 +80,56 @@ namespace Sandbox
                     foreach (var attribute in attributes)
                     {
                         //属性が定義されたプロパティだけを参照するため、fixedAttrがnullなら処理の対象外
-                        if (attribute != null && attribute.Name == values[i].value)
+                        if (attribute != null && attribute.Name == values[i].name)
                         {
-                            fieldInfo.SetValue(obj, Convert.ChangeType(values[i].value ,fieldInfo.FieldType));
+                            object convertedValue;
+
+                            ConvertStr2Type(values[i].value ,fieldInfo.FieldType, out convertedValue);
+                            if (convertedValue != null)
+                                fieldInfo.SetValue(obj, convertedValue);
                         }
                     }
                 }
             }
             return true;
+        }
+
+        private static void ConvertStr2Type(string value, Type type, out object Result)
+        {
+            if (type.GetMethod("ChangeType") != null)
+            {
+                Result = Convert.ChangeType(value, type);
+                return;
+            }
+            else
+            {
+                if(type == typeof(Vector3))
+                {
+                    Result = StringToVector3(value);
+                    return;
+                }
+            }
+
+            Result = null;
+        }
+
+        public static Vector3 StringToVector3(string sVector)
+        {
+            // Remove the parentheses
+            if (sVector.StartsWith("(") && sVector.EndsWith(")")) {
+                sVector = sVector.Substring(1, sVector.Length - 2);
+            }
+
+            // split the items
+            string[] sArray = sVector.Split(',');
+
+            // store as a Vector3
+            Vector3 result = new Vector3(
+                float.Parse(sArray[0]),
+                float.Parse(sArray[1]),
+                float.Parse(sArray[2]));
+
+            return result;
         }
     }
 }

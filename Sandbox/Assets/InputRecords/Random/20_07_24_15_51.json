@@ -1,0 +1,141 @@
+﻿{
+    "records": [
+        {
+            "id": 100000,
+            "deviceId": 1,
+            "time": 120,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 100001,
+            "deviceId": 1,
+            "time": 125,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 100002,
+            "deviceId": 1,
+            "time": 130,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 100003,
+            "deviceId": 1,
+            "time": 135,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 100004,
+            "deviceId": 1,
+            "time": 140,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 100005,
+            "deviceId": 1,
+            "time": 145,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 100006,
+            "deviceId": 1,
+            "time": 150,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 100007,
+            "deviceId": 1,
+            "time": 155,
+            "name": "s",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 100008,
+            "deviceId": 1,
+            "time": 160,
+            "name": "w",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 100009,
+            "deviceId": 1,
+            "time": 165,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        }
+    ],
+    "firstValues": [],
+    "lastValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(0.0, 0.0, 0.0)"
+        }
+    ]
+}

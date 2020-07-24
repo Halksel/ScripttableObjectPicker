@@ -19,8 +19,8 @@ namespace Sandbox
         private void Update()
         {
             _move = _basisInput.Basis.Move.ReadValue<Vector2>();
-            transform.position += new Vector3(_move.x, _move.y);
-            _pos = transform.position;
+            _pos += new Vector3(_move.x, _move.y);
+            transform.position = _pos;
         }
 
         private void OnApplicationQuit()

@@ -224,10 +224,6 @@ namespace Sandbox
             _isPlayRecord = true;
             int idx = 0;
             var records = GetRecords();
-            // 現在のScene名を取得する
-            Scene loadScene = SceneManager.GetActiveScene();
-            // Sceneの読み直し
-            SceneManager.LoadScene(loadScene.name);
             var mode = InputSystem.settings.updateMode;
             InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
             _startFrame = Time.frameCount;
@@ -308,6 +304,17 @@ namespace Sandbox
         private bool _isPlayRecord;
 
         public bool IsRecord { get; set; }
+        public bool IsPlayRecord
+        {
+            get
+            {
+                return _isPlayRecord;
+            }
+            private set
+            {
+                _isPlayRecord = value;
+            }
+        }
         private static int _startFrame = 0;
         private Player _player;
         private Player player

@@ -31,22 +31,15 @@ namespace Sandbox
                 if (!_isNoPaint)
                 {
                     EditorGUILayout.ToggleLeft("記録中", _inputRecorder.IsRecord);
-                    if (GUILayout.Button("記録開始"))
+                    EditorGUILayout.ToggleLeft("再生中", _inputRecorder.IsPlayRecord);
+                    if (_inputRecorder.IsPlayRecord)
                     {
-                        StartInputRecord();
+                        EditorGUILayout.LabelField($"{Time.time}");
                     }
-                    if (GUILayout.Button("保存"))
-                    {
-                        SaveInputRecord();
-                    }
-                    if (GUILayout.Button("読込 & 再生"))
-                    {
-                        LoadInputRecord();
-                    }
-                    if (GUILayout.Button("ランダム生成"))
-                    {
-                        RandomGenerateInputRecord();
-                    }
+                    GUIButtonLayoutAndExecute("記録開始", StartInputRecord);
+                    GUIButtonLayoutAndExecute("保存", SaveInputRecord);
+                    GUIButtonLayoutAndExecute("読込 & 再生", LoadInputRecord);
+                    GUIButtonLayoutAndExecute("ランダム生成", RandomGenerateInputRecord);
                 }
                 if (_inputRecorder == null || _inputManager == null)
                 {
@@ -70,6 +63,15 @@ namespace Sandbox
             }
         }
 
+        void GUIButtonLayoutAndExecute(string msg, Action action)
+        {
+            if (GUILayout.Button(msg))
+            {
+                Debug.Log(msg);
+                action?.Invoke();
+            }
+        }
+
         private void SaveInputRecord()
         {
             // 推奨するディレクトリがあればpathに入れておく
@@ -89,7 +91,6 @@ namespace Sandbox
             if (!string.IsNullOrEmpty(path))
             {
                 Time.timeScale = 0;
-                _inputRecorder.IsRecord = false;
                 window.FocusGameView();
                 _inputManager.StartCoroutine(_inputRecorder.EmurateInput(path));
             }

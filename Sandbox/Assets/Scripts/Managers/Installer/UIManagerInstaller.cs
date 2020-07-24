@@ -5,12 +5,12 @@ namespace Sandbox
 {
     public class UIManagerInstaller : MonoInstaller<UIManagerInstaller>
     {
-        [SerializeField]
-        private GameObject _uiManagerPrefab;
         public override void InstallBindings()
         {
-            Container.Bind<UIBaseFactory>();
-            Container.Bind<UIManager>().FromComponentInNewPrefab(_uiManagerPrefab).AsSingle();
+            var obj = new GameObject("UIManager");
+            obj.transform.SetParent(transform);
+            Container.Bind<UIManager>().FromNewComponentOn(obj).AsSingle();
+            Container.BindFactory<UIType, GameObject, UIBaseFactory>().FromFactory<CustomUIBaseFactory>();
         }
     }
 }
