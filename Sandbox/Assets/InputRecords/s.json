@@ -1,0 +1,107 @@
+﻿{
+    "records": [
+        {
+            "id": 763868,
+            "deviceId": 1,
+            "time": 1512,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 763968,
+            "deviceId": 1,
+            "time": 1633,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 763975,
+            "deviceId": 1,
+            "time": 1640,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 763977,
+            "deviceId": 1,
+            "time": 1642,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 763977,
+            "deviceId": 1,
+            "time": 1642,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 764038,
+            "deviceId": 1,
+            "time": 1716,
+            "name": "d",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 764176,
+            "deviceId": 1,
+            "time": 1863,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "firstValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(0.0, 0.0, 0.0)"
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(-27.7, 0.0, 0.0)"
+        }
+    ]
+}

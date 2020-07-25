@@ -7,7 +7,9 @@
         "Zenject",
         "Zenject-IntegrationTests",
         "Zenject-IntegrationTests-Editor",
-        "Zenject-TestFramework"
+        "Zenject-TestFramework",
+        "Unity.InputSystem",
+        "Unity.InputSystem.Recorder"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -21,5 +23,6 @@
     "defineConstraints": [
         "UNITY_INCLUDE_TESTS"
     ],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

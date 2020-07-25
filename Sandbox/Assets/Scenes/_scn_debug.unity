@@ -153,7 +153,9 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers: []
   _installerPrefabs:
+  - {fileID: 8834578887372947138, guid: 025f198acf298fa43a3dd829488fa259, type: 3}
   - {fileID: 3298264245192962151, guid: c4f7c727c6facf343b44d24bf791be06, type: 3}
+  - {fileID: 2362461233905556139, guid: c081ed8a7817a3d4f9dacea3b3927638, type: 3}
   - {fileID: 475115576460361800, guid: a35665a367efb7241b27abde54b0f8ed, type: 3}
   - {fileID: 880785998615776574, guid: 22413143399e9a943b6b4fa61009949e, type: 3}
   _autoRun: 1
@@ -172,7 +174,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189903358
 GameObject:
@@ -330,7 +332,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &791946370
 GameObject:
@@ -490,7 +492,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2041415625
+--- !u!1001 &1756608572
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -535,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 7341691021377163718, guid: 90e82c3df7225d94ea36416b16e1316f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7341691021377163718, guid: 90e82c3df7225d94ea36416b16e1316f,
         type: 3}

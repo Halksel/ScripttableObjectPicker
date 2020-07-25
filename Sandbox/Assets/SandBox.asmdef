@@ -2,6 +2,7 @@
     "name": "SandBox",
     "references": [
         "Unity.InputSystem",
+        "Unity.InputSystem.Recorder",
         "Zenject",
         "Zenject-IntegrationTests",
         "Zenject-ReflectionBaking-Editor",
@@ -15,5 +16,6 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": []
+    "versionDefines": [],
+    "noEngineReferences": false
 }

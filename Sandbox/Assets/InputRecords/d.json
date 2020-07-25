@@ -1,0 +1,120 @@
+﻿{
+    "records": [
+        {
+            "id": 681605,
+            "deviceId": 1,
+            "time": 833,
+            "name": "anyKey",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 681605,
+            "deviceId": 1,
+            "time": 833,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 681709,
+            "deviceId": 1,
+            "time": 865,
+            "name": "anyKey",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 681709,
+            "deviceId": 1,
+            "time": 865,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 682170,
+            "deviceId": 1,
+            "time": 1286,
+            "name": "anyKey",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 682170,
+            "deviceId": 1,
+            "time": 1286,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                128,
+                63
+            ]
+        },
+        {
+            "id": 682198,
+            "deviceId": 1,
+            "time": 1320,
+            "name": "anyKey",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        },
+        {
+            "id": 682198,
+            "deviceId": 1,
+            "time": 1320,
+            "name": "a",
+            "valid": true,
+            "data": [
+                0,
+                0,
+                0,
+                0
+            ]
+        }
+    ],
+    "firstValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(0.0, 0.0, 0.0)"
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "PlayerPosition",
+            "value": "(-6.6, 0.0, 0.0)"
+        }
+    ]
+}

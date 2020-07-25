@@ -36,9 +36,9 @@ namespace Sandbox
         public InputRecorderObservedAttribute(string name) { _name = name; }
         public string Name { get { return _name; } }
 
-        public static List<InputRecorder.InputValue> GetObserevedValuesReflection()
+        public static List<InputRecorderWrapper.InputRecorderValue> GetObserevedValuesReflection()
         {
-            var result = new List<InputRecorder.InputValue>();
+            var result = new List<InputRecorderWrapper.InputRecorderValue>();
             for (int i = 0; i < types.Count; ++i)
             {
                 var type = types[i].Key;
@@ -56,7 +56,7 @@ namespace Sandbox
                         //属性が定義されたプロパティだけを参照するため、fixedAttrがnullなら処理の対象外
                         if (attribute != null)
                         {
-                            var value = new InputRecorder.InputValue(attribute.Name, fieldInfo.GetValue(obj as object).ToString());
+                            var value = new InputRecorderWrapper.InputRecorderValue(attribute.Name, fieldInfo.GetValue(obj as object).ToString());
                             result.Add(value);
                         }
                     }
@@ -65,7 +65,7 @@ namespace Sandbox
             return result;
         }
 
-        public static bool SetObservedValuesReflection(List<InputRecorder.InputValue> values)
+        public static bool SetObservedValuesReflection(List<InputRecorderWrapper.InputRecorderValue> values)
         {
             if (types.Count != values.Count) return false;
             for (int i = 0; i < values.Count; ++i)

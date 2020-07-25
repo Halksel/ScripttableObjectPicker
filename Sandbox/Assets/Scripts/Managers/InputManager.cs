@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 namespace Sandbox
 {
@@ -231,5 +232,8 @@ namespace Sandbox
         private int _currentInputPriority;
 
         private List<InputProxy> _inputProxies = new List<InputProxy>();
+
+        [Inject]
+        public InputRecorderWrapper RecorderWrapper;
     }
 }

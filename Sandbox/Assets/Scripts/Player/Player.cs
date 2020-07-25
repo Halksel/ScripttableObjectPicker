@@ -19,7 +19,7 @@ namespace Sandbox
         private void Update()
         {
             _move = _basisInput.Basis.Move.ReadValue<Vector2>();
-            _pos += new Vector3(_move.x, _move.y);
+            _pos += new Vector3(_move.x, _move.y) * 0.1f;
             transform.position = _pos;
         }
 
@@ -85,8 +85,6 @@ namespace Sandbox
         private InputManager _inputManager;
         [Inject]
         private UIManager _uiManager;
-        [Inject]
-        private InputRecorder input;
 
         [Inject]
         private HighlightEffect.Factory _highlightFactory;
