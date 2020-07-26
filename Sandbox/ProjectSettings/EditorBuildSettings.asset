@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Plugins/Zenject/OptionalExtras/SceneTests/TestSceneContextEvents/TestSceneContextEvents.unity
     guid: 6a6e139b8a4d4d544a3318c53b9ae3d6
+  - enabled: 1
+    path: Assets/Tests/PlayMode/Scenes/RandomScaleSphereScene.unity
+    guid: af367401e75f71d408a27183031ea26e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1122bf72979e1974384c458d5785ded1,
       type: 2}

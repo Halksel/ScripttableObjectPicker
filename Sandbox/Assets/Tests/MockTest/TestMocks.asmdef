@@ -1,23 +1,14 @@
 {
-    "name": "EditMode",
+    "name": "TestMocks",
     "references": [
-        "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner",
-        "Zenject",
-        "Zenject-TestFramework",
-        "Unity.InputSystem.Recorder",
-        "SandBox",
-        "TestTargets",
-        "TestMocks"
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:1811b6d2660efe341a2c87161ef59c63"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
     "precompiledReferences": [
-        "nunit.framework.dll",
         "Zenject-usage.dll"
     ],
     "autoReferenced": false,

@@ -3,13 +3,15 @@
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
-        "SandBox",
         "Zenject",
+        "Zenject-TestFramework",
         "Zenject-IntegrationTests",
         "Zenject-IntegrationTests-Editor",
-        "Zenject-TestFramework",
         "Unity.InputSystem",
-        "Unity.InputSystem.Recorder"
+        "Unity.InputSystem.Recorder",
+        "SandBox",
+        "TestTargets",
+        "TestMocks"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

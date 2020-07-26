@@ -98,6 +98,44 @@ namespace Sandbox
             Recorder.changeEvent.AddListener(changeEvent);
         }
 
+        private void OnStartCapture()
+        {
+            _records.Reset();
+            _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), true);
+        }
+
+        private void OnStopCapture()
+        {
+
+            var path = SaveDirectory;
+            _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), false);
+            var json = JsonUtility.ToJson(_records, true);
+            var encoding = new UTF8Encoding(true, false);
+            File.WriteAllText(path, json, encoding);
+
+            AssetDatabase.ImportAsset(path);
+            var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
+            ProjectWindowUtil.ShowCreatedAsset(asset);
+
+            AssetDatabase.Refresh();
+        }
+
+        private void OnStartReplay()
+        {
+            var path = SaveDirectory;
+            var encoding = new UTF8Encoding(true, false);
+            var json = File.ReadAllText(path, encoding);
+            try
+            {
+                _records = JsonUtility.FromJson<InputRecorderValues>(json);
+                InputRecorderObservedAttribute.SetObservedValuesReflection(_records.firstValues);
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         private void changeEvent(InputRecorder.Change change)
         {
             switch (change)
@@ -109,40 +147,13 @@ namespace Sandbox
                 case InputRecorder.Change.EventPlayed:
                     break;
                 case InputRecorder.Change.CaptureStarted:
-                    _records.Reset();
-                    _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), true);
+                    OnStartCapture();
                     break;
                 case InputRecorder.Change.CaptureStopped:
-                    {
-                        var path = SaveDirectory;
-                        _records.SaveValues(InputRecorderObservedAttribute.GetObserevedValuesReflection(), false);
-                        var json = JsonUtility.ToJson(_records, true);
-                        var encoding = new UTF8Encoding(true, false);
-                        File.WriteAllText(path, json, encoding);
-
-                        AssetDatabase.ImportAsset(path);
-                        var asset = AssetDatabase.LoadAssetAtPath<TextAsset>(path);
-                        ProjectWindowUtil.ShowCreatedAsset(asset);
-
-                        AssetDatabase.Refresh();
-                    }
+                    OnStopCapture();
                     break;
                 case InputRecorder.Change.ReplayStarted:
-                    {
-                        return;
-                        var path = SaveDirectory;
-                        var encoding = new UTF8Encoding(true, false);
-                        var json = File.ReadAllText(path, encoding);
-                        try
-                        {
-                            _records = JsonUtility.FromJson<InputRecorderValues>(json);
-                            InputRecorderObservedAttribute.SetObservedValuesReflection(_records.firstValues);
-                        }
-                        catch (Exception e)
-                        {
-                            throw e;
-                        }
-                    }
+                    OnStartReplay();
                     break;
                 case InputRecorder.Change.ReplayStopped:
                     break;
@@ -153,6 +164,10 @@ namespace Sandbox
         [Inject]
         public UnityEngine.InputSystem.InputRecorder Recorder;
         private InputRecorderValues _records = new InputRecorderValues();
+        public InputRecorderValues RecorderValues
+        {
+            get { return _records; }
+        }
         private string _saveDirectory;
         public string SaveDirectory 
         {

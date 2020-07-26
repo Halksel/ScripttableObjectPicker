@@ -1,0 +1,14 @@
+﻿{
+    "firstValues": [
+        {
+            "name": "TestValue",
+            "value": "1"
+        }
+    ],
+    "lastValues": [
+        {
+            "name": "TestValue",
+            "value": "2"
+        }
+    ]
+}

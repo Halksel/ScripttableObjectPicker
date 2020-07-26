@@ -96,7 +96,7 @@ namespace Sandbox
 
         private static void ConvertStr2Type(string value, Type type, out object Result)
         {
-            if (type.GetMethod("ChangeType") != null)
+            if (typeof(IConvertible).IsAssignableFrom(type))
             {
                 Result = Convert.ChangeType(value, type);
                 return;
