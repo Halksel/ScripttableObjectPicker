@@ -62,6 +62,7 @@ public class InputRecorderWrapperTest : ZenjectIntegrationTestFixture
         yield return null;
         recorderWrapper.Recorder.StopCapture();
         yield return null;
+        Assert.Greater(recorderWrapper.RecorderValues.firstValues.Count, 0);
         Assert.AreEqual(recorderWrapper.RecorderValues.firstValues[0], new InputRecorderValue("TestValue", $"{testValue}"));
     }
 

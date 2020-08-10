@@ -95,7 +95,7 @@ namespace Sandbox
 
         public void Start()
         {
-            //Recorder.changeEvent.AddListener(changeEvent);
+            Recorder.changeEvent.AddListener(changeEvent);
         }
 
         private void OnStartCapture()
